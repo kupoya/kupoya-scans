@@ -29,7 +29,8 @@ log_message('debug', ' === validating user for coupon');
 		// we start off by assuming this user is ok and then perform checks to validate 
 		
 		$ret = true;
-		$ret = $ret && $this->check_coupon_used_by_user($strategy_id, $user_id);
+		
+		//$ret = $ret && $this->check_coupon_used_by_user($strategy_id, $user_id);
 		//$ret = $ret && $this->check_user_has_friends($user_id);
 		
 log_message('debug', ' === validation returned: '.$ret);

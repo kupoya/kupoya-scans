@@ -9,6 +9,10 @@
 
 //var_dump($facebook['loginUrl'])
 
+$error = $this->session->flashdata('error');
+if (!$error)
+	$error = '';
+
 ?>
 
 		<div class="wrapper">
@@ -25,8 +29,8 @@
  					-->
 						<div class="wrapper under">
 							<h3><strong></strong> <span class="color1"><?php echo $this->lang->line('Oops_something_bad_happened')?></span>
-							<br/>
-							<?php echo $this->lang->line('Invalid_authentication')?>
+							<br/><br/>
+							
 							</h3>
 <br/><br/>
 						</div>
@@ -36,7 +40,11 @@
 							<div class="rbroundbox">
 							<div class="rbtop"><div></div></div>
 							<div class="rbcontent">
-
+							<h3>
+								<?php echo $error ?>
+							</h3>
+							<br/><br/>
+														
 							</div>
 							<div class="rbbot"><div></div></div>
 							</div>

@@ -89,7 +89,7 @@ class Strategy_Model extends CI_Model {
 		$sql = "	
 			SELECT 
 				s.id, s.name, s.description, s.picture, s.website, s.plan_id,
-				COALESCE(sum(p.bank),0) as bank, st.name as type
+				COALESCE(sum(p.bank),0) as bank, st.name as type, exposure_count as exposure_count
 			FROM strategy s
 			JOIN `order` o ON o.strategy_id = s.id
 			JOIN plan p ON s.plan_id = p.id

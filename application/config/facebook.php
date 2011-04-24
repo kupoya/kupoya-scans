@@ -11,5 +11,5 @@
 $config['facebook']['app_id'] = '***REMOVED***';
 $config['facebook']['app_secret'] = '***REMOVED***';
 
-$config['facebook']['perms'] = 'user_location,user_checkins,status_update,user_birthday,publish_stream';
-$config['facebook']['req_perms'] = 'user_location,user_checkins,status_update,user_birthday,publish_stream';
+$config['facebook']['perms'] = 'email,user_location,user_checkins,status_update,user_birthday,publish_stream';
+$config['facebook']['req_perms'] = 'email,user_location,user_checkins,status_update,user_birthday,publish_stream';

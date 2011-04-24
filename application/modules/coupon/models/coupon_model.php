@@ -81,7 +81,7 @@ class Coupon_Model extends CI_Model {
 	function get_coupon_by_strategy($strategy_id = 0)
 	{
 
-		if ($strategy_id === 0)
+		if (!$strategy_id)
 			return false;
 
 		// check values are numeric

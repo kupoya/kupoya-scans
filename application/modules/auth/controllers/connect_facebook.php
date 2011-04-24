@@ -48,15 +48,20 @@ class Connect_Facebook extends Connect {
 
         // create user information array
         $user_info['auth_uid'] = $facebook_info['id'];
-        $user_info['name'] = $facebook_info['name'];
-        $user_info['first_name'] = $facebook_info['first_name'];
-        $user_info['last_name'] = $facebook_info['last_name'];
-        $user_info['birthday'] = $facebook_info['birthday'];
-        $user_info['gender'] = $facebook_info['gender'];
-        $user_info['location'] = $facebook_info['location']['name'];
-        $user_info['timezone'] = $facebook_info['timezone'];
-        $user_info['locale'] = $facebook_info['locale'];
-		$user_info['friends_count'] = count($user_friends['data']);
+        $user_info['name'] = isset($facebook_info['name']) ? $facebook_info['name'] : '';
+        $user_info['first_name'] = isset($facebook_info['first_name']) ? $facebook_info['first_name'] : '';
+        $user_info['last_name'] = isset($facebook_info['last_name']) ? $facebook_info['last_name'] : '';
+        $user_info['birthday'] = isset($facebook_info['birthday']) ? $facebook_info['birthday'] : '';
+        $user_info['gender'] = isset($facebook_info['gender']) ? $facebook_info['gender'] : 'male';
+        $user_info['email'] = isset($facebook_info['email']) ? $facebook_info['email'] : '';
+        if ( isset($facebook_info['location']) && isset($facebook_info['location']['name']) )
+        	$user_info['location'] = $facebook_info['location']['name'];
+        else
+        	$user_info['location'] = '';
+        
+        $user_info['timezone'] = isset($facebook_info['timezone']) ? $facebook_info['timezone'] : '';
+        $user_info['locale'] = isset($facebook_info['locale']) ? $facebook_info['locale'] : '';
+		$user_info['friends_count'] = isset($user_friends['data']) ? count($user_friends['data']) : 0;
 
 		return parent::register($user_info);
 //

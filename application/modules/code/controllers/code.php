@@ -115,13 +115,29 @@ log_message('debug', ' === strategy_info: '.$strategy_info['id']);
 		// get the medium/action sets for this strategy
 		// for that we need to get the plan first which the strategy is associated with
 		$plan_id = $strategy_info['plan_id'];
-		if ($plan_id) {
-			$medium_info = $this->medium_model->get_mediums_by_plan_id($plan_id);
-			$this->session->set_userdata('medium', $medium_info);
-		} else {
-			// if no medium is set we redirect directly to the strategy view page
-			$medium_info = array('none' => 'none');
-			$this->session->set_userdata('medium', $medium_info);
+		if (!$plan_id) {
+			log_message('debug', ' === no plan id defined: '.$strategy_info['type']);
+			redirect('code/code_invalid');
+		}
+		
+		$medium_info = $this->medium_model->get_mediums_by_plan_id($plan_id);
+		if (!$medium_info) {
+			log_message('debug', ' === medium error: '.$strategy_info['type']);
+			redirect('code/code_invalid');
+		}
+		
+		// set medium in session
+		$this->session->set_userdata('medium', $medium_info);
+		
+		// if no medium is set we redirect directly to the strategy view page
+		if (isset($medium_info['none'])) {			
+			$strategy_type = $strategy_info['type'];
+			if (!$strategy_type) {
+				log_message('debug', ' === no strategy type defined: '.$strategy_info['type']);
+				redirect('code/code_invalid');
+			}
+			
+			redirect($strategy_type.'/index');
 		}
 		
 		

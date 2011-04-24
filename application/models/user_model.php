@@ -81,6 +81,7 @@
 			return false;
 			
 		$data['name'] = isset($info['name']) ? $info['name'] : '';
+		$data['email'] = isset($info['email']) ? $info['email'] : '';
 		$data['first_name'] = isset($info['first_name']) ? $info['first_name'] : '';
 		$data['last_name'] = isset($info['last_name']) ? $info['last_name'] : '';
 		$data['birthday'] = isset($info['birthday']) ? $info['birthday'] : '';

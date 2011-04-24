@@ -2,6 +2,7 @@
 
 // error messages
 $lang['Oops_something_bad_happened'] = 'Oops';
+$lang['campaign_ended'] = 'Thank you but the current campaign has ended. See you next time!';
 
 // array of random messages to put in post actions
 $lang['message_generic_post'] = array(
@@ -25,7 +26,7 @@ $lang['message_generic_post'] = array(
 
 // array of random kupoya signatures to be included in post messages
 $lang['message_generic_signature'] = array(
-	"Letting you all know this was made possible by kupoya. www.kupoya.com",
+	"Letting you all know was made possible by kupoya. www.kupoya.com",
 	"Powered by kupoya. www.kupoya.com",
 	//"Kupoya. We make social campaigns amazing!",
 	//"Kupoya - bringing the social world to your business",

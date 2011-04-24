@@ -112,7 +112,7 @@ log_message('debug', ' === fql info '.$fqlInfo);
 		
 		// add the brand information to the view variables
 		//$data['product'] = $productInfo;
-					
+
 		$data['brand'] = $this->session->userdata('brand');
 		$data['strategy'] = $this->session->userdata('strategy');
 		//$data['fbUser'] = $this->fbconnect->user;
