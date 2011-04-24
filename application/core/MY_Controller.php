@@ -47,7 +47,7 @@ class MY_Controller extends CI_Controller {
 		if ($status !== '1') {
 			log_message('debug', ' === detected user NOT logged in');
 			// user is not logged in, redirect to index/welcome page
-			redirect('auth/index');
+			redirect('auth/invalid');
 		}
 		
 		log_message('debug', ' === detected user logged in');

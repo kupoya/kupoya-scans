@@ -1,85 +1,65 @@
-
-<script>
-
-$(document).ready(function() {
-	$("#submit_btn").click(function() {
-
-		$.ajax({
-			type:		'POST',
-			url:		'<?php echo site_url('coupon/coupon_create')?>',
-			//data:		'',
-			dataType:	"html",
-			success:	function(data) {
-				$("#coupon_code").html(data);
-			}
-		});
-
-	});
-});
-
-
-</script>
-
-
-<h1>Coupon for Aroma</h1>
-<p>
-You are entitled to get a free coupon from Aroma Bar&Coffee
-<br/>
-<small>clicking the button will post a wall post to your facebook</small>
-<br/><br/>
-<br/><br/>
-<button id='submit_btn' name='coupon_get' type='button'>Get Coupon!</button>
-<br/>
-<br/><br/>
-<br/><br/>
-
-<div id="coupon_code">
-</div>
 <?php 
-	//var_dump($agent);var_dump
-	//var_dump($fql);
-	var_dump($fbUser);
+//var_dump($brand);
+//var_dump($strategy);
+//var_dump($agent);
+//var_dump($facebook);
+//var_dump($agent);var_dump
+
+//echo 'count1:';
+//echo count($friends['']);
+
+//var_dump($fbUser);
+
+//var_dump($facebook['loginUrl'])
+
+	$picture = (!empty($strategy['picture'])) ? $strategy['picture'] : $brand['picture'];
+	$description = (!empty($strategy['picture'])) ? $strategy['description'] : $brand['description'];
+	
 ?>
+		<div class="wrapper">
+			<div class="pad">
+				<div class="wrapper"><h2></h2></div>
+			</div>
+			<div class="box pad_bot1 bot">
+				<div class="pad marg_top">
+					<article class="col1">
+						<div style="border: 8px red dashed;">
+							<div class="wrapper">
+								<figure ><img src='<?= $picture ?>' style='width:300px;' alt="logo"/></figure>
+							</div>
+	
+							<div>
+								<br/>
+								<h3> <?= $description ?> </h3>
+	
+							</div>
+						</div>
+						<br/><br/>
+
+
+
+						<div class="wrapper under">
+
+							<div class="rbroundbox">
+								<div class="rbtop"><div></div></div>
+								<div class="rbcontent">
+
+							   	<h2><?php echo $this->lang->line('Step_2/2')?>: <?php echo $this->lang->line('Get_your_coupon')?></h2>
+<a href='<?php echo site_url('coupon/view') ?>'>
+	<?php echo image('get-coupon.png', '_theme_', array('alt' => $this->lang->line('Get_your_coupon') )) ?>
+</a>
+
+								</div>
+								<div class="rbbot"><div></div></div>
+							</div>
+
+						</div
 <br/><br/>
 
-    	
-    	
-		<div id="fb-root"></div>
-		<script type="text/javascript">
-		/*
-		window.fbAsyncInit = function() {
-				FB.init({
-		        		appId: '<?php //$appkey?>',
-		        		status: true,
-		        		cookie: true,
-		        		xfbml: true,
-		        		//session : <?php //echo json_encode($session); ?>, // don't refetch the session when PHP already has it
-		        });
+					<div>
+					</article>
+				</div>
+			</div>
+		</div>
 
-
-		        
-		};
-				(function() {
-			        var e = document.createElement('script');
-		            e.type = 'text/javascript';
-		            e.src = document.location.protocol + '//connect.facebook.net/en_US/all.js';
-			          e.async = true;
-		            document.getElementById('fb-root').appendChild(e);
-		   	 	}());
-	*/	            
-/*
-
-		        FB.api(
-		        		  {
-		        		    method: 'fql.query',
-		        		    query: 'SELECT name FROM user WHERE uid=686773813'
-		        		  },
-		        		  function(response) {
-		        		    alert('Name is ' + response[0].name);
-		        		  }
-		        		);
-*/	          	
-	   		
-
-			
-		</script>
+<br/><br/>

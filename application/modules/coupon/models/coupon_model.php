@@ -1,108 +1,141 @@
 <?php
 
-class Base_Model extends MY_Model {
-	
-	//protected $_table = 'user';
-	
-	
-	function __construct()
-	{
-		parent::__construct();
-		
-        // load tables this model operates on
-        // $this->load_table('[table_name'], '[alias'], '[fields]', '[primary key]');
-		$this->load_table('menu_member');
-		$this->load_table('menu_member_settings');
-		$this->load_table('menu_group');
-		
-		$this->load_table('widget_places');
-		$this->load_table('widget_item');
-		
-		
-        // describe relationships
-        // $this->table1->related('table2', array('table1_key', 'table2_key'));
-		$this->menu_member->related('menu_group', array('group_id', 'id'));
-		$this->menu_member_settings->related('menu_member', array('menu_member_id', 'id'));
+class Coupon_Model extends CI_Model {
 
-		$this->widget_item->related('widget_places', array('widget_places_id','id'));
-		
-	}
-	
-	
-	
-	
-	function getWidgets()
+
+
+	function Coupon_Model()
 	{
-		echo "test1";
-		$widgets = array();
-		
-		$queryResult = $this->with("$this->widget_item")
-							->select(
-								array(
-									'widget_item.title',
-									'widget_item.name',
-									'widget_item.url',
-									'widget_places.name',
-									),
-									false
-								)
-							->from()
-							->join()
-							->get();
-		echo "test2";					
-		return $queryResult;
-		
+
+		parent::__construct();
 	}
-	
-	/*
-	 * return the menu tree 
-	 * 
-	 * @return		array		a multi-dimentional array (of 2nd degree) of a tree-like menu description
-	 */
-	function getMenu()
+
+
+
+	function set_coupon_used($coupon_id, $data)
 	{
-		// initialize menu array
-		$menuEntries = array();
+
+//		$status = 'used';
+
+		$this->db->query('LOCK TABLES coupon WRITE');
 		
-		$queryResult = $this->with("$this->menu_member")
-							->select(
-									array(
-							
-									'menu_member.name AS menu_name',
-									'menu_member.id',
-									'menu_member.group_id',
-									'menu_member.url',
-									'menu_group.member_head',
-									'menu_member_settings.title',
-								
-									), false
-								)
-							->from()
-							->join("$this->menu_group")
-							->join("$this->menu_member_settings")
-							->order_by('menu_member.group_id ASC')
-							->order_by('menu_group.member_head ASC')
-							->get();
+		$this->db->where('id', $coupon_id);
+		$query = $this->db->update('coupon', $data);
+		/*
+		$sql = "
+			UPDATE coupon
+			SET
+			 status = ?
+			 ,
+			 user_id = ?
+			 ,
+			 purchased_time = CURRENT_TIMESTAMP()
+			 
+			WHERE
+			
+			 id = ?
+		";
+		$query = $this->db->query($sql, array($status, $user_id, $coupon_id));
+		*/
+		$this->db->query('UNLOCK TABLES');
 		
-		
-		//var_dump($queryResult);
-			
-		foreach($queryResult as $menuEntry)
-		{
-			
-			//$menuEntries[$menuEntry['group_id']]['head'] = 
-			$menuEntries[$menuEntry['group_id']][] = $menuEntry;
-			
+		if (!$query) {
+			return false;
 		}
-		
-		return $menuEntries;
-		
+
+		return true;
+
 	}
-	
-	
-	
-	
-	
-	
-	
+
+
+	function set_coupon_status($coupon_id, $status = 'new')
+	{
+		if (!$coupon_id)
+		return false;
+			
+		// if we were able to get a new coupon let's mark it as pending and return it
+		$this->db->query('LOCK TABLES coupon WRITE');
+		$sql = "
+			UPDATE coupon
+			SET
+			 status = ?
+			WHERE
+			 id = ?
+		";
+		$query = $this->db->query($sql, array($status, $coupon_id));
+		if (!$query)
+		return false;
+		$this->db->query('UNLOCK TABLES');
+
+		return true;
+
+	}
+
+
+	/**
+	 *
+	 * get the currently (active) strategy id by campaign
+	 * @param int $campaign_id the campaign id
+	 * @return int $strategy_id the strategy id
+	 */
+	function get_coupon_by_strategy($strategy_id = 0)
+	{
+
+		if ($strategy_id === 0)
+			return false;
+
+		// check values are numeric
+		if (!is_numeric($strategy_id))
+			return false;
+
+		// get a new coupon for our user
+		$this->db->query('LOCK TABLES coupon WRITE, coupon_settings WRITE');
+		$sql = "
+			SELECT
+			 coupon.id, coupon.serial, coupon.instance_id
+			FROM coupon coupon
+			JOIN coupon_settings ON coupon_settings.id = coupon.instance_id
+			WHERE
+			 coupon_settings.strategy_id = ?
+			AND
+			 coupon.status = 'new'
+			LIMIT 1
+		";
+		$query = $this->db->query($sql, array($strategy_id));
+		if (!$query) {
+			$this->db->query('UNLOCK TABLES');
+			return false;
+		}
+
+		$coupon = $query->row_array();
+
+		// if there are no available coupons unlock the table and return false
+		if ($query->num_rows() === 0) {
+
+			// unlock the table
+			$this->db->query('UNLOCK TABLES');
+			return false;
+		}
+
+		// if we were able to get a new coupon let's mark it as pending and return it
+		$sql = "
+			UPDATE coupon
+			SET
+			 status = 'pending'
+			WHERE
+			 id = ?
+		";
+		$query = $this->db->query($sql, array($coupon['id']));
+		if (!$query) {
+			$this->db->query('UNLOCK TABLES');
+			return false;
+		}
+			
+		$this->db->query('UNLOCK TABLES');
+
+		return $coupon;
+
+	}
+
+
 }

@@ -46,13 +46,46 @@ class Product_Model extends CI_Model {
 			return true;
 		else
 			return false;
-		
-		
+
 	}
    
    
    
 	
+
 	
+	function getProductInfo($brandId = 0, $productId = 0) {
+		
+		// check values are numeric
+		if (!is_numeric((int)$brandId) || !is_numeric((int)$productId))
+			return false;
+		
+		$sql = "
+
+			SELECT
+			 p.id, p.name, p.description, p.picture, p.website
+			FROM
+			 product p
+			JOIN brand b ON p.brand_id = b.id
+			WHERE
+			 p.id = ?
+			AND
+			 b.id = ?
+			AND
+			 b.blocked = 0
+			LIMIT 1
+		
+		";
+		$query = $this->db->query($sql, array($productId, $brandId));
+		
+		if ($query->num_rows() === 1)
+			return $query->row_array();	
+		else
+			return false;
+		
+		
+	}
+   	
+
 	
 }

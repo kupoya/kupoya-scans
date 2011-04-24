@@ -15,31 +15,33 @@
 	    var APPPATH_URL = "<?php echo APPPATH_URL; ?>";
 	</script>
 
+
 	<!-- CSS base -->
-	<?=	css('main.css', '_theme_', array('media' => 'screen', 'title' => 'default')); ?>
+	<?=	css('reset.css', '_theme_', array('media' => 'screen', 'title' => 'default')); ?>
 	<!-- jQuery Theme CSS -->
-	<?=	css('jquery-ui-1.8.9.custom.css', '_theme_'); ?>
+	<?=	css('layout.css', '_theme_'); ?>
 	<!-- jQuery jqGrid CSS -->
-	<?=	css('ui.jqgrid.css', '_theme_'); ?>
+	<?=	css('style.css', '_theme_'); ?>
 
-	<!-- JavaScript base - jQuery -->
-	<?= js('jquery/jquery-1.4.4.min.js', '_theme_')?>
-	<?= js('jquery/jquery-ui-1.8.7.custom.min.js', '_theme_')?>
-	
+	<!-- JavaScript base - jQuery
+	<?php //echo js('jquery/jquery-1.4.4.min.js', '_theme_')?>
+	<?php //echo js('jquery/jquery-ui-1.8.7.custom.min.js', '_theme_')?>
 	<script type='text/javascript' src='http://www.google.com/jsapi'></script>
-	 	
+	 -->	 	
 </head>
-<body>
+<body id="page5">
 
-<center>
-	<?php 
-	//var_dump($brand);
-	//var_dump($agent);
-	//var_dump($facebook);
-	
-	//var_dump($facebook['loginUrl'])
-	?>
-	
+<div class="main">
+<!-- header -->
+	<header>
+		<div class="wrapper">
+
+		</div>
+	</header>
+<!-- / header -->
+<!-- content -->
+	<section id="content">
+
 	<?php echo $template['partials']['header']; ?>
 	<div class="clear">&nbsp;</div>
 	 
@@ -47,8 +49,17 @@
 	
 	<div class="clear">&nbsp;</div>
 	 
-	<?php echo $template['partials']['footer']; ?>
- </center>
- 
+	</section>
+<!-- / content -->
+<!-- footer -->
+	<footer>
+		<?php echo $template['partials']['footer']; ?>
+		<!-- 
+		<a href="http://www.templatemonster.com/" target="_blank">Website template</a> designed by TemplateMonster.com<br>
+		<a href="http://www.templates.com/product/3d-models/" target="_blank">3D Models</a> provided by Templates.com
+		 -->
+	</footer>
+<!-- / footer -->
+</div>
 </body>
 </html>

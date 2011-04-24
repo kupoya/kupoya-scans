@@ -894,3 +894,226 @@ DEBUG - 2011-03-26 15:08:09 -->  === 6
 DEBUG - 2011-03-26 15:08:09 --> File loaded: application/views/login.php
 DEBUG - 2011-03-26 15:08:09 --> Final output sent to browser
 DEBUG - 2011-03-26 15:08:09 --> Total execution time: 0.0451
+DEBUG - 2011-03-26 15:43:15 --> Config Class Initialized
+DEBUG - 2011-03-26 15:43:15 --> Hooks Class Initialized
+DEBUG - 2011-03-26 15:43:15 --> Utf8 Class Initialized
+DEBUG - 2011-03-26 15:43:15 --> UTF-8 Support Enabled
+DEBUG - 2011-03-26 15:43:15 --> URI Class Initialized
+DEBUG - 2011-03-26 15:43:15 --> Router Class Initialized
+DEBUG - 2011-03-26 15:43:15 --> File loaded: application/modules/auth/config/routes.php
+DEBUG - 2011-03-26 15:43:15 --> Output Class Initialized
+DEBUG - 2011-03-26 15:43:15 --> Input Class Initialized
+DEBUG - 2011-03-26 15:43:15 --> Global POST and COOKIE data sanitized
+DEBUG - 2011-03-26 15:43:15 --> Language Class Initialized
+DEBUG - 2011-03-26 15:43:15 --> Loader Class Initialized
+DEBUG - 2011-03-26 15:43:15 --> Language Class Initialized
+DEBUG - 2011-03-26 15:43:15 --> Config Class Initialized
+DEBUG - 2011-03-26 15:43:15 --> Loader Class Initialized
+DEBUG - 2011-03-26 15:43:15 --> Helper loaded: url_helper
+DEBUG - 2011-03-26 15:43:15 --> Helper loaded: form_helper
+DEBUG - 2011-03-26 15:43:15 --> Helper loaded: language_helper
+DEBUG - 2011-03-26 15:43:15 --> Helper loaded: asset_helper
+DEBUG - 2011-03-26 15:43:15 --> Database config for development environment is not found. Trying global config.
+DEBUG - 2011-03-26 15:43:15 --> Database Driver Class Initialized
+DEBUG - 2011-03-26 15:43:15 --> Session Class Initialized
+DEBUG - 2011-03-26 15:43:15 --> Helper loaded: string_helper
+DEBUG - 2011-03-26 15:43:15 --> Session routines successfully run
+DEBUG - 2011-03-26 15:43:15 --> User Agent Class Initialized
+DEBUG - 2011-03-26 15:43:15 --> Template class Initialized
+DEBUG - 2011-03-26 15:43:15 --> Config for development environment is not found. Trying global config.
+DEBUG - 2011-03-26 15:43:15 --> Config for development environment is not found. Trying global config.
+DEBUG - 2011-03-26 15:43:15 --> Config file loaded: application/config/asset.php
+DEBUG - 2011-03-26 15:43:15 --> Controller Class Initialized
+DEBUG - 2011-03-26 15:43:15 --> Model Class Initialized
+DEBUG - 2011-03-26 15:43:15 --> Model Class Initialized
+DEBUG - 2011-03-26 15:43:15 --> Model Class Initialized
+DEBUG - 2011-03-26 15:43:15 --> Security Class Initialized
+DEBUG - 2011-03-26 15:43:15 --> Helper loaded: security_helper
+DEBUG - 2011-03-26 15:43:15 --> Config for development environment is not found. Trying global config.
+DEBUG - 2011-03-26 15:43:15 --> Config for development environment is not found. Trying global config.
+DEBUG - 2011-03-26 15:43:15 --> Config file loaded: application/config/facebook.php
+DEBUG - 2011-03-26 15:43:15 -->  === brandId: 1
+DEBUG - 2011-03-26 15:43:15 -->  === productId: 1
+DEBUG - 2011-03-26 15:43:15 -->  === 1
+DEBUG - 2011-03-26 15:43:15 -->  === 2
+DEBUG - 2011-03-26 15:43:15 -->  === 6
+DEBUG - 2011-03-26 15:43:15 --> File loaded: application/views/login.php
+DEBUG - 2011-03-26 15:43:15 --> Final output sent to browser
+DEBUG - 2011-03-26 15:43:15 --> Total execution time: 0.0752
+DEBUG - 2011-03-26 15:44:40 --> Config Class Initialized
+DEBUG - 2011-03-26 15:44:40 --> Hooks Class Initialized
+DEBUG - 2011-03-26 15:44:40 --> Utf8 Class Initialized
+DEBUG - 2011-03-26 15:44:40 --> UTF-8 Support Enabled
+DEBUG - 2011-03-26 15:44:40 --> URI Class Initialized
+DEBUG - 2011-03-26 15:44:40 --> Router Class Initialized
+DEBUG - 2011-03-26 15:44:40 --> File loaded: application/modules/auth/config/routes.php
+DEBUG - 2011-03-26 15:44:40 --> Output Class Initialized
+DEBUG - 2011-03-26 15:44:40 --> Input Class Initialized
+DEBUG - 2011-03-26 15:44:40 --> Global POST and COOKIE data sanitized
+DEBUG - 2011-03-26 15:44:40 --> Language Class Initialized
+DEBUG - 2011-03-26 15:44:40 --> Loader Class Initialized
+DEBUG - 2011-03-26 15:44:40 --> Language Class Initialized
+DEBUG - 2011-03-26 15:44:40 --> Config Class Initialized
+DEBUG - 2011-03-26 15:44:40 --> Loader Class Initialized
+DEBUG - 2011-03-26 15:44:40 --> Helper loaded: url_helper
+DEBUG - 2011-03-26 15:44:40 --> Helper loaded: form_helper
+DEBUG - 2011-03-26 15:44:40 --> Helper loaded: language_helper
+DEBUG - 2011-03-26 15:44:40 --> Helper loaded: asset_helper
+DEBUG - 2011-03-26 15:44:40 --> Database config for development environment is not found. Trying global config.
+DEBUG - 2011-03-26 15:44:40 --> Database Driver Class Initialized
+DEBUG - 2011-03-26 15:44:40 --> Session Class Initialized
+DEBUG - 2011-03-26 15:44:40 --> Helper loaded: string_helper
+DEBUG - 2011-03-26 15:44:40 --> Session routines successfully run
+DEBUG - 2011-03-26 15:44:40 --> User Agent Class Initialized
+DEBUG - 2011-03-26 15:44:40 --> Template class Initialized
+DEBUG - 2011-03-26 15:44:40 --> Config for development environment is not found. Trying global config.
+DEBUG - 2011-03-26 15:44:40 --> Config for development environment is not found. Trying global config.
+DEBUG - 2011-03-26 15:44:40 --> Config file loaded: application/config/asset.php
+DEBUG - 2011-03-26 15:44:40 --> Controller Class Initialized
+DEBUG - 2011-03-26 15:44:40 --> Model Class Initialized
+DEBUG - 2011-03-26 15:44:40 --> Model Class Initialized
+DEBUG - 2011-03-26 15:44:40 --> Model Class Initialized
+DEBUG - 2011-03-26 15:44:40 --> Security Class Initialized
+DEBUG - 2011-03-26 15:44:40 --> Helper loaded: security_helper
+DEBUG - 2011-03-26 15:44:40 --> Config for development environment is not found. Trying global config.
+DEBUG - 2011-03-26 15:44:40 --> Config for development environment is not found. Trying global config.
+DEBUG - 2011-03-26 15:44:40 --> Config file loaded: application/config/facebook.php
+DEBUG - 2011-03-26 15:44:40 -->  === brandId: 1
+DEBUG - 2011-03-26 15:44:40 -->  === productId: 1
+DEBUG - 2011-03-26 15:44:40 -->  === 1
+DEBUG - 2011-03-26 15:44:40 -->  === 2
+DEBUG - 2011-03-26 15:44:40 -->  === 6
+DEBUG - 2011-03-26 15:44:40 --> Helper loaded: inflector_helper
+DEBUG - 2011-03-26 15:44:40 --> File loaded: application/themes/default/views/layouts/partials/header.php
+DEBUG - 2011-03-26 15:44:40 --> File loaded: application/themes/default/views/layouts/partials/footer.php
+DEBUG - 2011-03-26 15:44:40 --> File loaded: application/modules/auth/views/login.php
+DEBUG - 2011-03-26 15:44:40 --> File loaded: application/themes/default/views/layouts/layout_base.php
+DEBUG - 2011-03-26 15:44:40 --> Final output sent to browser
+DEBUG - 2011-03-26 15:44:40 --> Total execution time: 0.0521
+DEBUG - 2011-03-26 15:44:41 --> Config Class Initialized
+DEBUG - 2011-03-26 15:44:41 --> Hooks Class Initialized
+DEBUG - 2011-03-26 15:44:41 --> Utf8 Class Initialized
+DEBUG - 2011-03-26 15:44:41 --> UTF-8 Support Enabled
+DEBUG - 2011-03-26 15:44:41 --> URI Class Initialized
+DEBUG - 2011-03-26 15:44:41 --> Router Class Initialized
+ERROR - 2011-03-26 15:44:41 --> 404 Page Not Found --> 
+DEBUG - 2011-03-26 15:44:41 --> Config Class Initialized
+DEBUG - 2011-03-26 15:44:41 --> Hooks Class Initialized
+DEBUG - 2011-03-26 15:44:41 --> Utf8 Class Initialized
+DEBUG - 2011-03-26 15:44:41 --> UTF-8 Support Enabled
+DEBUG - 2011-03-26 15:44:41 --> URI Class Initialized
+DEBUG - 2011-03-26 15:44:41 --> Router Class Initialized
+DEBUG - 2011-03-26 15:44:41 --> Config Class Initialized
+DEBUG - 2011-03-26 15:44:41 --> Hooks Class Initialized
+ERROR - 2011-03-26 15:44:41 --> 404 Page Not Found --> 
+DEBUG - 2011-03-26 15:44:41 --> Utf8 Class Initialized
+DEBUG - 2011-03-26 15:44:41 --> UTF-8 Support Enabled
+DEBUG - 2011-03-26 15:44:41 --> URI Class Initialized
+DEBUG - 2011-03-26 15:44:41 --> Router Class Initialized
+ERROR - 2011-03-26 15:44:41 --> 404 Page Not Found --> 
+DEBUG - 2011-03-26 15:44:41 --> Config Class Initialized
+DEBUG - 2011-03-26 15:44:41 --> Hooks Class Initialized
+DEBUG - 2011-03-26 15:44:41 --> Utf8 Class Initialized
+DEBUG - 2011-03-26 15:44:41 --> UTF-8 Support Enabled
+DEBUG - 2011-03-26 15:44:41 --> URI Class Initialized
+DEBUG - 2011-03-26 15:44:41 --> Router Class Initialized
+ERROR - 2011-03-26 15:44:41 --> 404 Page Not Found --> 
+DEBUG - 2011-03-26 15:44:41 --> Config Class Initialized
+DEBUG - 2011-03-26 15:44:41 --> Hooks Class Initialized
+DEBUG - 2011-03-26 15:44:41 --> Utf8 Class Initialized
+DEBUG - 2011-03-26 15:44:41 --> UTF-8 Support Enabled
+DEBUG - 2011-03-26 15:44:41 --> URI Class Initialized
+DEBUG - 2011-03-26 15:44:41 --> Router Class Initialized
+ERROR - 2011-03-26 15:44:41 --> 404 Page Not Found --> 
+DEBUG - 2011-03-26 15:44:42 --> Config Class Initialized
+DEBUG - 2011-03-26 15:44:42 --> Hooks Class Initialized
+DEBUG - 2011-03-26 15:44:42 --> Utf8 Class Initialized
+DEBUG - 2011-03-26 15:44:42 --> UTF-8 Support Enabled
+DEBUG - 2011-03-26 15:44:42 --> URI Class Initialized
+DEBUG - 2011-03-26 15:44:42 --> Router Class Initialized
+ERROR - 2011-03-26 15:44:42 --> 404 Page Not Found --> 
+DEBUG - 2011-03-26 15:45:12 --> Config Class Initialized
+DEBUG - 2011-03-26 15:45:12 --> Hooks Class Initialized
+DEBUG - 2011-03-26 15:45:12 --> Utf8 Class Initialized
+DEBUG - 2011-03-26 15:45:12 --> UTF-8 Support Enabled
+DEBUG - 2011-03-26 15:45:12 --> URI Class Initialized
+DEBUG - 2011-03-26 15:45:12 --> Router Class Initialized
+DEBUG - 2011-03-26 15:45:12 --> File loaded: application/modules/auth/config/routes.php
+DEBUG - 2011-03-26 15:45:12 --> Output Class Initialized
+DEBUG - 2011-03-26 15:45:12 --> Input Class Initialized
+DEBUG - 2011-03-26 15:45:12 --> Global POST and COOKIE data sanitized
+DEBUG - 2011-03-26 15:45:12 --> Language Class Initialized
+DEBUG - 2011-03-26 15:45:12 --> Loader Class Initialized
+DEBUG - 2011-03-26 15:45:12 --> Language Class Initialized
+DEBUG - 2011-03-26 15:45:12 --> Config Class Initialized
+DEBUG - 2011-03-26 15:45:12 --> Loader Class Initialized
+DEBUG - 2011-03-26 15:45:12 --> Helper loaded: url_helper
+DEBUG - 2011-03-26 15:45:12 --> Helper loaded: form_helper
+DEBUG - 2011-03-26 15:45:12 --> Helper loaded: language_helper
+DEBUG - 2011-03-26 15:45:12 --> Helper loaded: asset_helper
+DEBUG - 2011-03-26 15:45:12 --> Database config for development environment is not found. Trying global config.
+DEBUG - 2011-03-26 15:45:12 --> Database Driver Class Initialized
+DEBUG - 2011-03-26 15:45:12 --> Session Class Initialized
+DEBUG - 2011-03-26 15:45:12 --> Helper loaded: string_helper
+DEBUG - 2011-03-26 15:45:12 --> Session routines successfully run
+DEBUG - 2011-03-26 15:45:12 --> User Agent Class Initialized
+DEBUG - 2011-03-26 15:45:12 --> Template class Initialized
+DEBUG - 2011-03-26 15:45:12 --> Config for development environment is not found. Trying global config.
+DEBUG - 2011-03-26 15:45:12 --> Config for development environment is not found. Trying global config.
+DEBUG - 2011-03-26 15:45:12 --> Config file loaded: application/config/asset.php
+DEBUG - 2011-03-26 15:45:12 --> Controller Class Initialized
+DEBUG - 2011-03-26 15:45:12 --> Model Class Initialized
+DEBUG - 2011-03-26 15:45:12 --> Model Class Initialized
+DEBUG - 2011-03-26 15:45:12 --> Model Class Initialized
+DEBUG - 2011-03-26 15:45:12 --> Security Class Initialized
+DEBUG - 2011-03-26 15:45:12 --> Helper loaded: security_helper
+DEBUG - 2011-03-26 15:45:12 --> Config for development environment is not found. Trying global config.
+DEBUG - 2011-03-26 15:45:12 --> Config for development environment is not found. Trying global config.
+DEBUG - 2011-03-26 15:45:12 --> Config file loaded: application/config/facebook.php
+DEBUG - 2011-03-26 15:45:12 -->  === brandId: 1
+DEBUG - 2011-03-26 15:45:12 -->  === productId: 1
+DEBUG - 2011-03-26 15:45:12 -->  === 1
+DEBUG - 2011-03-26 15:45:12 -->  === 2
+DEBUG - 2011-03-26 15:45:12 -->  === 6
+DEBUG - 2011-03-26 15:45:12 --> Helper loaded: inflector_helper
+DEBUG - 2011-03-26 15:45:12 --> File loaded: application/themes/default/views/layouts/partials/header.php
+DEBUG - 2011-03-26 15:45:12 --> File loaded: application/themes/default/views/layouts/partials/footer.php
+DEBUG - 2011-03-26 15:45:12 --> File loaded: application/modules/auth/views/login.php
+DEBUG - 2011-03-26 15:45:12 --> File loaded: application/themes/default/views/layouts/layout_base.php
+DEBUG - 2011-03-26 15:45:12 --> Final output sent to browser
+DEBUG - 2011-03-26 15:45:12 --> Total execution time: 0.0532
+DEBUG - 2011-03-26 15:45:13 --> Config Class Initialized
+DEBUG - 2011-03-26 15:45:13 --> Hooks Class Initialized
+DEBUG - 2011-03-26 15:45:13 --> Utf8 Class Initialized
+DEBUG - 2011-03-26 15:45:13 --> UTF-8 Support Enabled
+DEBUG - 2011-03-26 15:45:13 --> URI Class Initialized
+DEBUG - 2011-03-26 15:45:13 --> Router Class Initialized
+ERROR - 2011-03-26 15:45:13 --> 404 Page Not Found --> 
+DEBUG - 2011-03-26 15:45:13 --> Config Class Initialized
+DEBUG - 2011-03-26 15:45:13 --> Hooks Class Initialized
+DEBUG - 2011-03-26 15:45:13 --> Utf8 Class Initialized
+DEBUG - 2011-03-26 15:45:13 --> UTF-8 Support Enabled
+DEBUG - 2011-03-26 15:45:13 --> URI Class Initialized
+DEBUG - 2011-03-26 15:45:13 --> Router Class Initialized
+ERROR - 2011-03-26 15:45:13 --> 404 Page Not Found --> 
+DEBUG - 2011-03-26 15:45:13 --> Config Class Initialized
+DEBUG - 2011-03-26 15:45:13 --> Hooks Class Initialized
+DEBUG - 2011-03-26 15:45:13 --> Utf8 Class Initialized
+DEBUG - 2011-03-26 15:45:13 --> Config Class Initialized
+DEBUG - 2011-03-26 15:45:13 --> UTF-8 Support Enabled
+DEBUG - 2011-03-26 15:45:13 --> Hooks Class Initialized
+DEBUG - 2011-03-26 15:45:13 --> Utf8 Class Initialized
+DEBUG - 2011-03-26 15:45:13 --> UTF-8 Support Enabled
+DEBUG - 2011-03-26 15:45:13 --> URI Class Initialized
+DEBUG - 2011-03-26 15:45:13 --> URI Class Initialized
+DEBUG - 2011-03-26 15:45:13 --> Router Class Initialized
+DEBUG - 2011-03-26 15:45:13 --> Router Class Initialized
+ERROR - 2011-03-26 15:45:13 --> 404 Page Not Found --> 
+ERROR - 2011-03-26 15:45:13 --> 404 Page Not Found --> 
+DEBUG - 2011-03-26 15:45:13 --> Config Class Initialized
+DEBUG - 2011-03-26 15:45:13 --> Hooks Class Initialized
+DEBUG - 2011-03-26 15:45:13 --> Utf8 Class Initialized
+DEBUG - 2011-03-26 15:45:13 --> UTF-8 Support Enabled
+DEBUG - 2011-03-26 15:45:13 --> URI Class Initialized
+DEBUG - 2011-03-26 15:45:13 --> Router Class Initialized
+ERROR - 2011-03-26 15:45:13 --> 404 Page Not Found --> 

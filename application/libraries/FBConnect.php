@@ -13,10 +13,8 @@ class FBConnect extends Facebook {
 	
 	// CI super global object
 	private $_ci;
-
 	
 	public $config = null;
-	
 	
 	public $urlNext = null;
 	public $urlCancel = null;

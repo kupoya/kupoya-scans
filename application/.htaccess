@@ -1,1 +1,2 @@
-Deny from all
+## removed by LIRAN TAL to allow access to applications directory
+##Deny from all
