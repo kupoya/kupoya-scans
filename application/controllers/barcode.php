@@ -17,13 +17,13 @@ class Barcode extends MY_Controller {
 			
 		$this->load->library('Barcode/Image_Barcode_code128');
 		
-		$obj =& new Image_Barcode_code128();
+		$obj = new Image_Barcode_code128();
 		
 		$obj->_barcodeheight = 120;
 		$obj->_font = 205;
 		$obj->_barwidth = 6;
 		
-		$img = &$obj->draw($text, $imgtype);
+		$img = $obj->draw($text, $imgtype);
 		
 		if (PEAR::isError($img)) {
             return $img;

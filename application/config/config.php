@@ -15,7 +15,7 @@
 |
 */
 //$config['base_url']	= '';
-$config['base_url']	= "http://scans.kupoya.com/";
+$config['base_url']	= "http://scans-dev.kupoya.com/";
 
 /*
 |--------------------------------------------------------------------------
@@ -45,7 +45,7 @@ $config['index_page'] = '';
 | 'ORIG_PATH_INFO'	Uses the ORIG_PATH_INFO
 |
 */
-$config['uri_protocol']	= 'PATH_INFO';
+$config['uri_protocol']	= 'AUTO';
 
 /*
 |--------------------------------------------------------------------------

@@ -1,7 +1,7 @@
 <?php
 
 // error messages
-$lang['Oops_something_bad_happened'] = 'Oops';
+$lang['Oops_something_bad_happened'] = "sorry, we couldn't process your request";
 $lang['campaign_ended'] = 'Thank you but the current campaign has ended. See you next time!';
 
 // array of random messages to put in post actions

@@ -1,2 +1,3 @@
 ## removed by LIRAN TAL to allow access to applications directory
-##Deny from all
+## ALLOWED again by LIRAN TAL because the themes folder moved outside application/ dir
+Deny from all

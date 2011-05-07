@@ -78,7 +78,7 @@ class Image_Barcode extends PEAR
             return PEAR::raiseError("Unable to find draw method in '$classname' class");
         }
 
-        @$obj =& new $classname();
+        @$obj = new $classname();
 
         $img = &$obj->draw($text, $imgtype);
 

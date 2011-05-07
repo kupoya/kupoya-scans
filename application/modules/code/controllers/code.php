@@ -10,8 +10,7 @@ class Code extends MY_Controller {
 		$this->load->model('brand_model');
 		$this->load->model('code/code_model');
 		$this->load->model('strategy_model');
-		$this->load->model('medium_model');
-		
+		$this->load->model('medium_model');	
 		
 		//$this->load->model('user_model');
 		$this->load->library('security');

@@ -1,19 +1,19 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Welcome extends Test {
+class Welcome extends CI_Controller {
 
 	function __construct()
 	{
 		parent::__construct();
 	}
 
-	/*
+	
 	function index()
 	{
 		$this->load->view('welcome_message');
-	}*/
+	}
 	
-	
+	/*
 	public function index()
 	{
 		
@@ -32,19 +32,19 @@ class Welcome extends Test {
 		
 		// forward the user to the coupon creation page
 		$couponURL = 'welcome/coupon/1/1';
-		/*
-		$couponInfo = array(
-					'brandId' => 1,
-					'productId' => 1,
-					);
-		$this->session->set_userdata($couponInfo);
-		*/
+		
+		//$couponInfo = array(
+		//			'brandId' => 1,
+		//			'productId' => 1,
+		//			);
+		//$this->session->set_userdata($couponInfo);
+		
 
    		//var_dump($data);
 		$this->load->view('welcome_message', $data);
 		
 	}
-	
+	*/
 }
 
 /* End of file welcome.php */

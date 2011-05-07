@@ -18,9 +18,9 @@ class MY_Controller extends CI_Controller {
 		*/
 		
 		// set theme 
-		$this->asset->set_theme('default');
-		$this->template->set_theme('default');
-		
+		$this->asset->set_theme('mobile_v1');
+		$this->template->set_theme('mobile_v1');
+
 		// template settings
 		$this->template->enable_parser(FALSE); // default true
 		$this->template->set_layout('layout_base');

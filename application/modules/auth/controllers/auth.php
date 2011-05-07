@@ -7,7 +7,7 @@ class Auth extends Connect {
 
 		parent::__construct();
 		
-		$this->lang->load('auth/auth', 'english');
+		$this->lang->load(array('auth/auth','app'), 'english');
 		
 	}
 	
