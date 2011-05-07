@@ -18,6 +18,9 @@ class Auth extends Connect {
 	public function invalid() {
 		
 		$data = array();
+		
+		// enable caching for the templates
+		$this->template->set_cache(3600);
 		$this->template->build('auth/auth_invalid', $data);
 		
 	}

@@ -32,20 +32,23 @@ class Code extends MY_Controller {
 	
 	
 	protected function _validate() {
-log_message('debug', ' === checking if user is mobile: '.$this->agent->is_mobile());
+		
+		// check if the useragent for is detected as a mobile device
 		if (!$this->agent->is_mobile()) {
-log_message('debug', ' === user is not mobile device');
+			// if it's not a mobile device we redirect to the code invalid page
 			redirect('code/invalid');
 		}
 	
 		return true;
-			
+
 	}
+	
 	
 	
 	public function invalid() {
 		
 		$data = array();
+		$this->template->set_cache(3600);
 		$this->template->build('code/code_invalid', $data);
 		
 	}
@@ -170,7 +173,9 @@ log_message('debug', ' === strategy_info: '.$strategy_info['id']);
 		$data['medium'] = $medium_info;
 		
 		log_message('debug', ' === 6');
+		
 		$this->template->build('code/login', $data);
+		
 		
 	}
 	
