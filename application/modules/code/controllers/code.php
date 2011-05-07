@@ -17,7 +17,7 @@ class Code extends MY_Controller {
 		$this->load->helper('security');
 		$this->load->helper('url');
 		
-		$this->load->library('FBConnect');
+		$this->load->library('FBConnect', array('initSession' => false));
 		
 		$this->load->library('user_agent');
 		

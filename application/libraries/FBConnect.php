@@ -24,7 +24,7 @@ class FBConnect extends Facebook {
 	// the user id
 	public $user_id = null;
 	
-	public function __construct($params = null, $initSession = true) {
+	public function __construct($initialize = array()) {
 		
 		$this->_ci =& get_instance();
 		
@@ -36,7 +36,7 @@ class FBConnect extends Facebook {
 		//make sure the session library is initiated. may have already done this in another method.
 		$this->_ci->load->library('session');
 		
-		if ($params == null) {
+		if (!isset($initialize['config']) || !$initialize['config']) {
 			$params = array(
 				'appId'		=> $this->config['app_id'],
 				'secret'	=> $this->config['app_secret'],
@@ -48,8 +48,9 @@ class FBConnect extends Facebook {
 		
 		parent::__construct($params);
 		
-		if ($initSession === true) {
-			
+		
+		if (!isset($initialize['initSession']) || $initialize['initSession'] === true) {
+						
 			// if session is valid, attempting to get user info
 			if($this->getSession()) {
 				try {
