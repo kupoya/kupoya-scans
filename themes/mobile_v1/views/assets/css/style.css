@@ -95,12 +95,12 @@
 /* --- boxes --- */
 
 .box {background:#ffd025; color:#917007; font-style:italic; margin:0 0 0 -10px; position:relative;}
-.box .tail-top {background:url(../img/box-tail-top.gif) top repeat-x;}
-.box .tail-bottom {background:url(../img/box-tail-bottom.gif) bottom repeat-x;}
-.box .corner-right-bottom {background:url(../img/box-corener-right-bottom.gif) right bottom no-repeat;}
-.box .corner-left-bottom {background:url(../img/box-corener-left-bottom.gif) left bottom no-repeat;}
-.box .corner-right-top {background:url(../img/box-corener-right-top.gif) right top no-repeat;}
-.box .corner-left-top {background:url(../img/box-corener-left-top.gif) left top no-repeat; width:100%;}
+.box .tail-top {background:url(../img/box-tail-top.png) top repeat-x;}
+.box .tail-bottom {background:url(../img/box-tail-bottom.png) bottom repeat-x;}
+.box .corner-right-bottom {background:url(../img/box-corener-right-bottom.png) right bottom no-repeat;}
+.box .corner-left-bottom {background:url(../img/box-corener-left-bottom.png) left bottom no-repeat;}
+.box .corner-right-top {background:url(../img/box-corener-right-top.png) right top no-repeat;}
+.box .corner-left-top {background:url(../img/box-corener-left-top.png) left top no-repeat; width:100%;}
 .box .indent {padding:20px 20px 30px 19px;}
 
 
