@@ -161,15 +161,12 @@ if (!$brandId || !$productId) {
 		// create nextUrl string for facebook redirect after successful authentication.
 		// this is done based on session data where these values were saved when the user
 		// attempted accessing the app without authenticating first
-
-		//$nextUrl = site_url("coupon/index/$brandId/$productId");
-		//$nextUrl = site_url("auth/login/$brand_info/$code_id");
 		$nextUrl = site_url("auth/connect_facebook/login");
-//log_message('debug', ' === 3');
 		$this->fbconnect->urlNext = $nextUrl; 
+		
+		// get the login url with all of facebook url info
 		$fbLoginUrl = $this->fbconnect->getLoginUrl();
 		
-//log_message('debug', ' === 4');
 		$data['facebook'] = array(
 			'app_id'		=> $this->fbconnect->getAppId(),
 			'perms'			=> $this->fbconnect->config['req_perms'],
@@ -185,9 +182,7 @@ if (!$brandId || !$productId) {
 		$data['brand'] = $brand_info;
 		$data['strategy'] = $strategy_info;
 		$data['medium'] = $medium_info;
-		
-		log_message('debug', ' === 6');
-		
+				
 		$this->template->build('code/login', $data);
 		
 		
