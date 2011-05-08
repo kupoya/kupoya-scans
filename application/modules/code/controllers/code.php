@@ -2,6 +2,7 @@
 
 class Code extends MY_Controller {
 	
+	const MODEL_CACHE_SECS = 3600;
 	
 	public function __construct() {
 		
@@ -20,6 +21,8 @@ class Code extends MY_Controller {
 		$this->load->library('FBConnect', array('initSession' => false));
 		
 		$this->load->library('user_agent');
+		
+		$this->load->library('cache');
 		
 		$this->lang->load(array('code/code', 'app'), 'english');
 		
@@ -82,38 +85,39 @@ if (!$brandId || !$productId) {
 		$data = array();
 		
 		// get campaign
-		$campaign_id = $this->code_model->get_campaign_by_brand_code($brand_id, $code_id);
+		$campaign_id = $this->cache->model('code_model', 'get_campaign_by_brand_code', 
+												array($brand_id, $code_id), self::MODEL_CACHE_SECS);
 		if (!$campaign_id) {
 			log_message('debug', ' === invalid campaign_id: '.$campaign_id);
 			redirect('code/invalid');
 		}
-
-
-		$this->session->set_userdata('code_id', $code_id);
-		$this->session->set_userdata('campaign_id', $campaign_id);
 		
 		
-		// if we got the brand and code ok, let's pull up brand information
-		$brand_info = $this->brand_model->get_brand_info($brand_id);
-		// push brand info into session for other pages
-		if ($brand_info) { 
-			$this->session->set_userdata('brand', $brand_info);
+		// if we got the campaign and code ok, let's pull up brand information
+		$brand_info = $this->cache->model('brand_model', 'get_brand_info', 
+												array($brand_id), self::MODEL_CACHE_SECS);
+		// either brand doesnt exist or is blocked
+		if (!$brand_info) { 
+			log_message('debug', ' === invalid brand_id: '.$brand_id);
+			redirect('code/invalid');
 		}
 				
 		// get strategy
-		$strategy_info = $this->strategy_model->get_strategy_by_campaign($campaign_id);
+		$strategy_info = $this->cache->model('strategy_model', 'get_strategy_by_campaign', 
+												array($campaign_id), self::MODEL_CACHE_SECS);
 		if ($strategy_info === false) {
 			log_message('debug', ' === invalid strategy_info: '.$strategy_info);
 			redirect('code/invalid');
 		}
+		log_message('debug', ' === strategy_info: '.$strategy_info['id']);
 		
-		$this->session->set_userdata('strategy', $strategy_info);
-log_message('debug', ' === strategy_info: '.$strategy_info['id']);
 		
 		// increment strategy exposure count
+		// @TODO this query slows down from 75rp/s and 13tpr to 17rp/s and 57tpr (on own localhost machine)
+		// possibly implement via ajax?
 		$this->strategy_model->increment_exposure_count($strategy_info['id']);
 
-
+		
 		// get the medium/action sets for this strategy
 		// for that we need to get the plan first which the strategy is associated with
 		$plan_id = $strategy_info['plan_id'];
@@ -121,18 +125,29 @@ log_message('debug', ' === strategy_info: '.$strategy_info['id']);
 			log_message('debug', ' === no plan id defined: '.$strategy_info['type']);
 			redirect('code/code_invalid');
 		}
+
 		
-		$medium_info = $this->medium_model->get_mediums_by_plan_id($plan_id);
+		$medium_info = $this->cache->model('medium_model', 'get_mediums_by_plan_id',
+												array($plan_id), self::MODEL_CACHE_SECS);
 		if (!$medium_info) {
 			log_message('debug', ' === medium error: '.$strategy_info['type']);
 			redirect('code/code_invalid');
 		}
-		
-		// set medium in session
-		$this->session->set_userdata('medium', $medium_info);
-		
+
+
+		// save all data we got so far to the session
+		$this->session->set_userdata(array(
+				'code_id' => $code_id,
+				'campaign_id' => $campaign_id,
+				'brand' => $brand_info,
+				'strategy' => $strategy_info,
+				'medium' => $medium_info,
+			)
+		);
+
+
 		// if no medium is set we redirect directly to the strategy view page
-		if (isset($medium_info['none'])) {			
+		if (isset($medium_info['none'])) {	
 			$strategy_type = $strategy_info['type'];
 			if (!$strategy_type) {
 				log_message('debug', ' === no strategy type defined: '.$strategy_info['type']);
@@ -141,8 +156,6 @@ log_message('debug', ' === strategy_info: '.$strategy_info['id']);
 			
 			redirect($strategy_type.'/index');
 		}
-		
-		
 
 
 		// create nextUrl string for facebook redirect after successful authentication.
@@ -167,6 +180,7 @@ log_message('debug', ' === strategy_info: '.$strategy_info['id']);
 			'loginUrl'		=> $fbLoginUrl,
 		);
 				
+		
 		// add the brand information to the view variables 
 		$data['brand'] = $brand_info;
 		$data['strategy'] = $strategy_info;
