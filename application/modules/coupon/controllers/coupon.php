@@ -8,19 +8,7 @@ class Coupon extends MY_Controller {
 		
 		//parent::MY_Controller();
 		parent::__construct();
-		
-		log_message('debug', ' === MY_Controller completed ok, continuing to Coupon processing');
-		
-		// load security helper to sanitize data
-		$this->load->library('security');
-		$this->load->helper('security');
-		
-		// check uri segments for brand and product id
-		//$brandId = $this->uri->segment(3);
-		//$productId = $this->uri->segment(4);
-		
-//var_dump($this->uri);
-
+	
 		// check brand and product is in session if segments aren't populated
 		$brand = $this->session->userdata('brand');
 		$code_id = $this->session->userdata('code_id');
@@ -39,17 +27,10 @@ log_message('debug', ' === STRATEGY ID: '.$strategy['id']);
 		}
 
 		// require logged-in user
-log_message('debug', ' === requiring login');
 		$this->_requireLogin();
 		
 		$this->load->model('coupon_model');
 		$this->load->model('strategy_model');
-		
-		//$this->load->library('FBConnect');
-		
-		// require an actual facebook connect user to be logged in
-		//if (!$this->fbconnect->user_id)
-		//	redirect('auth/invalid');
 		
 		$this->lang->load(array('coupon/coupon', 'app'), 'english');
 
