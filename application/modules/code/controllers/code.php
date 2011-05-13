@@ -134,7 +134,7 @@ if (!$brandId || !$productId) {
 			redirect('code/code_invalid');
 		}
 
-
+		
 		// save all data we got so far to the session
 		$this->session->set_userdata(array(
 				'code_id' => $code_id,
@@ -147,7 +147,7 @@ if (!$brandId || !$productId) {
 
 
 		// if no medium is set we redirect directly to the strategy view page
-		if (isset($medium_info['none'])) {	
+		if (isset($medium_info['none'])) {
 			$strategy_type = $strategy_info['type'];
 			if (!$strategy_type) {
 				log_message('debug', ' === no strategy type defined: '.$strategy_info['type']);
@@ -176,10 +176,11 @@ if (!$brandId || !$productId) {
 			//'user'			=> $this->fbconnect->user,
 			'loginUrl'		=> $fbLoginUrl,
 		);
-				
+
 		
 		// add the brand information to the view variables 
 		$data['brand'] = $brand_info;
+		$data['code'] = $code_id;
 		$data['strategy'] = $strategy_info;
 		$data['medium'] = $medium_info;
 				
