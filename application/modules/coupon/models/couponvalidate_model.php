@@ -30,7 +30,6 @@ log_message('debug', ' === validating user for coupon');
 		
 		$ret = true;
 		
-		//$ret = $ret && $this->check_coupon_used_by_user($strategy_id, $user_id);
 		//$ret = $ret && $this->check_user_has_friends($user_id);
 		
 log_message('debug', ' === validation returned: '.$ret);
@@ -68,7 +67,7 @@ log_message('debug', ' === validating user: check user has friends - returned BA
 
 		// 12 hour check
 		$sql = "
-			SELECT coupon.id, coupon.purchased_time
+			SELECT coupon.serial, coupon.status, coupon.user_id, coupon.purchased_time
 			FROM coupon
 			JOIN coupon_settings ON coupon_settings.id = coupon.instance_id
 			WHERE
@@ -86,10 +85,11 @@ log_message('debug', ' === validating user: check user has friends - returned BA
 		// then we allow the user is validated ok
 		if ($query->num_rows() === 0) {
 log_message('debug', ' === validating user: check coupon used by user - returned ok');
-			return true;
+			return false;
+		} else {
+			// otherwise we return the user's coupon and purchased time
+			return $query->row_array();
 		}
-		
-		return false;
 		
 	}
 	

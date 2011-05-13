@@ -116,24 +116,29 @@ log_message('debug', ' === fql info '.$fqlInfo);
 		$coupon = $this->session->userdata('coupon');
 		$medium = $this->session->userdata('medium');
 		
-log_message('debug', ' === user id is: '.$user['id']);
-		// check if the user already accessed this page before
-		if ($coupon !== false) {
+		// validate the user is able to use the coupon
+		$this->load->model('couponvalidate_model');
+		
+		// check if the user already used up a coupon, if so, deliver it to him
+		$coupon = $this->couponvalidate_model->check_coupon_used_by_user($strategy['id'], $user['id']);
+		if ($coupon) {
+
+			log_message('debug', ' === user already used this coupon');
 			
 			// create some coupon code
 			$data = array();
 			
 			$data['brand'] = $brand;
 			$data['strategy'] = $strategy;
-			//$data['medium'] = $medium;
 			$data['coupon'] = $coupon;
-				
+			
+			// set the coupon's info in the session
+			$this->session->set_userdata('coupon', $data['coupon']);
+			
 			return $this->template->build('coupon/coupon_view', $data);
-
-		}	
+			
+		}
 		
-		// validate the user is able to use the coupon
-		$this->load->model('couponvalidate_model');
 		$ret = $this->couponvalidate_model->validate_user($strategy['id'], $user['id']);
 		// if it returns false then the user used a coupon in the last 24 hours
 		if ($ret === false) {
