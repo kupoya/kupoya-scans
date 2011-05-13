@@ -2,6 +2,8 @@
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 //echo "brand:"; 
 //var_dump($brand);
+//echo "code: ";
+//var_dump($code);
 //echo "strategy:";
 //var_dump($strategy);
 //var_dump($medium);
