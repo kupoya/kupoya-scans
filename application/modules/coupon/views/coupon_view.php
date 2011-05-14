@@ -11,12 +11,16 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 //var_dump($ret);
 //var_dump($facebook['loginUrl'])
 
+
 	$name = (!empty($strategy['name'])) ? $strategy['name'] : $brand['name'];
 	$website = (!empty($strategy['website'])) ? $strategy['website'] : $brand['website'];
 	$picture = (!empty($strategy['picture'])) ? $strategy['picture'] : $brand['picture'];
 	$description = (!empty($strategy['picture'])) ? $strategy['description'] : $brand['description'];
 	
-	list($date, $time) = explode(' ', $coupon['purchased_time']);
+	if (isset($coupon['purchased_time']))
+		list($date, $time) = explode(' ', $coupon['purchased_time']);
+	else  
+		$date = $date = '00-00';
 	
 ?>
 
@@ -82,20 +86,3 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 		</div>
 
 	</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

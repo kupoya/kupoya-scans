@@ -9,21 +9,28 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 //var_dump($medium);
 //var_dump($agent);
 //var_dump($facebook);
-
 //var_dump($facebook['loginUrl'])
 
-	$picture = $brand['picture']; 
-	$description = $brand['description'];
-	$name = $brand['name']; 
-	
-/*	
-	$myName = 'liran';
-	$text_options = $this->lang->line('test1');
-	$key = array_rand($text_options);
-	$str = sprintf($text_options[$key], $myName);
-	echo $str;
-*/ 
 
+	if ( (isset($brand['picture'])) && (!empty($brand['picture'])) )
+		$picture = $brand['picture'];
+	elseif ( (isset($strategy['picture'])) && (!empty($strategy['picture'])) )
+		$picture = $strategy['picture'];
+
+	/*
+	 * no use-case yet for using the brand name
+	if ( (isset($brand['name'])) && (!empty($brand['name'])) )
+		$name = $brand['name'];
+	elseif ( (isset($strategy['name'])) && (!empty($strategy['name'])) )
+		$name = $strategy['name'];
+	*/
+		
+	if ( (isset($brand['description'])) && (!empty($brand['description'])) )
+		$description = $brand['description'];
+	elseif ( (isset($strategy['description'])) && (!empty($strategy['description'])) )
+		$description = $strategy['description'];
+
+	
 ?>
 
 	<div id="header">
