@@ -44,7 +44,7 @@ log_message('debug', ' === performing facebook action');
 			
 log_message('debug', ' === in actions, going to handle one of them...');
 
-		$this->load->library('Medium_Facebook');
+		$this->load->library('Medium_Facebook', array('initSession' => false));
 
 		// handle actions
 		if (isset($actions['wallpost'])) {
@@ -89,11 +89,17 @@ log_message('debug', ' === error happened - you need to allow Scanalo APP permis
 				// if not permissions forward to apply permissions we need:
 				//$url = "http://www.facebook.com/connect/prompt_permissions.php?api_key=***REMOVED***&v=1.0&ext_perm=publish_stream&next=http://datacenter.enginx.com/scanalo/welcome/coupon/1/1";
 	
-				// just in case, make sure tables are unlocked
-				$this->db->query('UNLOCK TABLES');
-				// unable to post to facebook, mark coupon as used
-				$this->coupon_model->set_coupon_status($coupon['id'], 'new');
-				redirect('auth/index');
+				// if not permissions forward to apply permissions we need:
+				$next_url = $this->urlNext;
+	log_message('debug', ' === nextUrl set to '.$next_url);
+				
+				$perm = $this->config['req_perms'];
+				$api_key = $this->config['app_id'];
+				$perm_url = 'http://m.facebook.com/connect/prompt_permissions.php?api_key='.$api_key.
+								'&v=1.0&ext_perm='.$perm.'&next='.$next_url;
+				
+				//redirect($next_url);
+			
 			}
 			*/
 			

@@ -174,7 +174,10 @@ log_message('debug', ' === ret didnt return good...');
 			$this->db->query('UNLOCK TABLES');
 			// unable to post to facebook, mark coupon as used
 			$this->coupon_model->set_coupon_status($coupon['id'], 'new');
-			redirect('code/index');
+			
+			$login_url = $this->session->userdata('login_url');
+			redirect($login_url);	
+			//redirect('code/index');
 		}
 		
 /*		

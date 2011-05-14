@@ -135,6 +135,16 @@ if (!$brandId || !$productId) {
 		}
 
 		
+		// create nextUrl string for facebook redirect after successful authentication.
+		// this is done based on session data where these values were saved when the user
+		// attempted accessing the app without authenticating first
+		$nextUrl = site_url("auth/connect_facebook/login");
+		$this->fbconnect->urlNext = $nextUrl; 
+		
+		// get the login url with all of facebook url info
+		$fbLoginUrl = $this->fbconnect->getLoginUrl();
+		
+		
 		// save all data we got so far to the session
 		$this->session->set_userdata(array(
 				'code_id' => $code_id,
@@ -142,6 +152,7 @@ if (!$brandId || !$productId) {
 				'brand' => $brand_info,
 				'strategy' => $strategy_info,
 				'medium' => $medium_info,
+				'login_url' => $fbLoginUrl,
 			)
 		);
 
@@ -157,15 +168,6 @@ if (!$brandId || !$productId) {
 			redirect($strategy_type.'/index');
 		}
 
-
-		// create nextUrl string for facebook redirect after successful authentication.
-		// this is done based on session data where these values were saved when the user
-		// attempted accessing the app without authenticating first
-		$nextUrl = site_url("auth/connect_facebook/login");
-		$this->fbconnect->urlNext = $nextUrl; 
-		
-		// get the login url with all of facebook url info
-		$fbLoginUrl = $this->fbconnect->getLoginUrl();
 		
 		$data['facebook'] = array(
 			'app_id'		=> $this->fbconnect->getAppId(),
