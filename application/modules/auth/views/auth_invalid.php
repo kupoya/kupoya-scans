@@ -17,7 +17,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 	<div id="header">
 		
 		<div id="logo">
-			<?= image('kupoya.png', '_theme_', array()); ?>
+			<?= image('kupoya.png', '_theme_', array('width'=>'120', 'height'=>'31')); ?>
 		</div>
 
 		<div id="breadcrumb"> 
@@ -33,7 +33,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 		<div id="center">
 			<?php echo $this->lang->line('Invalid_authentication')?>
 			<br/>
-			<?= image('kupi_sad_small.png', '_theme_', array( 'alt' => 'kupi is sad')); ?>
+			<?= image('kupi_sad_small.png', '_theme_', array('alt' => 'kupi is sad','width'=>'123', 'height'=>'132')); ?>
 			<br/><br/><br/>
 		</div>
 		</div>
