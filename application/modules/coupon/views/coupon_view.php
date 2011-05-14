@@ -59,7 +59,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 				<div class="corner-right-top">
 				<div class="corner-left-top">
 					<div class="indent">
-						<center>
+						<div id="center">
 						<h2 id='white'> <?= $this->lang->line('present_this_coupon')?> </h2>
 						<h3><b></b> <?= $coupon['serial'] ?> </b></h3>
 							<div>
@@ -72,7 +72,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 								</p>
 								<br/><br/>
 							</div>
-						</center>
+						</div>
 					</div>
 				</div>
 				</div>
