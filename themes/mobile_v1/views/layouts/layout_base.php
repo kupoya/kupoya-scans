@@ -21,8 +21,9 @@
 	<!-- CSS base -->
 	<?= css('style.css', '_theme_', array('media' => 'handheld, screen')); ?>
 
-	<!-- JavaScript base - jQuery -->
-	<?= js('ajax.js', '_theme_')?>
+	<!-- JavaScript base 
+	<?php //echo js('ajax.js', '_theme_')?>
+	-->
 </head>
 <body>
 <div class="mainwrapper">
