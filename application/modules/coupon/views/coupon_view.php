@@ -63,7 +63,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 						<h2 id='white'> <?= $this->lang->line('present_this_coupon')?> </h2>
 						<h3><b></b> <?= $coupon['serial'] ?> </b></h3>
 							<div>
-							<img src='<?= base_url()?>barcode/code128/<?= $coupon['serial'] ?>/png' height="80" width="200" />
+							<img src='<?= base_url()?>barcode/code128/<?= $coupon['serial'] ?>' width="250" height="71"  />
 								<p style='text-align: left; float: left;'> 
 									<?= $date ?>
 								</p>

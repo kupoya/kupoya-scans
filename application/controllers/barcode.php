@@ -11,6 +11,10 @@ class Barcode extends MY_Controller {
 
 	}
 
+	public function hello()
+	{
+		echo 'hello';
+	}
 	
 	public function code128($text, $imgtype = 'png')
 	{
@@ -19,9 +23,9 @@ class Barcode extends MY_Controller {
 		
 		$obj = new Image_Barcode_code128();
 		
-		$obj->_barcodeheight = 120;
-		$obj->_font = 205;
-		$obj->_barwidth = 6;
+		$obj->_barcodeheight = 90;
+		$obj->_font = 5;
+		$obj->_barwidth = 2;
 		
 		$img = $obj->draw($text, $imgtype);
 		
