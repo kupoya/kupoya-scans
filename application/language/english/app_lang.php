@@ -35,3 +35,4 @@ $lang['message_generic_signature'] = array(
 	
 	
 $lang['tip'] = "Tip";
+$lang['Privacy Policy'] = "Privacy Policy";
