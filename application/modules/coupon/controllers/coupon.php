@@ -114,7 +114,7 @@ log_message('debug', ' === fql info '.$fqlInfo);
 		$strategy = $this->session->userdata('strategy');
 		$user = $this->session->userdata('user');
 		$coupon = $this->session->userdata('coupon');
-		$medium = $this->session->userdata('medium');
+		$medium = $this->session->userdata('medium');		
 		
 		// validate the user is able to use the coupon
 		$this->load->model('couponvalidate_model');
@@ -244,6 +244,30 @@ log_message('debug', ' === error happened - you need to allow Scanalo APP permis
 		$data['ret'] = $ret;
 		$data['coupon'] = array_merge($coupon_data, $coupon);
 	
+		$data['user'] = $user;
+		
+		// create the jobserver client to dispatch jobs
+		$gm_client = new GearmanClient();
+		// initialize localhost server with default connection info
+		$gm_client->addServer();
+		//
+		$gm_client->doBackground('email-notification', serialize($data));
+		
+		
+		/*
+		 * email the coupon notification to the user
+		// load notification library
+		$this->load->library('Notification');
+		
+		$notification_subject = $this->lang->line('notification_subject');
+		$notification_message = sprintf($this->lang->line('notification_message'), 
+									$brand['name'], $coupon['serial']	
+									);
+		
+		$this->notification->email('coupon', array('to' => $user['email'], 'subject' => $notification_subject, 
+										'message' => $notification_message ) );
+		*/
+		
 		// set the coupon's info in the session
 		$this->session->set_userdata('coupon', $data['coupon']);
 		
