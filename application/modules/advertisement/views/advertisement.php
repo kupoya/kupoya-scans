@@ -1,4 +1,5 @@
-<?php 
+<?php
+if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 //var_dump($brand);
 //var_dump($strategy);
 //var_dump($agent);
@@ -14,50 +15,37 @@
 
 //var_dump($facebook['loginUrl'])
 
-	$picture = (!empty($strategy['picture'])) ? $strategy['picture'] : $brand['picture'];
 	$name = (!empty($strategy['name'])) ? $strategy['name'] : $brand['name'];
-	$description = (!empty($strategy['picture'])) ? $strategy['description'] : $brand['description'];
+	$picture = (!empty($strategy['picture'])) ? $strategy['picture'] : $brand['picture'];
+	$description = (!empty($strategy['description'])) ? $strategy['description'] : $brand['description'];
 	
 ?>
-		<div class="wrapper">
-			<div class="pad">
-				<div class="wrapper"><h2></h2></div>
-			</div>
-			<div class="box pad_bot1 bot">
-				<div class="pad marg_top">
-					<article class="col1">
-							<div class="wrapper">
-								<figure ><img src='<?= $picture ?>' style='width:300px;' alt="logo"/></figure>
-							</div>
-	
-							<div>
-								<br/>
-								<h3> <?= $name ?> </h3>
-	
-							</div>
-						<br/><br/>
 
 
 
-						<div class="wrapper under">
 
-							<div class="rbroundbox">
-								<div class="rbtop"><div></div></div>
-								<div class="rbcontent">
+	<div id="header">
+		
+		<div id="logo">
+			<!-- <img alt="logo" src="images/logo.png"/> -->
+			<img alt="logo" src="<?= $picture ?>" width="" height="100" />
+		</div>
 
-								<h3> <?= $description ?> </h3>
+		<div id="breadcrumb">
+			<h3 id='white'> <?= $name ?> </h3>
+		</div>
+		
+	</div>
 
-								</div>
-								<div class="rbbot"><div></div></div>
-							</div>
 
-						</div
-<br/><br/>
+	<div id="content">
 
-					<div>
-					</article>
-				</div>
+		<div class="min-width">
+			<div id="center">
+			<?= $description ?>
 			</div>
 		</div>
 
-<br/><br/>
+	</div>
+
+	

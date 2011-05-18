@@ -61,30 +61,22 @@ log_message('debug', ' === STRATEGY ID: '.$strategy['id']);
 			redirect('advertisement/invalid');
 		}
 		
-		// check if we should forward to a url
+
+		// get advertisement info
 		$advertisement_info = $this->advertisement_model->get_by_strategy(&$data['strategy']['id']);
-		
-		if (!$advertisement_info) {			
-log_message('debug', ' === no advertisement record in the database?');
-			
+		if (!$advertisement_info) {
+			// no advertisement record in the database?
 			redirect('code/invalid');
 		}
 		
 		
-		if (!empty($advertisement_info['redirect_url'])) {
+		// check if we should forward to a url		
+		if ( isset($advertisement_info['redirect_url']) && !empty($advertisement_info['redirect_url'])) {
 			redirect($advertisement_info['redirect_url']);
 		}
-		
-		
 		
 		$this->template->build('advertisement/advertisement', $data);
 		
 	}
-	
-	
-	
-	
-	
-	
-	
+
 }
