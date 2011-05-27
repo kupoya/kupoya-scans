@@ -586,7 +586,10 @@ abstract class BaseFacebook
       $this->state = md5(uniqid(mt_rand(), true));
       setcookie($name = $this->getCSRFTokenCookieName(),
                 $value = $this->state,
-                $expires = time() + 3600); // sticks for an hour
+                // @TODO fix this bug of cookie storage
+                //$expires = time() + 3600); // sticks for an hour
+                // with this: 
+                $expires = time() + 3600, '/', '.kupoya.com'); // sticks for an hour
     }
   }
 
