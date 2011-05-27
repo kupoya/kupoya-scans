@@ -69,7 +69,7 @@
 		if (!$insert)
 			return false;
 		
-		return $this->db->insert_id();;
+		return $this->db->insert_id();
       
    }
    
@@ -104,7 +104,13 @@
    function get_user_by_authprovider_uid($uid = 0, $authProvider = 'facebook') {
 
    		// returns the facebook user as an array.
-	   	$sql = "SELECT * FROM user WHERE auth_uid = ? AND auth_provider = ? LIMIT 1";
+	   	$sql = "
+	   	SELECT u.* , ui.email
+		FROM user u
+		LEFT JOIN user_info ui ON u.user_info_id = ui.id
+		WHERE auth_uid =  ? AND auth_provider = ?
+		LIMIT 1
+	   	";
 	   	$query = $this->db->query($sql, array($uid, $authProvider));
 	   	
 	   	if ($query->num_rows() === 1) {
