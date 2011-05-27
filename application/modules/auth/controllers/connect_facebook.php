@@ -82,8 +82,9 @@ class Connect_Facebook extends Connect {
 				
 log_message('debug', ' === IN connect_facebook _doLogin()');
 		
-		if(!$this->fbconnect->getSession()) {
+		if(!$this->fbconnect->getUser()) {
 			//if no session is available the login is invalid
+log_message('debug', ' === '.$this->fbconnect->getUser());
 log_message('debug', ' === no session found');
 			return false;
 			

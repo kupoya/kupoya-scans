@@ -123,7 +123,7 @@ if (!$brandId || !$productId) {
 		$plan_id = $strategy_info['plan_id'];
 		if (!$plan_id) {
 			log_message('debug', ' === no plan id defined: '.$strategy_info['type']);
-			redirect('code/code_invalid');
+			redirect('code/invalid');
 		}
 
 		
@@ -131,7 +131,7 @@ if (!$brandId || !$productId) {
 												array($plan_id), self::MODEL_CACHE_SECS);
 		if (!$medium_info) {
 			log_message('debug', ' === medium error: '.$strategy_info['type']);
-			redirect('code/code_invalid');
+			redirect('code/invalid');
 		}
 
 		
@@ -162,7 +162,7 @@ if (!$brandId || !$productId) {
 			$strategy_type = $strategy_info['type'];
 			if (!$strategy_type) {
 				log_message('debug', ' === no strategy type defined: '.$strategy_info['type']);
-				redirect('code/code_invalid');
+				redirect('code/invalid');
 			}
 			
 			redirect($strategy_type.'/index');
@@ -171,9 +171,11 @@ if (!$brandId || !$productId) {
 		
 		$data['facebook'] = array(
 			'app_id'		=> $this->fbconnect->getAppId(),
-			'perms'			=> $this->fbconnect->config['req_perms'],
+			// in pre SDK3 the parameters key was 'perms', now it's 'scope'
+			'scope'			=> $this->fbconnect->config['req_perms'],
 			'display'		=> 'touch',
-			'nextUrl'		=> $nextUrl,
+			// in pre SDK3 the parameters key was 'next_url', now it's 'redirect_uri'
+			'redirect_uri'		=> $nextUrl,
 			//'session'		=> $this->fbconnect->getSession(),
 			//'user'			=> $this->fbconnect->user,
 			'loginUrl'		=> $fbLoginUrl,
@@ -185,7 +187,7 @@ if (!$brandId || !$productId) {
 		$data['code'] = $code_id;
 		$data['strategy'] = $strategy_info;
 		$data['medium'] = $medium_info;
-				
+		
 		$this->template->build('code/login', $data);
 		
 		

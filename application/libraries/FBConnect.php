@@ -40,7 +40,7 @@ class FBConnect extends Facebook {
 			$params = array(
 				'appId'		=> $this->config['app_id'],
 				'secret'	=> $this->config['app_secret'],
-			 	'cookie'	=> true,
+			 	//'cookie'	=> true,
 				//'domain'
 				//'fileUpload'
 			);
@@ -52,7 +52,7 @@ class FBConnect extends Facebook {
 		if (!isset($initialize['initSession']) || $initialize['initSession'] === true) {
 						
 			// if session is valid, attempting to get user info
-			if($this->getSession()) {
+			if($this->getUser()) {
 				try {
 					//get information from the fb object
 			    	$this->user_id = $this->getUser(); 
@@ -63,7 +63,7 @@ class FBConnect extends Facebook {
 			  	}
 			}
 
-			return $this->session;
+			return $this->user_id;
 			
 		}
 	
@@ -83,8 +83,11 @@ class FBConnect extends Facebook {
 	public function getLoginUrl() {
 		
 
-		$params['req_perms'] = $this->config['req_perms'];
-		$params['next'] = $this->urlNext;
+		
+		// in pre SDK3 the parameters key was 'perms', now it's 'scope'
+		$params['scope'] = $this->config['req_perms'];
+		// in pre SDK3 the parameters key was 'next_url', now it's 'redirect_uri'
+		$params['redirect_uri'] = $this->urlNext;
 		
 		return parent::getLoginUrl($params);
 		

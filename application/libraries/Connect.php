@@ -26,7 +26,7 @@ log_message('debug', ' === code_id: '.$code_id);
 log_message('debug', ' === strategy id: '.$strategy['id']);
 
 		if (!$brand['id'] || !$code_id)
-			redirect('code/code_invalid');
+			redirect('code/invalid');
 		
 		
 		$ret = $this->_doLogin();
@@ -48,12 +48,12 @@ log_message('debug', ' === strategy id: '.$strategy['id']);
 			$strategy_type = $strategy['type'];
 			if (!$strategy_type) {
 				log_message('debug', ' === no strategy type defined: '.$strategy['type']);
-				redirect('code/code_invalid');
+				redirect('code/invalid');
 			}
 			redirect($strategy_type.'/index');
 			
 		} else {
-			redirect('code/code_invalid');
+			redirect('code/invalid');
 		}
 		
 		
@@ -85,13 +85,13 @@ log_message('debug', ' === strategy id: '.$strategy['id']);
 			return false;
 		
 		// data ready, try to create the new user
-		$user = $this->user_model->create_user($user_info);
-		if (!$user)
+		$user_id = $this->user_model->create_user($user_info);
+		if (!$user_id)
 			return false;
 		
 		// if user returns successful then $user is user's id in the database
 		// so we push it also to the session:
-		$user_info['id'] = $user;
+		$user_info['id'] = $user_id;
 			
 		// push user info into session
 		$this->session->set_userdata('user', $user_info);
