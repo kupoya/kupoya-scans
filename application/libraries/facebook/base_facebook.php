@@ -206,8 +206,8 @@ abstract class BaseFacebook
     if (isset($config['fileUpload'])) {
       $this->setFileUploadSupport($config['fileUpload']);
     }
-    if (isset($_COOKIE[$this->getCSRFTokenCookieName()])) {
-      $this->state = $_COOKIE[$this->getCSRFTokenCookieName()];
+    if ($this->getPersistentData($this->getCSRFTokenCookieName())) {
+      $this->state = $this->getPersistentData($this->getCSRFTokenCookieName());
     }
   }
 
@@ -526,6 +526,9 @@ abstract class BaseFacebook
    * code could not be determined.
    */
   protected function getCode() {
+  	
+  	$this->state = $this->getPersistentData($this->getCSRFTokenCookieName());
+  	
     if (isset($_REQUEST['code'])) {
       if ($this->state !== null &&
           isset($_REQUEST['state']) &&
@@ -533,7 +536,7 @@ abstract class BaseFacebook
 
         // CSRF state has done its job, so clear it
         $this->state = null;
-        unset($_COOKIE[$this->getCSRFTokenCookieName()]);
+        $this->setPersistentData($this->getCSRFTokenCookieName(), null);
         return $_REQUEST['code'];
       } else {
         self::errorLog('CSRF state token does not match one provided.');
@@ -581,6 +584,7 @@ abstract class BaseFacebook
    *
    * @return void
    */
+  /*
   protected function establishCSRFTokenState() {
     if ($this->state === null) {
       $this->state = md5(uniqid(mt_rand(), true));
@@ -590,6 +594,20 @@ abstract class BaseFacebook
                 //$expires = time() + 3600); // sticks for an hour
                 // with this: 
                 $expires = time() + 3600, '/', '.kupoya.com'); // sticks for an hour
+    }
+  }*/
+  protected function establishCSRFTokenState() {
+    if ($this->state === null) {
+      $this->state = md5(uniqid(mt_rand(), true));
+      /*
+      setcookie($name = $this->getCSRFTokenCookieName(),
+                $value = $this->state,
+                // @TODO fix this bug of cookie storage
+                //$expires = time() + 3600); // sticks for an hour
+                // with this: 
+                $expires = time() + 3600, '/', '.kupoya.com'); // sticks for an hour
+      */
+      $this->setPersistentData($this->getCSRFTokenCookieName(), $this->state);
     }
   }
 
@@ -781,7 +799,7 @@ abstract class BaseFacebook
    * @return String the cookie name
    */
   protected function getCSRFTokenCookieName() {
-    return 'fbcsrf_'.$this->getAppId();
+    return 'fbcsrf';
   }
 
   /**
