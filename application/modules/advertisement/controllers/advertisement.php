@@ -52,7 +52,7 @@ log_message('debug', ' === STRATEGY ID: '.$strategy['id']);
 		$data['strategy'] = $this->session->userdata('strategy');
 		
 		// check advertisement is still valid to display
-		$ret = $this->advertisement_model->check_valid(&$data['strategy']);
+		$ret = $this->advertisement_model->check_valid($data['strategy']);
 		if ($ret === false) {
 			
 			$flash_value = $this->lang->line('campaign_ended');
@@ -63,7 +63,7 @@ log_message('debug', ' === STRATEGY ID: '.$strategy['id']);
 		
 
 		// get advertisement info
-		$advertisement_info = $this->advertisement_model->get_by_strategy(&$data['strategy']['id']);
+		$advertisement_info = $this->advertisement_model->get_by_strategy($data['strategy']['id']);
 		if (!$advertisement_info) {
 			// no advertisement record in the database?
 			redirect('code/invalid');
