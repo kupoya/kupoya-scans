@@ -80,16 +80,15 @@ class FBConnect extends Facebook {
 	*/
 	
 	
-	public function getLoginUrl() {
-		
-
+	public function getLoginUrl($params = array()) {
 		
 		// in pre SDK3 the parameters key was 'perms', now it's 'scope'
-		$params['scope'] = $this->config['req_perms'];
+		$my_params['scope'] = $this->config['req_perms'];
 		// in pre SDK3 the parameters key was 'next_url', now it's 'redirect_uri'
-		$params['redirect_uri'] = $this->urlNext;
+		$my_params['redirect_uri'] = $this->urlNext;
+		$my_params['display'] = 'touch';
 		
-		return parent::getLoginUrl($params);
+		return parent::getLoginUrl(array_merge($my_params, $params));
 		
 	}
 	

@@ -8,6 +8,7 @@ class Auth extends Connect {
 		parent::__construct();
 		
 		$this->lang->load(array('auth/auth','app'), 'english');
+		$this->load->library('FBConnect', array('initSession' => false));
 		
 	}
 	
@@ -28,7 +29,7 @@ class Auth extends Connect {
 	
 	public function logout() {
 		
-		parent::logout();
+		parent::logout($this->fbconnect->getLogoutUrl(array('next' => site_url("auth/invalid"))));
 		
 	}
 	
