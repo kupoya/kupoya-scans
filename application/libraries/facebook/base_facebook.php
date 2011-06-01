@@ -120,7 +120,7 @@ abstract class BaseFacebook
   /**
    * Version.
    */
-  const VERSION = '3.0.0';
+  const VERSION = '3.0.1';
 
   /**
    * Default options for curl.
@@ -206,8 +206,10 @@ abstract class BaseFacebook
     if (isset($config['fileUpload'])) {
       $this->setFileUploadSupport($config['fileUpload']);
     }
-    if ($this->getPersistentData($this->getCSRFTokenCookieName())) {
-      $this->state = $this->getPersistentData($this->getCSRFTokenCookieName());
+
+    $state = $this->getPersistentData('state');
+    if (!empty($state)) {
+      $this->state = $this->getPersistentData('state');
     }
   }
 
@@ -526,9 +528,6 @@ abstract class BaseFacebook
    * code could not be determined.
    */
   protected function getCode() {
-  	
-  	$this->state = $this->getPersistentData($this->getCSRFTokenCookieName());
-  	
     if (isset($_REQUEST['code'])) {
       if ($this->state !== null &&
           isset($_REQUEST['state']) &&
@@ -536,7 +535,7 @@ abstract class BaseFacebook
 
         // CSRF state has done its job, so clear it
         $this->state = null;
-        $this->setPersistentData($this->getCSRFTokenCookieName(), null);
+        $this->clearPersistentData('state');
         return $_REQUEST['code'];
       } else {
         self::errorLog('CSRF state token does not match one provided.');
@@ -578,36 +577,14 @@ abstract class BaseFacebook
   }
 
   /**
-   * Lays down a CSRF state token for this process.  We
-   * only generate a new CSRF token if one isn't currently
-   * circulating in the domain's cookie jar.
+   * Lays down a CSRF state token for this process.
    *
    * @return void
    */
-  /*
   protected function establishCSRFTokenState() {
     if ($this->state === null) {
       $this->state = md5(uniqid(mt_rand(), true));
-      setcookie($name = $this->getCSRFTokenCookieName(),
-                $value = $this->state,
-                // @TODO fix this bug of cookie storage
-                //$expires = time() + 3600); // sticks for an hour
-                // with this: 
-                $expires = time() + 3600, '/', '.kupoya.com'); // sticks for an hour
-    }
-  }*/
-  protected function establishCSRFTokenState() {
-    if ($this->state === null) {
-      $this->state = md5(uniqid(mt_rand(), true));
-      /*
-      setcookie($name = $this->getCSRFTokenCookieName(),
-                $value = $this->state,
-                // @TODO fix this bug of cookie storage
-                //$expires = time() + 3600); // sticks for an hour
-                // with this: 
-                $expires = time() + 3600, '/', '.kupoya.com'); // sticks for an hour
-      */
-      $this->setPersistentData($this->getCSRFTokenCookieName(), $this->state);
+      $this->setPersistentData('state', $this->state);
     }
   }
 
@@ -794,15 +771,6 @@ abstract class BaseFacebook
   }
 
   /**
-   * The name of the cookie housing the CSRF protection value.
-   *
-   * @return String the cookie name
-   */
-  protected function getCSRFTokenCookieName() {
-    return 'fbcsrf';
-  }
-
-  /**
    * Parses a signed_request and validates the signature.
    *
    * @param String A signed token
@@ -944,16 +912,19 @@ abstract class BaseFacebook
     $currentUrl = $protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
     $parts = parse_url($currentUrl);
 
-    // drop known fb params
     $query = '';
     if (!empty($parts['query'])) {
-      $params = array();
-      parse_str($parts['query'], $params);
-      foreach(self::$DROP_QUERY_PARAMS as $key) {
-        unset($params[$key]);
+      // drop known fb params
+      $params = explode('&', $parts['query']);
+      $retained_params = array();
+      foreach ($params as $param) {
+        if ($this->shouldRetainParam($param)) {
+          $retained_params[] = $param;
+        }
       }
-      if (!empty($params)) {
-        $query = '?' . http_build_query($params, null, '&');
+
+      if (!empty($retained_params)) {
+        $query = '?'.implode($retained_params, '&');
       }
     }
 
@@ -966,6 +937,25 @@ abstract class BaseFacebook
 
     // rebuild
     return $protocol . $parts['host'] . $port . $parts['path'] . $query;
+  }
+
+  /**
+   * Returns true if and only if the key or key/value pair should
+   * be retained as part of the query string.  This amounts to
+   * a brute-force search of the very small list of Facebook-specific
+   * params that should be stripped out.
+   *
+   * @param String a key or key/value pair within a URL's query (e.g.
+   *        'foo=a', 'foo=', or 'foo'.
+   */
+  protected function shouldRetainParam($param) {
+    foreach (self::$DROP_QUERY_PARAMS as $drop_query_param) {
+      if (strpos($param, $drop_query_param.'=') === 0) {
+        return false;
+      }
+    }
+
+    return true;
   }
 
   /**
@@ -1025,7 +1015,7 @@ abstract class BaseFacebook
   }
 
   /**
-   * Each of the following three methods should be overridden in
+   * Each of the following four methods should be overridden in
    * a concrete subclass, as they are in the provided Facebook class.
    * The Facebook class uses PHP sessions to provide a primitive
    * persistent store, but another subclass--one that you implement--
@@ -1035,5 +1025,6 @@ abstract class BaseFacebook
    */
   abstract protected function setPersistentData($key, $value);
   abstract protected function getPersistentData($key, $default = false);
+  abstract protected function clearPersistentData($key);
   abstract protected function clearAllPersistentData();
 }
