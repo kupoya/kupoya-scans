@@ -54,20 +54,40 @@ log_message('debug', ' === handling wallpost ');
 			$brand = $this->session->userdata('brand');
 			$strategy = $this->session->userdata('strategy');
 			
-			$link = (!empty($strategy['website'])) ? $strategy['website'] : $brand['website'];
-			$name = (!empty($strategy['name'])) ? $strategy['name'] : $brand['name'];
-			$picture = (!empty($strategy['picture'])) ? $strategy['picture'] : $brand['picture'];
 			
-			// the message
-			// example: $message = "Hi all, I've just visited ".$brand['name']." in ".$brand_contact['address']." and enjoyed ".$name;
-			$message = $this->get_message_text('message_generic_post');
-			
-			if (empty($link))
-				$link = "http://www.kupoya.com";
+			// check strategy to see if user toggled on the option to set his own text for posting
+			// the wallpost, if so let's get this information 
+			if (isset($strategy['alt_enabled']) && $strategy['alt_enabled']) {
 				
+				$link = (!empty($strategy['alt_website'])) ? $strategy['alt_website'] : $strategy['website'];
+				$name = (!empty($strategy['alt_name'])) ? $strategy['alt_name'] : $strategy['name'];
+				$picture = (!empty($strategy['alt_picture'])) ? $strategy['alt_picture'] : $strategy['picture'];
+				
+				// the message
+				// example: $message = "Hi all, I've just visited ".$brand['name']." in ".$brand_contact['address']." and enjoyed ".$name;
+				$message = (!empty($strategy['alt_message'])) ? $strategy['alt_message'] : $this->get_message_text('message_generic_post');
+				
+				if (empty($link))
+					$link = "http://www.kupoya.com";
+				
+			} else {
+			
+				$link = (!empty($strategy['website'])) ? $strategy['website'] : $brand['website'];
+				$name = (!empty($strategy['name'])) ? $strategy['name'] : $brand['name'];
+				$picture = (!empty($strategy['picture'])) ? $strategy['picture'] : $brand['picture'];
+				
+				// the message
+				// example: $message = "Hi all, I've just visited ".$brand['name']." in ".$brand_contact['address']." and enjoyed ".$name;
+				$message = $this->get_message_text('message_generic_post');
+				
+				if (empty($link))
+					$link = "http://www.kupoya.com";
+				
+			}
+			
 			// the description
 			// example: $description = 'made possible by Kupoya';
-			$description = $this->get_message_text('message_generic_signature'); 
+			$description = $this->get_message_text('message_generic_signature');
 			
 			$params = array( 'message' => $message, 
 						'link' => $link,
