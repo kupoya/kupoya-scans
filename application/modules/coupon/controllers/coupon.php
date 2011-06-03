@@ -171,7 +171,7 @@ log_message('debug', ' === which returned: '.$ret);
 		if (!$ret) {
 log_message('debug', ' === ret didnt return good...');
 			// just in case, make sure tables are unlocked
-			$this->db->query('UNLOCK TABLES');
+//			$this->db->query('UNLOCK TABLES');
 			// unable to post to facebook, mark coupon as used
 			$this->coupon_model->set_coupon_status($coupon['id'], 'new');
 			
@@ -226,7 +226,7 @@ log_message('debug', ' === error happened - you need to allow Scanalo APP permis
 		$ret = $this->coupon_model->set_coupon_used($coupon['id'], $coupon_data);
 		if (!$ret) {
 			// just in case, make sure tables are unlocked
-			$this->db->query('UNLOCK TABLES');
+//			$this->db->query('UNLOCK TABLES');
 			// unable to set coupon as used, mark it as new
 			$this->coupon_model->set_coupon_status($coupon['id'], 'new');
 			redirect('auth/index');
