@@ -20,7 +20,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 	if (isset($coupon['purchased_time']))
 		list($date, $time) = explode(' ', $coupon['purchased_time']);
 	else  
-		$date = $date = '00-00';
+		$date = $time = '00-00';
 	
 ?>
 
