@@ -41,8 +41,8 @@
 	#breadcrumb {padding:14px 0 11px 24px; background:#76cddd; margin-bottom:12px;}
 	#breadcrumb {padding:14px 0 11px 24px; text-align: center; background:#76cddd; margin-bottom:12px;}
 	*/
-	#breadcrumb {padding:14px 0 11px 24px; text-align: center; background:#76cddd; margin-bottom:6px;}
-	#breadcrumb_happy {padding:14px 0 11px 24px; text-align: center; background:#76cddd url(../img/happy_kupi_head_vsmall.png) no-repeat top left; margin-bottom:6px;}
+	#breadcrumb {padding:14px 0 11px 0; text-align: center; background:#76cddd; margin-bottom:6px;}
+	#breadcrumb_happy {padding:14px 0 11px 0; text-align: center; background:#76cddd url(../img/happy_kupi_head_vsmall.png) no-repeat top left; margin-bottom:6px;}
 /* --- END header --- */
 
 /* --- content --- */
