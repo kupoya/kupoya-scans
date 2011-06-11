@@ -33,6 +33,8 @@ $lang['message_generic_signature'] = array(
 	"kupoya social marketing. www.kupoya.com",
 	);
 	
-	
+$lang['Nice to meet you!'] = "Nice to meet you!";
+$lang['Welcome!'] = "Welcome!";
+
 $lang['tip'] = "Tip";
 $lang['Privacy Policy'] = "Privacy Policy";

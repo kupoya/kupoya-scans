@@ -12,31 +12,35 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 //var_dump($facebook['loginUrl'])
 
 
+	$picture_height = '100';
 	if ( (isset($brand['picture'])) && (!empty($brand['picture'])) )
 		$picture = $brand['picture'];
 	elseif ( (isset($strategy['picture'])) && (!empty($strategy['picture'])) )
 		$picture = $strategy['picture'];
-
-	/*
-	 * no use-case yet for using the brand name
-	if ( (isset($brand['name'])) && (!empty($brand['name'])) )
-		$name = $brand['name'];
-	elseif ( (isset($strategy['name'])) && (!empty($strategy['name'])) )
-		$name = $strategy['name'];
-	*/
+	else {
+		// fall back to kupoya's logo if no picture was found for brand or strategy
+		$picture_height = '';
+		$picture = 'kupoya.png';
+	}
 		
-	if ( (isset($brand['description'])) && (!empty($brand['description'])) )
-		$description = $brand['description'];
-	elseif ( (isset($strategy['description'])) && (!empty($strategy['description'])) )
-		$description = $strategy['description'];
+		
+	if ( (isset($strategy['name'])) && (!empty($strategy['name'])) )
+		$description = $strategy['name'];
+	elseif ( (isset($brand['name'])) && (!empty($brand['name'])) )
+		$description = $brand['name'];
+	else {
+		// fall back to template description for this business
+		$description = $this->lang->line('Welcome!');
+	}
 
+	$description = mb_substr($description, 0, 63, 'UTF-8');
 	
 ?>
 
 	<div id="header">
 		
 		<div id="logo">
-			<img alt="logo" src="<?= $picture ?>" width="" height="100" />
+			<?= image($picture, '_theme_', array('width' => '', 'height' => $picture_height, 'alt' => 'logo')) ?>
 		</div>
 
 		<div id="breadcrumb">

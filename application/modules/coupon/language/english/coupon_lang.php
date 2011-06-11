@@ -10,7 +10,10 @@ $lang['present_this_coupon'] = 'Present this to enjoy your coupon';
 // coupon.php
 $lang['Get_your_coupon'] = 'Get your coupon';
 $lang['Step_2/2'] = 'Step 2/2';
-
+$lang['Get_a_coupon_in_two_simple_steps'] =  'Get a coupon in two simple steps';
+$lang['Continue_to_get_your_coupon!'] = 'Continue to get your coupon!';
+$lang['Your_coupon_is_only_a_click_away'] = 'Your coupon is only a click away';
+$lang['User_agreement_to_share'] = 'by pressing this button, you hereby allow kupoya to share this experience with your facebook friends';
 
 
 // coupon_invalid.php
