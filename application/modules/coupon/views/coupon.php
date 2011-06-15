@@ -70,7 +70,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 			<a href='<?php echo site_url('coupon/view') ?>'>
 				<?php echo image('get_coupon.png', '_theme_', array('alt' => $this->lang->line('Get_your_coupon') )) ?>
 			</a>
-			<li> <?php echo $this->lang->line['User_agreement_to_share'] ?> </li>
+			<li> <small> <?php echo $this->lang->line('User_agreement_to_share') ?> </small> </li>
 		</div>
 
 	</div>
