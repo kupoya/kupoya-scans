@@ -152,7 +152,7 @@ log_message('debug', ' === ret didnt return good...');
 		$data['user'] = $user;
 		
 		// create the jobserver client to dispatch jobs
-		if (module_exists('gearman')) {
+		if (class_exists('GearmanClient')) {
 			$gm_client = new GearmanClient();
 			// initialize localhost server with default connection info
 			$gm_client->addServer();
