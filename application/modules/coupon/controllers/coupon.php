@@ -152,11 +152,13 @@ log_message('debug', ' === ret didnt return good...');
 		$data['user'] = $user;
 		
 		// create the jobserver client to dispatch jobs
-		$gm_client = new GearmanClient();
-		// initialize localhost server with default connection info
-		$gm_client->addServer();
-		//
-		$gm_client->doBackground('email-notification', serialize($data));
+		if (module_exists('gearman')) {
+			$gm_client = new GearmanClient();
+			// initialize localhost server with default connection info
+			$gm_client->addServer();
+			// perform background job
+			$gm_client->doBackground('email-notification', serialize($data));
+		}
 		
 		
 		// set the coupon's info in the session
