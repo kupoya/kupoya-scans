@@ -69,15 +69,15 @@ log_message('debug', ' === validating user: check user has friends - returned BA
 		$sql = "
 			SELECT coupon.serial, coupon.status, coupon.user_id, coupon.purchased_time
 			FROM coupon
-			JOIN coupon_settings ON coupon_settings.id = coupon.instance_id
+			JOIN coupon_settings ON coupon_settings.strategy_id = ?
 			WHERE
-			 coupon_settings.strategy_id = ?
+			 coupon.strategy_id = ?
 			AND
 			 coupon.user_id = ?
 			AND ( UNIX_TIMESTAMP( ) - UNIX_TIMESTAMP( coupon.purchased_time ) ) < ?
 			LIMIT 1
 		";
-		$query = $this->db->query($sql, array($strategy_id, $user_id, self::COUPON_GET_DELAY));
+		$query = $this->db->query($sql, array($strategy_id, $strategy_id, $user_id, self::COUPON_GET_DELAY));
 		if (!$query)
 			return false;
 

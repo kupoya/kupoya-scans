@@ -119,6 +119,7 @@ log_message('debug', ' === fql info '.$fqlInfo);
 		// validate the user is able to use the coupon
 		$this->load->model('couponvalidate_model');
 		
+		
 		// check if the user already used up a coupon, if so, deliver it to him
 		$coupon = $this->couponvalidate_model->check_coupon_used_by_user($strategy['id'], $user['id']);
 		if ($coupon) {
@@ -139,6 +140,8 @@ log_message('debug', ' === fql info '.$fqlInfo);
 			
 		}
 		
+		
+		
 		$ret = $this->couponvalidate_model->validate_user($strategy['id'], $user['id']);
 		// if it returns false then the user used a coupon in the last 24 hours
 		if ($ret === false) {
@@ -153,7 +156,9 @@ log_message('debug', ' === user did not pass coupon validation');
 		}
 		
 		
-		$coupon = $this->coupon_model->get_coupon_by_strategy($strategy['id']);
+		
+		
+		$coupon = $this->coupon_model->get_coupon_by_strategy($strategy, $user);
 		// no coupons left
 		if ($coupon === false) {			
 			// set session error message for next view to display it to the user
@@ -173,7 +178,8 @@ log_message('debug', ' === ret didnt return good...');
 			// just in case, make sure tables are unlocked
 //			$this->db->query('UNLOCK TABLES');
 			// unable to post to facebook, mark coupon as used
-			$this->coupon_model->set_coupon_status($coupon['id'], 'new');
+//			$this->coupon_model->set_coupon_status($coupon['id'], 'new');
+			$this->coupon_model->del_coupon($coupon['id']);
 			
 			$login_url = $this->session->userdata('login_url');
 			redirect($login_url);	
@@ -219,7 +225,8 @@ log_message('debug', ' === error happened - you need to allow Scanalo APP permis
 		}
 		*/
 
-		// prepare data to be inserted to db 
+		// prepare data to be inserted to db
+		/* 
 		$coupon_data['status'] = 'used';
 		$coupon_data['user_id'] = $user['id'];
 		$coupon_data['purchased_time'] = date('Y-m-d H:i:s');
@@ -231,9 +238,10 @@ log_message('debug', ' === error happened - you need to allow Scanalo APP permis
 			$this->coupon_model->set_coupon_status($coupon['id'], 'new');
 			redirect('auth/index');
 		}
+		*/
 		
 		// add flag that coupon has been used
-		//$coupon['used'] = true;
+		$coupon['used'] = true;
 		
 		// create some coupon code
 		$data = array();
@@ -242,7 +250,8 @@ log_message('debug', ' === error happened - you need to allow Scanalo APP permis
 		$data['strategy'] = $strategy;
 		
 		$data['ret'] = $ret;
-		$data['coupon'] = array_merge($coupon_data, $coupon);
+//		$data['coupon'] = array_merge($coupon_data, $coupon);
+		$data['coupon'] = $coupon;
 	
 		$data['user'] = $user;
 		
