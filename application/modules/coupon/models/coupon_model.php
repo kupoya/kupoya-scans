@@ -160,7 +160,7 @@ class Coupon_Model extends CI_Model {
 					 coupon.strategy_id = ?
 					LIMIT 1
 				";
-				$query = $this->db->query($sql, array($strategy_id, $strategy_id));
+				$query = $this->db->query($sql, array($strategy['id'], $strategy['id']));
 				
 				$coupon_settings = $query->row_array();
 				
@@ -223,12 +223,6 @@ class Coupon_Model extends CI_Model {
 		if (!$user || !is_array($user) || !isset($user['id']) || !is_numeric($user['id']))
 			return false;
 
-			
-		$strategy_id = $strategy['id'];
-		
-		// check valid values
-		if (!$strategy_id || !is_numeric($strategy_id))
-			return false;
 
 		// we first check that there are free slots in the bank by validating
 		// that the count of coupons in the db for this strategy is less or equal
