@@ -159,6 +159,7 @@ if (!$brandId || !$productId) {
 
 		// if no medium is set we redirect directly to the strategy view page
 		if (isset($medium_info['none'])) {
+log_message('debug', ' === medium error: no medium defined');
 			$strategy_type = $strategy_info['type'];
 			if (!$strategy_type) {
 				log_message('debug', ' === no strategy type defined: '.$strategy_info['type']);
