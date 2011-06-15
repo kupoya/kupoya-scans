@@ -48,51 +48,7 @@ log_message('debug', ' === STRATEGY ID: '.$strategy['id']);
 	
 	
 	
-	public function index()
-	{
-		
-		//$meta = '<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>';
-		//$this->template->prepend_metadata($meta);
-			
-		// get product information
-		//$productInfo = $this->product_model->getProductInfo($brandId, $productId);
-		// push brand info into session for other pages 
-		//$this->session->set_userdata['product'] = $productInfo;
-			
-		// check permissions via fql api:
-		/*
-		 * SELECT publish_stream FROM permissions WHERE uid = 1234
-		 */
-		
-		
-		/*
-		$fql_query = array(
-			'method'	=> 'fql.query',
-			'query'		=> 'SELECT publish_stream FROM permissions WHERE uid = '.$this->fbconnect->user_id
-		);
-		$fqlInfo = $this->fbconnect->api($fql_query);
-log_message('debug', ' === fql info '.$fqlInfo);
-
-		
-   		$data = array(
-   					'fql'			=> $fqlInfo,
-   					//'friends'		=> $my_friends,
-					//'facebook'		=> $this->fbconnect->fb,
-					//'fbSession'		=> $this->fbconnect->fbSession,
-					//'user'			=> $this->fbconnect->user,
-					//'uid'			=> $this->fbconnect->user_id,
-					//'fbLogoutURL'	=> $this->fbconnect->fbLogoutURL,
-					//'fbLoginURL'	=> $this->fbconnect->fbLoginURL,	
-					//'base_url'		=> site_url('login/facebook'),
-					
-					//'base_url'		=> site_url($couponURL),
-   		
-					//'appkey'		=> $this->fbconnect->appkey,
-					);			
-		*/
-		
-		// add the brand information to the view variables
-		//$data['product'] = $productInfo;
+	public function index() {
 
 		$data['brand'] = $this->session->userdata('brand');
 		$data['strategy'] = $this->session->userdata('strategy');
@@ -106,9 +62,6 @@ log_message('debug', ' === fql info '.$fqlInfo);
 	 
 	
 	public function view() {
-				
-		//$this->load->library('Barcode/Image_Barcode_code128');
-		//$this->load->library('Barcode');
 		
 		$brand = $this->session->userdata('brand');
 		$strategy = $this->session->userdata('strategy');
@@ -175,70 +128,14 @@ log_message('debug', ' === calling medium_handler->perform_action');
 log_message('debug', ' === which returned: '.$ret);
 		if (!$ret) {
 log_message('debug', ' === ret didnt return good...');
-			// just in case, make sure tables are unlocked
-//			$this->db->query('UNLOCK TABLES');
-			// unable to post to facebook, mark coupon as used
-//			$this->coupon_model->set_coupon_status($coupon['id'], 'new');
+			// unable to post to facebook, remove coupon
 			$this->coupon_model->del_coupon($coupon['id']);
 			
 			$login_url = $this->session->userdata('login_url');
-			redirect($login_url);	
-			//redirect('code/index');
+			redirect($login_url);
 		}
 		
-/*		
-		$this->load->model('brand_model');
-		$brand_contact = $this->brand_model->get_brand_contact_info($brand['id']);
-		
-		$message = (!empty($strategy['description'])) ? $strategy['description'] : $brand['description'];
-		$link = (!empty($strategy['website'])) ? $strategy['website'] : $brand['website'];
-		$name = (!empty($strategy['name'])) ? $strategy['name'] : $brand['name'];
-		$picture = (!empty($strategy['picture'])) ? $strategy['picture'] : $brand['picture'];
-		
-		$message = "Hi all, I've just visited ".$brand['name']." in ".$brand_contact['address']." and enjoyed ".$message;
-		
-		if (empty($link))
-			$link = "http://www.kupoya.com";
-			
-		$description = ''; 
-		
-		$post = array( 'message' => $message, 
-					'link' => $link,
-					'name' =>  $name,
-					'description' => $description,
-					'picture'=> $picture,
-		);
-		
-		try {
-			$ret = $this->fbconnect->api('me/feed', 'POST', $post);
-		} catch (FacebookApiException $e) {
-log_message('debug', ' === error happened - you need to allow Scanalo APP permission to post to your wall');
-			//return false;
-			// if not permissions forward to apply permissions we need:
-			//$url = "http://www.facebook.com/connect/prompt_permissions.php?api_key=***REMOVED***&v=1.0&ext_perm=publish_stream&next=http://datacenter.enginx.com/scanalo/welcome/coupon/1/1";
 
-			// just in case, make sure tables are unlocked
-			$this->db->query('UNLOCK TABLES');
-			// unable to post to facebook, mark coupon as used
-			$this->coupon_model->set_coupon_status($coupon['id'], 'new');
-			redirect('auth/index');
-		}
-		*/
-
-		// prepare data to be inserted to db
-		/* 
-		$coupon_data['status'] = 'used';
-		$coupon_data['user_id'] = $user['id'];
-		$coupon_data['purchased_time'] = date('Y-m-d H:i:s');
-		$ret = $this->coupon_model->set_coupon_used($coupon['id'], $coupon_data);
-		if (!$ret) {
-			// just in case, make sure tables are unlocked
-//			$this->db->query('UNLOCK TABLES');
-			// unable to set coupon as used, mark it as new
-			$this->coupon_model->set_coupon_status($coupon['id'], 'new');
-			redirect('auth/index');
-		}
-		*/
 		
 		// add flag that coupon has been used
 		$coupon['used'] = true;
@@ -250,7 +147,6 @@ log_message('debug', ' === error happened - you need to allow Scanalo APP permis
 		$data['strategy'] = $strategy;
 		
 		$data['ret'] = $ret;
-//		$data['coupon'] = array_merge($coupon_data, $coupon);
 		$data['coupon'] = $coupon;
 	
 		$data['user'] = $user;
@@ -263,29 +159,11 @@ log_message('debug', ' === error happened - you need to allow Scanalo APP permis
 		$gm_client->doBackground('email-notification', serialize($data));
 		
 		
-		/*
-		 * email the coupon notification to the user
-		// load notification library
-		$this->load->library('Notification');
-		
-		$notification_subject = $this->lang->line('notification_subject');
-		$notification_message = sprintf($this->lang->line('notification_message'), 
-									$brand['name'], $coupon['serial']	
-									);
-		
-		$this->notification->email('coupon', array('to' => $user['email'], 'subject' => $notification_subject, 
-										'message' => $notification_message ) );
-		*/
-		
 		// set the coupon's info in the session
 		$this->session->set_userdata('coupon', $data['coupon']);
 		
 		//$this->load->view('coupon_create', $data);
 		$this->template->build('coupon/coupon_view', $data);
-
-		// destroy the session
-		//$this->session->sess_destroy();
-		
 		
 	}	
 	
