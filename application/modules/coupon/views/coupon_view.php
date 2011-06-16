@@ -63,7 +63,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 	<div id="content">
 
 		<div class="min-width">
-
+		<div id="center">
 			<?= $description ?>
 			<br/>
 			<a href='<?= $website ?>'><?= $website ?></a>
@@ -100,7 +100,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 				</div>
 			</div>
 
-
+		</div>
 		</div>
 
 	</div>

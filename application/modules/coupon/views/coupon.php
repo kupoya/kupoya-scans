@@ -60,7 +60,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 	<div id="content">
 
 		<div class="min-width">
-
+		<div id="center">
 			<?php
 				echo $this->lang->line('Get_a_coupon_in_two_simple_steps');
 				echo '<br/>'; 
@@ -70,7 +70,8 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 			<a href='<?php echo site_url('coupon/view') ?>'>
 				<?php echo image('get_coupon.png', '_theme_', array('alt' => $this->lang->line('Get_your_coupon') )) ?>
 			</a>
-			<li> <small> <?php echo $this->lang->line('User_agreement_to_share') ?> </small> </li>
+			 <p class='size_small'> &bull; <?php echo $this->lang->line('User_agreement_to_share') ?> </p> 
+		</div>
 		</div>
 
 	</div>

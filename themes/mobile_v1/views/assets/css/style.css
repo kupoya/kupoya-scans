@@ -66,6 +66,9 @@
 	#footer p { padding:1px 0 0 0;}
 	#footer p a {color:#ababab;}
 	*/
+	
+	p.size_small {font-size:small; }
+	
 	#footer {text-align: center; color:#ababab; font-size:1.125em; line-height:1.459em; top repeat-x; }
 	#footer p { padding:1px 0 0 0;}
 	#footer p a {color:#ababab;}

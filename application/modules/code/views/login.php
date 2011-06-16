@@ -53,7 +53,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 	<div id="content">
 
 		<div class="min-width">
-
+		<div id="center">
 			<?php
 				$content = ''; 
 				if (isset($medium['facebook'])) {
@@ -66,7 +66,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 				
 				echo $content;
 			?>
-
+		</div>
 		</div>
 
 	</div>
