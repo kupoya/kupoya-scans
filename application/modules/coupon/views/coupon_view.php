@@ -50,7 +50,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 	<div id="header">
 		
 		<div id="logo">
-			<?= image($picture, '_theme_', array('width' => '', 'height' => $picture_height, 'alt' => 'logo')) ?>
+			<img src='<?=$picture?>' alt='logo' width='' height='<?=$picture_height?>' />
 		</div>
 
 		<div id="breadcrumb_happy">
