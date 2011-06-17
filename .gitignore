@@ -1,0 +1,15 @@
+application/cache/
+application/logs/
+application/themes_3/
+application/config/config.php
+application/config/database.php
+htaccess-1
+htaccess-2
+htaccess-work
+nbproject
+.buildpath
+.project
+.settings/
+.hg/
+.hgignore
+.hgtags
