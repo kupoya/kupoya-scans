@@ -42,8 +42,8 @@
 		<p>This policy was last modified on April 22, 2011</p> 
 		<p><strong>Contacting Us</strong></p> 
 		<p>If there are any questions regarding this privacy policy you may contact us using the information below.</p> 
-		<p>http://www.kupoya.com</p> 
-		<p>support@kupoya.com</p> 
+		<p><a href='http://www.kupoya.com'>http://www.kupoya.com</a></p> 
+		<p><a href='mailto:support@kupoya.com'>support@kupoya.com</a></p> 
 		</div>
 
 		</center>
