@@ -15,7 +15,7 @@
 |
 */
 //$config['base_url']	= '';
-$config['base_url']	= "http://scans-dev.kupoya.com/";
+$config['base_url']	= "https://scans-loc.kupoya.com/";
 
 /*
 |--------------------------------------------------------------------------
