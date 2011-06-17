@@ -56,6 +56,11 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 		<div id="center">
 			<?php
 				$content = ''; 
+				
+				if (isset($strategy['type']) && $strategy['type'] === 'coupon') {
+					$content .= $this->lang->line('Get_a_coupon_in_two_simple_steps') . '<br/>';
+				}
+				
 				if (isset($medium['facebook'])) {
 						$content .= $this->lang->line('Step_1/2') . ': ' . $this->lang->line('Login_to_your_facebook_account');
 						$content .= '<br/><br/>';

@@ -62,8 +62,6 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 		<div class="min-width">
 		<div id="center">
 			<?php
-				echo $this->lang->line('Get_a_coupon_in_two_simple_steps');
-				echo '<br/>'; 
 				echo $this->lang->line('Step_2/2')?>: <?php echo $this->lang->line('Get_your_coupon')
 				?>
 			<br/><br/>

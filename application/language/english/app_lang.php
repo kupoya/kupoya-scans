@@ -36,5 +36,8 @@ $lang['message_generic_signature'] = array(
 $lang['Nice to meet you!'] = "Nice to meet you!";
 $lang['Welcome!'] = "Welcome!";
 
+$lang['Get_a_coupon_in_two_simple_steps'] =  'Get a coupon in two simple steps';
+
+
 $lang['tip'] = "Tip";
 $lang['Privacy Policy'] = "Privacy Policy";
