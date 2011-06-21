@@ -28,7 +28,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 		
 		<div id="logo">
 			<!-- <img alt="logo" src="images/logo.png"/> -->
-			<img alt="logo" src="<?= $picture ?>" width="" height="100" />
+			<img alt="logo" src="<?= site_url($picture) ?>" width="" height="100" />
 		</div>
 
 		<div id="breadcrumb">
