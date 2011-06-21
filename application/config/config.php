@@ -15,7 +15,9 @@
 |
 */
 //$config['base_url']	= '';
-$config['base_url']	= "https://scans-loc.kupoya.com/";
+//$config['base_url']	= "https://scans-loc.kupoya.com/";
+$config['base_url'] = ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == "on") ? "https" : "http").
+ 			"://".$_SERVER['HTTP_HOST'];
 
 /*
 |--------------------------------------------------------------------------
@@ -181,7 +183,7 @@ $config['directory_trigger']	= 'd'; // experimental not currently in use
 | your log files will fill up very fast.
 |
 */
-$config['log_threshold'] = 4;
+$config['log_threshold'] = 0;
 
 /*
 |--------------------------------------------------------------------------
