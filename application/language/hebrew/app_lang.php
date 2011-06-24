@@ -1,11 +1,11 @@
 <?php
 /**
- * @file language/english/app_lang.php
+ * @file language/hebrew/app_lang.php
  */
 
 // error messages
-$lang['Oops_something_bad_happened'] = "sorry, we couldn't process your request";
-$lang['campaign_ended'] = 'Thank you but the current campaign has ended. See you next time!';
+$lang['Oops_something_bad_happened'] = "מצטערים,לא יכלנו לעבד את הבקשה";
+$lang['campaign_ended'] = 'תודה לך , אבל הקמפיין שלך נגמר , נתראה בפעם הבאה !';
 
 // array of random messages to put in post actions
 $lang['message_generic_post'] = array(
@@ -36,13 +36,13 @@ $lang['message_generic_signature'] = array(
 	"kupoya social marketing. www.kupoya.com",
 	);
 	
-$lang['Nice to meet you!'] = "Nice to meet you!";
-$lang['Welcome!'] = "Welcome!";
+$lang['Nice to meet you!'] = "נחמד להכיר אותך!";
+$lang['Welcome!'] = "ברוך הבא!";
 
-$lang['Get_a_coupon_in_two_simple_steps'] =  'Get a coupon in two simple steps';
+$lang['Get_a_coupon_in_two_simple_steps'] =  'קבלת קופון בשני שלבים פשוטים';
 
 
-$lang['tip'] = "Tip";
-$lang['Privacy Policy'] = "Privacy Policy";
-$lang['Terms_Of_Use'] = "Terms Of Use";
-$lang['Accept_TOS'] = "Please accept the terms of use first";
+$lang['tip'] = "טיפ";
+$lang['Privacy Policy'] = "מדיניות הפרטיות";
+$lang['Terms_Of_Use'] = "תנאי שימוש";
+$lang['Accept_TOS'] = "אנא אשר את תנאי השימוש קודם";

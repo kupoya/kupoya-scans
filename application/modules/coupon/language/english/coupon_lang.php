@@ -1,4 +1,7 @@
 <?php
+/**
+ * @file modules/coupon/language/english/coupon_lang.php
+ */
 
 // coupon_view.php
 $lang['Congratulations'] = 'Congratulations!';

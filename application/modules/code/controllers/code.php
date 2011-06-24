@@ -24,7 +24,9 @@ class Code extends MY_Controller {
 		
 		$this->load->library('cache');
 		
-		$this->lang->load(array('code/code', 'app'), 'english');
+		//$this->lang->load(array('code/code', 'app'), 'hebrew');
+		$this->lang->load('code/code', 'hebrew');
+		$this->lang->load('app', 'hebrew');
 		
 		$this->load->helper('array');
 		

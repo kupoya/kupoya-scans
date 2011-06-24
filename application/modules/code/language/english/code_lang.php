@@ -1,4 +1,7 @@
 <?php
+/**
+ * @file modules/code/language/english/code_lang.php
+ */
 
 // code/login.php
 $lang['Login_to_your_facebook_account'] = 'Login to your facebook account';
