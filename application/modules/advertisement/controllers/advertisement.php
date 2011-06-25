@@ -2,7 +2,7 @@
 
 Class Advertisement extends MY_Controller {
 	
-	
+	const MODEL_CACHE_SECS = 3600;
 	
 	
 	public function __construct() {
@@ -32,6 +32,7 @@ log_message('debug', ' === STRATEGY ID: '.$strategy['id']);
 		$language = $this->getLanguage();
 		$this->lang->load('app', $language);
 		
+		$this->load->library('cache');
 		
 	}
 	
@@ -65,7 +66,8 @@ log_message('debug', ' === STRATEGY ID: '.$strategy['id']);
 		
 
 		// get advertisement info
-		$advertisement_info = $this->advertisement_model->get_by_strategy($data['strategy']['id']);
+		$advertisement_info = $this->cache->model('advertisement_model', 'get_by_strategy', 
+												array($data['strategy']['id']), self::MODEL_CACHE_SECS);
 		if (!$advertisement_info) {
 			// no advertisement record in the database?
 			redirect('code/invalid');
@@ -77,6 +79,7 @@ log_message('debug', ' === STRATEGY ID: '.$strategy['id']);
 			redirect($advertisement_info['redirect_url']);
 		}
 		
+		$data['advertisement'] = $advertisement_info;
 		$this->template->build('advertisement/advertisement', $data);
 		
 	}

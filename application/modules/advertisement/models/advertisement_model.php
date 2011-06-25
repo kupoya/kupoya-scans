@@ -13,6 +13,13 @@ Class Advertisement_Model extends CI_Model {
 	
 	
 	
+	public function html_tags() {
+		
+		return '<p><h1><h2><h3><img><a><br>';
+		
+	}
+	
+	
 	public function check_valid($strategy_info = null)
 	{
 
