@@ -42,6 +42,16 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 ?>
 
 
+<script type="text/javascript">
+	function form_submit()
+	{
+
+		if (document.get_coupon.tos.checked == true)
+			document.get_coupon.submit();
+		else
+			alert('<?php echo $this->lang->line('Accept_TOS')?>');
+	}
+</script>
 
 
 	<div id="header">
@@ -65,10 +75,14 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 				echo $this->lang->line('Step_2/2')?>: <?php echo $this->lang->line('Get_your_coupon')
 				?>
 			<br/><br/>
-			<a href='<?php echo site_url('coupon/view') ?>'>
+			<a href='#' onclick='javascript:form_submit("tos");'>
 				<?php echo image('get_coupon.png', '_theme_', array('alt' => $this->lang->line('Get_your_coupon') )) ?>
 			</a>
-			 <p class='size_small'> &bull; <?php echo $this->lang->line('User_agreement_to_share') ?> </p> 
+			
+			 <form name='get_coupon' action='<?php echo site_url('coupon/view') ?>' method='post'>
+			 	<input id='tos' type='checkbox' name='tos' value='1' />
+			 	<?php echo $this->lang->line('User_agreement_to_share') ?>
+			 </form>
 		</div>
 		</div>
 
