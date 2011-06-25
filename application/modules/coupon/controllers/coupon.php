@@ -32,8 +32,9 @@ log_message('debug', ' === STRATEGY ID: '.$strategy['id']);
 		$this->load->model('coupon_model');
 		$this->load->model('strategy_model');
 		
-		$this->lang->load('coupon/coupon', 'hebrew');
-		$this->lang->load('app', 'hebrew');
+		$language = $this->getLanguage();
+		$this->lang->load('coupon/coupon', $language);
+		$this->lang->load('app', $language);
 
 	}
 	

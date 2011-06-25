@@ -28,7 +28,9 @@ log_message('debug', ' === STRATEGY ID: '.$strategy['id']);
 		
 		
 		$this->load->model('advertisement_model');
-		$this->lang->load('app', 'english');
+		
+		$language = $this->getLanguage();
+		$this->lang->load('app', $language);
 		
 		
 	}

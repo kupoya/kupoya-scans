@@ -23,11 +23,7 @@ class Code extends MY_Controller {
 		$this->load->library('user_agent');
 		
 		$this->load->library('cache');
-		
-		//$this->lang->load(array('code/code', 'app'), 'hebrew');
-		$this->lang->load('code/code', 'hebrew');
-		$this->lang->load('app', 'hebrew');
-		
+			
 		$this->load->helper('array');
 		
 	}
@@ -136,7 +132,7 @@ if (!$brandId || !$productId) {
 			redirect('code/invalid');
 		}
 
-		
+				
 		// create nextUrl string for facebook redirect after successful authentication.
 		// this is done based on session data where these values were saved when the user
 		// attempted accessing the app without authenticating first
@@ -145,7 +141,6 @@ if (!$brandId || !$productId) {
 		
 		// get the login url with all of facebook url info
 		$fbLoginUrl = $this->fbconnect->getLoginUrl();
-		
 		
 		// save all data we got so far to the session
 		$this->session->set_userdata(array(
@@ -159,6 +154,12 @@ if (!$brandId || !$productId) {
 		);
 
 
+		// load language from strategy definition
+		$language = $this->getLanguage();
+		$this->lang->load('code/code', $language);
+		$this->lang->load('app', $language);
+		
+		
 		// if no medium is set we redirect directly to the strategy view page
 		if (isset($medium_info['none'])) {
 log_message('debug', ' === medium error: no medium defined');

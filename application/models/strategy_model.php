@@ -91,7 +91,7 @@ class Strategy_Model extends CI_Model {
 				s.id, s.name, s.description, s.picture, s.website, s.plan_id, UNIX_TIMESTAMP(s.expiration_date) as expiration_date,
 				COALESCE(sum(p.bank),0) as bank, p.plan_type, st.name as type, exposure_count as exposure_count,
 				smp.enabled AS alt_enabled, smp.name AS alt_name, smp.message AS alt_message, smp.picture as alt_picture, 
-				smp.website as alt_website
+				smp.website as alt_website, s.language as language
 			FROM strategy s
 			JOIN `order` o ON o.strategy_id = s.id
 			JOIN plan p ON s.plan_id = p.id

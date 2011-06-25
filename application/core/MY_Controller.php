@@ -56,6 +56,22 @@ class MY_Controller extends CI_Controller {
 	}
 	
 	
+	
+	
+	/**
+	 * 
+	 * return language based on strategy definition, by default returns 'en-us' as default language
+	 */
+	protected function getLanguage() {
+		
+		$strategy = $this->session->userdata('strategy');
+		if (!$strategy || !isset($strategy['language']) || empty($strategy['language'])) 
+			return 'en-us';
+		else
+			return $strategy['language'];
+		
+	} 
+	
 	/*
 	public function Login() {
 		

@@ -7,7 +7,10 @@ class Auth extends Connect {
 
 		parent::__construct();
 		
-		$this->lang->load(array('auth/auth','app'), 'hebrew');
+		$language = $this->getLanguage();
+		$this->lang->load('auth', $language);
+		$this->lang->load('app', $language);
+		
 		$this->load->library('FBConnect', array('initSession' => false));
 		
 	}
