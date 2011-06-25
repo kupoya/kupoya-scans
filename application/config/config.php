@@ -17,7 +17,7 @@
 //$config['base_url']	= '';
 //$config['base_url']	= "https://scans-loc.kupoya.com/";
 $config['base_url'] = ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == "on") ? "https" : "http").
- 			"://".$_SERVER['HTTP_HOST'];
+ 			"://".(isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : "scans.kupoya.com");
 
 /*
 |--------------------------------------------------------------------------
