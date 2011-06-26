@@ -40,11 +40,11 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 	<div id="header">
 		
 		<div id="logo">
-			<img src='<?=site_url($picture)?>' alt='logo' width='' height='<?=$picture_height?>' />
+			<img src='<?=site_url(htmlentities($picture))?>' alt='logo' width='' height='<?=htmlentities($picture_height)?>' />
 		</div>
 
 		<div id="breadcrumb">
-			<h3 id='white'> <?= $description ?> </h3>
+			<h3 id='white'> <?= htmlentities($description) ?> </h3>
 		</div>
 		
 	</div>
