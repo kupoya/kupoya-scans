@@ -48,6 +48,11 @@ class Code extends MY_Controller {
 	
 	public function invalid() {
 		
+		// load language from strategy definition
+		$language = $this->getLanguage();
+		$this->lang->load('code/code', $language);
+		$this->lang->load('app', $language);
+		
 		$data = array();
 		$this->template->set_cache(3600);
 		$this->template->build('code/code_invalid', $data);
