@@ -8,7 +8,7 @@ class Info extends MY_Controller {
 	function __construct()
 	{
 		parent::__construct();
-		$this->lang->load(array('app'), 'english');
+		$this->lang->load('app', 'en-us');
 
 	}
 	
