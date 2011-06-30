@@ -274,4 +274,73 @@ log_message('debug', ' === continuing coupon processing');
 	}
 
 
+	
+	
+
+	/**
+	 *
+	 * get a coupon by strategy id using the stored procedure method
+	 * @param array $strategy the strategy array information
+	 * @param array $user the user array information
+	 */
+	function get_coupon_by_strategy_procedure(&$strategy, &$user)
+	{
+
+		// check strategy param
+		if (!$strategy || !is_array($strategy) || !isset($strategy['plan_type']) || empty($strategy['plan_type']) || 
+			!isset($strategy['id']) || empty($strategy['id']) || !is_numeric($strategy['id']))
+			return false;
+
+		if (!isset($strategy['bank']) || empty($strategy['bank']))
+			$strategy['bank'] = 0;
+
+		if (!isset($strategy['expiration_date']) || empty($strategy['expiration_date']))
+			$strategy['expiration_date'] = 0;
+			
+		// check user param
+		if (!$user || !is_array($user) || !isset($user['id']) || !is_numeric($user['id']))
+			return false;
+			
+		
+		// create a random serial number 
+		$coupon_serial = uniqid().'-'.rand(100, 999);
+	
+
+		// initialize variables to their default states and call the stored procedure 
+		$this->db->query("SET @last_insert_id = 0");
+		$this->db->query("SET @purchased_time = 0");
+		$this->db->query("SET @coupon_custom_serial = ''");
+		$this->db->query("SET @error = ''");
+		// execute stored procedure which results in successfully creating a coupon or not
+		$sql = "
+				CALL GetCoupon(?, ?, ?, ?, ?, ?, ?, @last_insert_id, @error, @purchased_time, @coupon_custom_serial) ";
+		$query = $this->db->query($sql, array($strategy['plan_type'], $coupon_serial, $user['id'], $strategy['id'], $strategy['bank'], $strategy['expiration_date'], self::COUPON_LAST_DELAY));
+
+		// get the last_insert_id which is the inserted coupon row id.
+		// if unsuccessful, it should return 0 (or null)
+		$sql = "SELECT @last_insert_id as coupon_insert_id, @purchased_time as purchased_time, @coupon_custom_serial as coupon_serial";
+		//$sql = "SELECT * FROM coupon WHERE id = @last_insert_id";
+		$query = $this->db->query($sql);
+		
+		if (!$query) {
+			return false;
+		}
+		
+		$row = $query->row_array();
+		
+		$coupon_id = $row['coupon_insert_id'];
+		if ($coupon_id == 0 || !is_numeric($coupon_id))
+			return false;
+		
+		$coupon = array(
+			'id' => $coupon_id,
+			'serial' => $row['coupon_serial'],
+			'status' => 'used',
+			'user_id' => $user['id'],
+			'purchased_time' => $row['purchased_time'],
+			'strategy_id' => $strategy['id'],
+		);
+		
+		return $coupon;
+	}	
 }

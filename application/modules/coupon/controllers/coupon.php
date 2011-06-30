@@ -113,7 +113,7 @@ log_message('debug', ' === user did not pass coupon validation');
 		
 		
 		
-		$coupon = $this->coupon_model->get_coupon_by_strategy($strategy, $user);
+		$coupon = $this->coupon_model->get_coupon_by_strategy_procedure($strategy, $user);
 		// no coupons left
 		if ($coupon === false) {			
 			// set session error message for next view to display it to the user
