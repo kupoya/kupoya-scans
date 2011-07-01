@@ -2,10 +2,16 @@
 
 class CouponValidate_Model extends CI_Model {
 
-
+	// delay for setting restriction on the intervals between getting a coupon or being rejected
+	// currently set for 12 hours intervals
 	const COUPON_GET_DELAY = 43200;
+	
+	// user's friends count setting for verifying that the user has enough friends to be considered
+	// as legitimate facebook account  
 	const USER_FRIENDS_MIN_COUNT = 5;
 
+	
+	
 	public function CouponValidate_Model()
 	{
 
@@ -18,21 +24,28 @@ class CouponValidate_Model extends CI_Model {
 
 	
 	
-	
+	/**
+	 * 
+	 * perform user validation actions
+	 * @param integer $strategy_id the strategy id
+	 * @param integer $user_id the user id
+	 */
 	public function validate_user($strategy_id = 0, $user_id = 0)
 	{
 		
 		if ( ($strategy_id === 0) || ($user_id === 0) )
 			return false;
 			
-log_message('debug', ' === validating user for coupon');
 		// we start off by assuming this user is ok and then perform checks to validate 
-		
 		$ret = true;
 		
-		//$ret = $ret && $this->check_user_has_friends($user_id);
-		
-log_message('debug', ' === validation returned: '.$ret);
+		if (ENVIRONMENT === 'production') {
+			$ret = $ret && $this->check_user_has_friends($user_id);
+		}
+			
+		if (!$ret)
+			log_message('debug', ' === user failed validation');
+			
 		return $ret;
 		
 			
@@ -40,17 +53,19 @@ log_message('debug', ' === validation returned: '.$ret);
 	
 	
 	
-	
-	
+	/**
+	 * 
+	 * checks user has enough friends to be considered as a legitimate user
+	 * @param integer $user_id the user id
+	 */
 	public function check_user_has_friends($user_id = 0)
 	{
 		
 		$user_count_info = $this->user_model->get_user_friends_count($user_id);
-log_message('debug', ' === validating user friends count: '. (int)$user_count_info['count']);
 		if ((int)$user_count_info['count'] > self::USER_FRIENDS_MIN_COUNT)
 			return true;
 		
-log_message('debug', ' === validating user: check user has friends - returned BAD');
+		log_message('debug', ' === user rejected due to friends count validation: '.$ret);
 		return false;
 		
 	}
@@ -58,7 +73,12 @@ log_message('debug', ' === validating user: check user has friends - returned BA
 	
 	
 	
-
+	/**
+	 * 
+	 * check if the user already recieved a coupon in the last interval (12 hours or so)
+	 * @param integer $strategy_id the strategy id
+	 * @param integer $user_id the user id
+	 */
 	public function check_coupon_used_by_user($strategy_id = 0, $user_id = 0)
 	{
 
@@ -84,7 +104,6 @@ log_message('debug', ' === validating user: check user has friends - returned BA
 		// if we don't find any record that which indicates the user made a purchase in the last day
 		// then we allow the user is validated ok
 		if ($query->num_rows() === 0) {
-log_message('debug', ' === validating user: check coupon used by user - returned ok');
 			return false;
 		} else {
 			// otherwise we return the user's coupon and purchased time

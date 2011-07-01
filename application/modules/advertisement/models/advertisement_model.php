@@ -12,7 +12,10 @@ Class Advertisement_Model extends CI_Model {
 	
 	
 	
-	
+	/**
+	 * 
+	 * define allowed HTML tags to be used in HTML output string/view
+	 */
 	public function html_tags() {
 		
 		return '<p><h1><h2><h3><img><a><br>';
@@ -20,6 +23,12 @@ Class Advertisement_Model extends CI_Model {
 	}
 	
 	
+	
+	/**
+	 * 
+	 * check that the strategy is valid
+	 * @param array $strategy_info
+	 */
 	public function check_valid($strategy_info = null)
 	{
 
@@ -60,6 +69,12 @@ Class Advertisement_Model extends CI_Model {
 	}
 	
 	
+	
+	/**
+	 * 
+	 * get advertisement information based on strategy id
+	 * @param integer $strategy_id the strategy id
+	 */
 	public function get_by_strategy($strategy_id = 0)
 	{
 		
@@ -77,7 +92,6 @@ Class Advertisement_Model extends CI_Model {
 			return false;
 		
 		return $query->row_array();
-		
 		
 	}
 	

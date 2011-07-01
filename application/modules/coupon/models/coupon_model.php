@@ -7,12 +7,15 @@ class Coupon_Model extends CI_Model {
 
 	function Coupon_Model()
 	{
-
 		parent::__construct();
 	}
 
 
-	
+	/**
+	 * 
+	 * delete the coupon from the database
+	 * @param integer $coupon_id
+	 */
 	function del_coupon($coupon_id) {
 		
 		if (!$coupon_id || !is_numeric($coupon_id))
@@ -23,38 +26,21 @@ class Coupon_Model extends CI_Model {
 	}
 	
 
+	
+	/**
+	 * 
+	 * set coupon information
+	 * @param integer $coupon_id
+	 * @param array $data
+	 */
 	function set_coupon_used($coupon_id, $data)
 	{
-
-//		$status = 'used';
-
-//		$this->db->query('LOCK TABLES coupon WRITE');
 
 		$this->db->trans_begin();
 		
 		$this->db->where('id', $coupon_id);
 		$query = $this->db->update('coupon', $data);
-		/*
-		$sql = "
-			UPDATE coupon
-			SET
-			 status = ?
-			 ,
-			 user_id = ?
-			 ,
-			 purchased_time = CURRENT_TIMESTAMP()
-			 
-			WHERE
-			
-			 id = ?
-		";
-		$query = $this->db->query($sql, array($status, $user_id, $coupon_id));
-		*/
-//		$this->db->query('UNLOCK TABLES');
-		
-//		if (!$query) {
-//			return false;
-//		}
+
 		if ($this->db->trans_status() === FALSE) {
 			$this->db->trans_rollback();
 			return false;
@@ -67,13 +53,18 @@ class Coupon_Model extends CI_Model {
 	}
 
 
+	/**
+	 * 
+	 * set coupon status
+	 * @param integer $coupon_id
+	 * @param string $status
+	 */
 	function set_coupon_status($coupon_id, $status = 'new')
 	{
 		if (!$coupon_id)
 		return false;
 			
 		// if we were able to get a new coupon let's mark it as pending and return it
-//		$this->db->query('LOCK TABLES coupon WRITE');
 		$this->db->trans_begin();
 		$sql = "
 			UPDATE coupon
@@ -83,9 +74,7 @@ class Coupon_Model extends CI_Model {
 			 id = ?
 		";
 		$query = $this->db->query($sql, array($status, $coupon_id));
-//		if (!$query)
-//		return false;
-//		$this->db->query('UNLOCK TABLES');
+		
 		if ($this->db->trans_status() === FALSE)
 			$this->db->trans_rollback();
 
@@ -170,7 +159,7 @@ class Coupon_Model extends CI_Model {
 				// if the latest purchased_time of a coupon is older than our delay we consider this campaign as 'over'
 				// hence no need to run anymore checks, we return false
 				if ($coupons_left <= 0 && $coupon_settings['elapsed_purchased_time'] >= self::COUPON_LAST_DELAY) {
-	log_message('debug', ' === reached end of campaign flag');
+					log_message('debug', ' === reached end of campaign flag');
 					return false;
 				}
 				
@@ -178,7 +167,7 @@ class Coupon_Model extends CI_Model {
 				if ($coupons_left > 0) {
 					// coupon slot(s) are available so we break out of the retry loop and continue to process it
 					$continue_processing = true;
-	log_message('debug', ' === found coupon slot!');
+					log_message('debug', ' === found coupon slot!');
 					break;
 				}
 				
@@ -235,8 +224,6 @@ class Coupon_Model extends CI_Model {
 			$this->db->trans_rollback();
 			return false;
 		}
-			
-log_message('debug', ' === continuing coupon processing');
 		
 		// if coupon slots are available let's create a new one and add it to the db
 		// as a coupon that we alotted
@@ -343,4 +330,6 @@ log_message('debug', ' === continuing coupon processing');
 		
 		return $coupon;
 	}	
+
+
 }

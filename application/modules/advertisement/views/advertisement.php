@@ -1,20 +1,4 @@
-<?php
-if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-//var_dump($brand);
-//var_dump($strategy);
-//var_dump($agent);
-//var_dump($facebook);
-//var_dump($agent);var_dump
-
-//var_dump($facebook);
-
-//echo 'count1:';
-//echo count($friends['']);
-
-//var_dump($fbUser);
-
-//var_dump($facebook['loginUrl'])
-
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 	$picture_height = '100';
 	if ( (isset($strategy['picture'])) && (!empty($strategy['picture'])) )

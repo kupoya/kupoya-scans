@@ -14,10 +14,6 @@ Class Advertisement extends MY_Controller {
 		$code_id = $this->session->userdata('code_id');
 		$strategy = $this->session->userdata('strategy');
 
-log_message('debug', ' === BRNAD ID: '.$brand['id']);
-log_message('debug', ' === CODE ID: '.$code_id);
-log_message('debug', ' === STRATEGY ID: '.$strategy['id']);
-
 		// if brand and products are provided (probably redirected by our system)
 		// then save this info in the user's session
 		if ( !$brand['id'] || !$code_id || !$strategy['id'] ) {

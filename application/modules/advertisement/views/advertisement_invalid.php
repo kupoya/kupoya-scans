@@ -1,12 +1,4 @@
-<?php
-if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-//echo "brand:"; 
-//var_dump($brand);
-//echo "strategy:";
-//var_dump($strategy);
-//var_dump($agent);
-//var_dump($facebook);
-//var_dump($facebook['loginUrl'])
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 $error = $this->session->flashdata('error');
 if (!$error)

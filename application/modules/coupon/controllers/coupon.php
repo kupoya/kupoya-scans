@@ -79,8 +79,6 @@ log_message('debug', ' === STRATEGY ID: '.$strategy['id']);
 		$coupon = $this->couponvalidate_model->check_coupon_used_by_user($strategy['id'], $user['id']);
 		if ($coupon) {
 
-			log_message('debug', ' === user already used this coupon');
-			
 			// create some coupon code
 			$data = array();
 			
@@ -100,8 +98,7 @@ log_message('debug', ' === STRATEGY ID: '.$strategy['id']);
 		$ret = $this->couponvalidate_model->validate_user($strategy['id'], $user['id']);
 		// if it returns false then the user used a coupon in the last 24 hours
 		if ($ret === false) {
-log_message('debug', ' === user did not pass coupon validation');
-
+			log_message('error', 'kupoya = user did not pass coupon validation');
 
 			// set session error message for next view to display it to the user
 			$flash_value = $this->lang->line('error_check_validation');
@@ -129,7 +126,7 @@ log_message('debug', ' === calling medium_handler->perform_action');
 		$ret = $this->medium_handler->perform_action($medium);
 log_message('debug', ' === which returned: '.$ret);
 		if (!$ret) {
-log_message('debug', ' === ret didnt return good...');
+			log_message('error', ' kupoya = could not complete medium_handler->perform_action');
 			// unable to post to facebook, remove coupon
 			$this->coupon_model->del_coupon($coupon['id']);
 			

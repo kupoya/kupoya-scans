@@ -34,7 +34,7 @@ class Code extends MY_Controller {
 	
 	protected function _validate() {
 		
-		// check if the useragent for is detected as a mobile device
+		// check if the useragent is detected as a mobile device
 		if (!$this->agent->is_mobile()) {
 			// if it's not a mobile device we redirect to the code invalid page
 			redirect('code/invalid');
@@ -65,25 +65,15 @@ class Code extends MY_Controller {
 	{
 		
 		// validate user access to our system
-		// @TODO add this validation to disallow PC users
-		//$this->_validate();
+		if (ENVIRONMENT === 'production')
+			$this->_validate();
 		
-		if (!$brand_id === 0 || $code_id === 0)
+		if (!$brand_id || !$code_id )
 			redirect('code/invalid');
 		
 		$brand_id = xss_clean($brand_id);
 		$code_id = xss_clean($code_id);
 		
-log_message('debug', ' === brand_id: '.$brand_id);
-log_message('debug', ' === code_id: '.$code_id);
-// check for given brandId and productId
-/*
-if (!$brandId || !$productId) {
-	log_message('debug', ' === invalid 1');
-	redirect('auth/invalid');
-}
-*/
-
 		// initialize template data variable
 		$data = array();
 		
@@ -167,7 +157,7 @@ if (!$brandId || !$productId) {
 		
 		// if no medium is set we redirect directly to the strategy view page
 		if (isset($medium_info['none'])) {
-log_message('debug', ' === medium error: no medium defined');
+			log_message('debug', ' === medium error: no medium defined');
 			$strategy_type = $strategy_info['type'];
 			if (!$strategy_type) {
 				log_message('debug', ' === no strategy type defined: '.$strategy_info['type']);
