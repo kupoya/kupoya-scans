@@ -39,10 +39,10 @@ $lang['message_generic_signature'] = array(
 $lang['Nice to meet you!'] = "נחמד להכיר אותך!";
 $lang['Welcome!'] = "ברוך הבא!";
 
-$lang['Get_a_coupon_in_two_simple_steps'] =  'קבלת קופון בשני שלבים פשוטים';
-
+$lang['Get_a_coupon_in_two_simple_steps'] =  'קבל קופון בשני צעדים פשוטים';
 
 $lang['tip'] = "טיפ";
 $lang['Privacy Policy'] = "מדיניות הפרטיות";
-$lang['Terms_Of_Use'] = "תנאי שימוש";
-$lang['Accept_TOS'] = "אנא אשר את תנאי השימוש קודם";
+$lang['Terms_Of_Use'] = "תנאי השימוש";
+$lang['Accept_TOS'] = "אנא אשר ראשית את תנאי השימוש. תודה";
+

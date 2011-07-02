@@ -11,12 +11,13 @@ $lang['Coupon'] = 'קופון';
 $lang['present_this_coupon'] = 'הצג עמוד זה כדי להנות מהקופון';
 
 // coupon.php
-$lang['Get_your_coupon'] = 'קבל את הקופון';
-$lang['Step_2/2'] = 'שלב 2/2';
-$lang['Get_a_coupon_in_two_simple_steps'] =  'קבלת קופון בשני שלבים פשוטים';
+$lang['Get_your_coupon'] = 'קבל את הקופון שלך';
+$lang['Step_2/2'] = 'צעד 2/2';
+$lang['Get_a_coupon_in_two_simple_steps'] =  'קבל קופון בשני צעדים פשוטים';
 $lang['Continue_to_get_your_coupon!'] = 'המשך כדי לקבל קופון!';
 $lang['Your_coupon_is_only_a_click_away'] = 'הקופון שלך במרחק הקלקה';
-$lang['User_agreement_to_share'] = ' לחלוק את החוויה עם חברים בפייסבוק שלך kupoya-ע"י לחיצה על כפתור זה , הינך מאשר ל  ';
+//$lang['User_agreement_to_share'] = ' לחלוק את החוויה עם חברים בפייסבוק שלך kupoya-ע"י לחיצה על כפתור זה , הינך מאשר ל  ';
+$lang['User_agreement_to_share'] = 'הנני מסכים ל %s ומאשר לקופויה לחלוק את החוויה עם חברי בפייסבוק';
 
 
 // coupon_invalid.php
