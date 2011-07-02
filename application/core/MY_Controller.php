@@ -8,15 +8,7 @@ class MY_Controller extends CI_Controller {
 	public function __construct() {
 		
 		parent::__construct();
-		//$this->load->library('FBConnect');	
-		
-		// enable mobile-only support mode
-		/*
-		$this->load->library('user_agent');
-		if (! $this->agent->is_mobile() )
-			redirect('http://www.kupoya.com/');
-		*/
-		
+
 		// set theme 
 		$this->asset->set_theme('mobile_v1');
 		$this->template->set_theme('mobile_v1');
@@ -24,6 +16,7 @@ class MY_Controller extends CI_Controller {
 		// template settings
 		$this->template->enable_parser(FALSE); // default true
 		$this->template->set_layout('layout_base');
+		$this->template->set_partial('css', 'layouts/partials/css', FALSE);
 		$this->template->set_partial('header', 'layouts/partials/header', FALSE);
 		$this->template->set_partial('footer', 'layouts/partials/footer', FALSE);
 		
@@ -66,10 +59,16 @@ class MY_Controller extends CI_Controller {
 		
 		$strategy = $this->session->userdata('strategy');
 		if (!$strategy || !isset($strategy['language']) || empty($strategy['language'])) 
-			return 'en-us';
+			$language = 'en-us';
 		else
-			return $strategy['language'];
+			$language = $strategy['language'];
 		
+		switch($language) {
+			case 'he':
+				$this->template->set_partial('css', 'layouts/partials/css-rtl', FALSE);
+		}
+		
+		return $language;
 	} 
 	
 	/*

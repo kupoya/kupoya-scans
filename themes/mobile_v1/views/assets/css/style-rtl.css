@@ -1,0 +1,112 @@
+/* --- main layout --- */
+	
+	* { margin: 0; padding: 0; }
+	
+	body {
+		font-family:Arial, Helvetica, sans-serif; 
+		font-size:medium; 
+		color:#616161; 
+		background:#fff url(../img/body-tail.gif) top repeat-x; 
+		padding:0; 
+		margin:0;
+	}
+	
+	#center {text-align: center; direction: rtl;}
+	
+	#white {color:white;}
+	#green {color:#7abf00;}
+
+	a img,:link img,:visited img,fieldset {border:none;}
+	img {vertical-align:top;}
+	
+	.clear {clear:both}
+	.nowrp {white-space:nowrap;}
+	.wrapper {width:100%; overflow:hidden;}
+
+	.top-bg {background:url(../img/body-bg.jpg) top right no-repeat;}
+	
+/* --- END main layout --- */
+
+/* --- header --- */
+
+	#header {font-size:1.125em;}
+	
+	#logo {padding:11px 0 8px 0px; text-align:center;}
+	.banners {text-align:center; padding:0 0 16px 0;}
+	.banners img {margin-bottom:10px;}
+	
+	.home-tab {text-align:right; padding:33px 23px 0px 0; margin-bottom:-55px; position:relative;}
+	.home-tab a {color:#616161; font-weight:bold;}
+	/*	
+	#breadcrumb {padding:14px 0 11px 24px; background:#76cddd; margin-bottom:12px;}
+	#breadcrumb {padding:14px 0 11px 24px; text-align: center; background:#76cddd; margin-bottom:12px;}
+	*/
+	#breadcrumb {direction: rtl; padding:14px 0 11px 0; text-align: center; background:#76cddd; margin-bottom:6px;}
+	#breadcrumb_happy {direction: rtl; padding:14px 0 11px 0; text-align: center; background:#76cddd url(../img/happy_kupi_head_vsmall.png) no-repeat top left; margin-bottom:6px;}
+/* --- END header --- */
+
+/* --- content --- */
+
+	#content {font-size:1.063em; line-height:1.176em; font-weight:bold;}
+	.min-width {padding:0px 20px 30px 25px; min-width:200px;}
+	#content .home-tab {margin:0; padding:0px 21px 40px 0; font-size:1.059em;}
+
+	li {list-style:none; margin-bottom:10px; clear:both; background:url(../img/marker2.gif) no-repeat 0 3px; padding-left:15px;}
+	a {color:#7abf00;}
+	
+	#navmenu li {padding:0; background:none;}
+	#navmenu .button {text-transform:uppercase; font-weight:bold; color:#3d3232; font-size:1.059em;}
+	#navmenu .summary {padding:12px 0 11px 0;}
+	
+/* --- END content --- */
+
+/* --- footer --- */
+	/*
+	#footer {height:109px; padding-left:24px; color:#ababab; font-size:1.125em; line-height:1.459em; background:url(../img/footer-bg.gif) top repeat-x; text-transform:uppercase;}
+	#footer p { padding:1px 0 0 0;}
+	#footer p a {color:#ababab;}
+	*/
+	
+	p.size_small {font-size:small; }
+	
+	#footer {text-align: center; color:#ababab; font-size:1.125em; line-height:1.459em; top repeat-x; }
+	#footer p { padding:1px 0 0 0;}
+	#footer p a {color:#ababab;}
+	
+/* --- END footer --- */
+
+/* --- Other --- */
+	
+	.f-left {float:left;}
+	.f-right {float:right;}
+	.taright {text-align:right;}
+	p {padding-top:20px;}
+	.margin1 {margin-top:20px;}
+	.margin2 {margin-top:40px;}
+	
+	.link {display:inline-block; margin-top:20px;}
+	h2 {margin-bottom:20px;}
+	
+	#ContactForm input , #ContactForm textarea {border:1px solid #f7e4a8; width:245px; padding-left:4px; background:#fcf6db; font-size:1em; line-height:1em; margin-bottom:8px; color:#8c8c8c;}
+	#ContactForm textarea {height:80px;}
+	#ContactForm .taright {width:250px;}
+	#ContactForm button {background:none; border:none; width:93px; height:27px;}
+	#ContactForm #clear {background:url(../img/form-clear.jpg) no-repeat 0 0;}
+	#ContactForm #send {background:url(../img/form-send.jpg) no-repeat 0 0;}
+	
+	
+/* --- END Other --- */
+
+/* --- boxes --- */
+
+.box {background:#ffd025; color:#917007; font-style:italic; margin:0 0 0 -10px; position:relative;}
+.box .tail-top {background:url(../img/box-tail-top.png) top repeat-x;}
+.box .tail-bottom {background:url(../img/box-tail-bottom.png) bottom repeat-x;}
+.box .corner-right-bottom {background:url(../img/box-corener-right-bottom.png) right bottom no-repeat;}
+.box .corner-left-bottom {background:url(../img/box-corener-left-bottom.png) left bottom no-repeat;}
+.box .corner-right-top {background:url(../img/box-corener-right-top.png) right top no-repeat;}
+.box .corner-left-top {background:url(../img/box-corener-left-top.png) left top no-repeat; width:100%;}
+.box .indent {padding:20px 20px 30px 19px;}
+
+
+/* --- END boxes --- */

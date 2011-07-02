@@ -19,7 +19,8 @@
 
 
 	<!-- CSS base -->
-	<?= css('style.css', '_theme_', array('media' => 'handheld, screen')); ?>
+	<?php echo $template['partials']['css']; ?>
+	<?php //css('style.css', '_theme_', array('media' => 'handheld, screen')); ?>
 
 	<!-- JavaScript base 
 	<?php //echo js('ajax.js', '_theme_')?>
