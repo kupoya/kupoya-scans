@@ -76,12 +76,17 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 				?>
 			<br/><br/>
 			<a href='#' onclick='javascript:form_submit("tos");'>
-				<?php echo image('get_coupon.png', '_theme_', array('alt' => $this->lang->line('Get_your_coupon') )) ?>
+				<?php
+				$image = 'get_coupon-'.$strategy['language'].'.png'; 
+				echo image($image, '_theme_', array('alt' => $this->lang->line('Get_your_coupon') )) ?>
 			</a>
 			
 			 <form name='get_coupon' action='<?php echo site_url('coupon/view') ?>' method='post'>
 			 	<input id='tos' type='checkbox' name='tos' value='1' />
-			 	<?php echo $this->lang->line('User_agreement_to_share') ?>
+			 	<?php
+			 	$terms_of_use_link = '<a href="/info/terms_of_use">'. $this->lang->line('Terms_Of_Use') .'</a>'; 
+			 	echo sprintf($this->lang->line('User_agreement_to_share'), $terms_of_use_link)
+			 	?>
 			 </form>
 		</div>
 		</div>

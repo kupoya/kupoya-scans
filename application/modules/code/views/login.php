@@ -64,8 +64,9 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 				if (isset($medium['facebook'])) {
 						$content .= $this->lang->line('Step_1/2') . ': ' . $this->lang->line('Login_to_your_facebook_account');
 						$content .= '<br/><br/>';
+						$image = 'fb_connect-'.$strategy['language'].'.png';
 						$content .= anchor($facebook['loginUrl'], 
-											image('fb_connect.png	', '_theme_', array('style' => '',  'alt' => $this->lang->line('facebook_connect')))
+											image($image, '_theme_', array('style' => '',  'alt' => $this->lang->line('facebook_connect')))
 										); 
 				}
 				
