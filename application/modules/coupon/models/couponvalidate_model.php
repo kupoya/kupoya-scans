@@ -41,6 +41,7 @@ class CouponValidate_Model extends CI_Model {
 		
 		if (ENVIRONMENT === 'production') {
 			$ret = $ret && $this->check_user_has_friends($user_id);
+			$ret = $ret && $this->check_coupon_used_by_user($user_id);
 		}
 			
 		if (!$ret)
@@ -65,7 +66,7 @@ class CouponValidate_Model extends CI_Model {
 		if ((int)$user_count_info['count'] > self::USER_FRIENDS_MIN_COUNT)
 			return true;
 		
-		log_message('debug', ' === user rejected due to friends count validation: '.$ret);
+		log_message('debug', ' === user rejected due to friends count validation: '.self::USER_FRIENDS_MIN_COUNT);
 		return false;
 		
 	}
