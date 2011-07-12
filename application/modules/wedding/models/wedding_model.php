@@ -107,6 +107,7 @@ Class Wedding_Model extends CI_Model {
 		
 		$data = array(
 			'name' => $wedding_info['name'],
+			'time' => $wedding_info['time'],
 			'message' => $wedding_info['message'],
 			'attending' => $wedding_info['attending'],
 			'attendees' => $wedding_info['attendees'],
