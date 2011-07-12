@@ -87,8 +87,12 @@
 	.link {display:inline-block; margin-top:20px;}
 	h2 {margin-bottom:20px;}
 	
+	#ContactForm input.numbers_1k {width:40px;}
+	#ContactForm input.button {border:0px;background:none;}
 	#ContactForm input , #ContactForm textarea {border:1px solid #f7e4a8; width:245px; padding-left:4px; background:#fcf6db; font-size:1em; line-height:1em; margin-bottom:8px; color:#8c8c8c;}
+	#ContactForm input.error {background:#FFFF00;}
 	#ContactForm textarea {height:80px;}
+	#ContactForm textarea.error {background:#FFFF00;}
 	#ContactForm .taright {width:250px;}
 	#ContactForm button {background:none; border:none; width:93px; height:27px;}
 	#ContactForm #clear {background:url(../img/form-clear.jpg) no-repeat 0 0;}
@@ -108,5 +112,6 @@
 .box .corner-left-top {background:url(../img/box-corener-left-top.png) left top no-repeat; width:100%;}
 .box .indent {padding:20px 20px 30px 19px;}
 
+ div.error {color:#FF0000;}
 
 /* --- END boxes --- */
