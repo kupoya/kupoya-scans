@@ -46,3 +46,6 @@ $lang['tip'] = "Tip";
 $lang['Privacy Policy'] = "Privacy Policy";
 $lang['Terms_Of_Use'] = "Terms Of Use";
 $lang['Accept_TOS'] = "Please accept the terms of use first";
+
+$lang['Yes'] = 'Yes';
+$lang['No'] = 'No';

@@ -46,3 +46,5 @@ $lang['Privacy Policy'] = "מדיניות הפרטיות";
 $lang['Terms_Of_Use'] = "תנאי השימוש";
 $lang['Accept_TOS'] = "אנא אשר ראשית את תנאי השימוש. תודה";
 
+$lang['Yes'] = 'כן';
+$lang['No'] = 'לא';
