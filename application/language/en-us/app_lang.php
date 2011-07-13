@@ -18,13 +18,13 @@ $lang['message_generic_post'] = array(
 	// [brand_name] [brand_address] [strategy_name]
 	"All, check up %s in %s for %s - I just did :-)",
 	// [brand_name] [brand_address] [strategy_name]
-	"Wow, %s in %s just gave me a free %s - how cool is that ?!",
+	"Wow, %s in %s just gave me a %s - how cool is that ?!",
 	// [brand_name] [brand_address] [strategy_name]
 	"Join me at %s in %s for a %s - see you there!",
 	// [brand_name] [brand_address] [strategy_name]
-	"I'm at %s in %s. Getting a free %s was never so easy!",
+	"I'm at %s in %s. Getting a %s was never so easy!",
 	// [brand_name] [brand_address] [strategy_name]
-	"10x %s, I decided to visit %s and you just made my day happier with free %s",
+	"10x %s, I decided to visit %s and you just made my day happier with %s",
 	);
 
 // array of random kupoya signatures to be included in post messages
