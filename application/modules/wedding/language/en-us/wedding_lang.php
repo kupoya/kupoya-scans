@@ -4,7 +4,7 @@
  */
 
 // wedding/wedding.php
-$lang['Your_name'] = 'Your name';
+$lang['Your_name'] = 'Please enter your full name';
 $lang['Are_you_planning_to_attend'] = 'Are you planning to attend?';
 $lang['If_so_with_how_many_attendees'] = 'If so, with how many attendees';
 $lang['You_may_leave_a_message_to_the_happy_couple'] = 'You may leave a message to the happy couple';
@@ -12,7 +12,6 @@ $lang['You_may_leave_a_message_to_the_happy_couple'] = 'You may leave a message 
 $lang['married_header'] = array(
 	'are getting married',
 	'are uniting vows',
-	'are declaring their love',
 );
 
 // validation messages

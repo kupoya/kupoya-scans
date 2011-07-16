@@ -11,7 +11,6 @@ $lang['You_may_leave_a_message_to_the_happy_couple'] = 'הנך מוזמנ/ת ל�
 
 $lang['married_header'] = array(
 	'מתחתנים',
-	'מחליפים נדרים',
 	'מתאחדים לנצח',
 	'נשבעים לעולמים',
 );
