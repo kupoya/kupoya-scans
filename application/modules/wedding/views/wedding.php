@@ -165,10 +165,10 @@ function validate_form() {
 						<br/><br/>
 						<?= $this->lang->line('If_so_with_how_many_attendees'); ?><br/>
 						<input type="text" <?php if (form_error('attendees')) echo 'class="error"'; ?>
-								name="attendees" id="attendees" class='numbers_1k' value='<?= set_value('attendees', '0') ?>' /><br/><br/>
+								name="attendees" id="attendees" class='numbers_1k' value='<?= set_value('attendees', '') ?>' /><br/><br/>
 						
 						<?= $this->lang->line('You_may_leave_a_message_to_the_happy_couple'); ?><br/>
-						<textarea <?php if (form_error('attendees')) echo 'class="error"'; ?>
+						<textarea <?php if (form_error('message')) echo 'class="error"'; ?>
 								name="message" id="message" rows="5" cols="10"><?= set_value('message', '')?></textarea>
 						<br/><br/>
 						<input type="hidden" name="submit" id="submit" value="submit" />

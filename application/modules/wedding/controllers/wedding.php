@@ -95,13 +95,16 @@ Class Wedding extends MY_Controller {
 		
 		$this->form_validation->set_rules('name', 'name', 'trim|required|max_length[100]');
 		$this->form_validation->set_rules('attending', 'attending', 'trim|required|max_length[1]|numeric');
-		$this->form_validation->set_rules('attendees', 'attendees', 'trim|required|max_length[3]|numeric');
+		$this->form_validation->set_rules('attendees', 'attendees', 'trim|max_length[3]|numeric');
 		$this->form_validation->set_rules('message', 'message', 'trim|max_length[1024]');
 		$this->form_validation->set_error_delimiters('<div class="error">','</div>');
 		
 		$data['name'] = $this->input->post('name');
 		$data['attending'] = $this->input->post('attending');
 		$data['attendees'] = $this->input->post('attendees');
+		// if attendees were not provided we set it to 0
+		if (!$data['attendees'])
+			$data['attendees'] = '0';
 		$data['message'] = $this->input->post('message');
 		
 		$data['time'] = date('Y-m-d H:i:s');
