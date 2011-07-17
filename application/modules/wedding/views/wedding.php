@@ -112,7 +112,7 @@ function validate_form() {
 
 </script>
 
-
+<?php  ?>
 
 	<div id="header">
 		
@@ -121,7 +121,7 @@ function validate_form() {
 		</div>
 
 		<div id="breadcrumb">
-			<h3 id='white'> <?= htmlentities($name).' '.$married_header ?> </h3>
+			<h3 id='white'> <?= htmlentities($name, ENT_QUOTES, "UTF-8").' '.$married_header ?> </h3>
 		</div>
 		
 	</div>
@@ -135,7 +135,7 @@ function validate_form() {
 <?php echo validation_errors(); ?>
 <br/>
 			
-				<?= htmlentities($description) ?>
+				<?= strip_tags($description, $this->wedding_model->html_tags());  ?>
 				
 				<form method="post" action="<?= site_url('wedding/confirm')?>" id="ContactForm" name="wedding_form">
 					<div>
