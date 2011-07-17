@@ -34,7 +34,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 		$description = '';
 	}
 
-	$description = mb_substr($description, 0, 63, 'UTF-8');
+	//$description = mb_substr($description, 0, 63, 'UTF-8');
 	
 	if (isset($coupon['purchased_time']))
 		list($date, $time) = explode(' ', $coupon['purchased_time']);
