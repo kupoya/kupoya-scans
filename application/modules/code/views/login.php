@@ -11,6 +11,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 //var_dump($facebook);
 //var_dump($facebook['loginUrl'])
 
+	$language = user_language();
 
 	$picture_height = '100';
 	if ( (isset($brand['picture'])) && (!empty($brand['picture'])) )
@@ -64,7 +65,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 				if (isset($medium['facebook'])) {
 						$content .= $this->lang->line('Step_1/2') . ': ' . $this->lang->line('Login_to_your_facebook_account');
 						$content .= '<br/><br/>';
-						$image = 'fb_connect-'.$strategy['language'].'.png';
+						$image = 'fb_connect-'.$language.'.png';
 						$content .= anchor($facebook['loginUrl'], 
 											image($image, '_theme_', array('style' => '',  'alt' => $this->lang->line('facebook_connect')))
 										); 

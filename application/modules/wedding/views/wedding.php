@@ -1,5 +1,7 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
+	$language = user_language();
+
 	$picture_height = '100';
 	if ( (isset($strategy['picture'])) && (!empty($strategy['picture'])) )
 		$picture = $strategy['picture'];
@@ -28,16 +30,16 @@
 
 	
 	// setup button images for this strategy
-	$image_yes_name = 'wedding_yes_pressed-'.$strategy['language'].'.png';
+	$image_yes_name = 'wedding_yes_pressed-'.$language.'.png';
 	$image_yes_path = image_path($image_yes_name, '_theme_');
 	
-	$image_yes_alt_name = 'wedding_yes-'.$strategy['language'].'.png';
+	$image_yes_alt_name = 'wedding_yes-'.$language.'.png';
 	$image_yes_alt_path = image_path($image_yes_alt_name, '_theme_');
 	
-	$image_no_name = 'wedding_no_pressed-'.$strategy['language'].'.png';
+	$image_no_name = 'wedding_no_pressed-'.$language.'.png';
 	$image_no_path = image_path($image_no_name, '_theme_');
 	
-	$image_no_alt_name = 'wedding_no-'.$strategy['language'].'.png';
+	$image_no_alt_name = 'wedding_no-'.$language.'.png';
 	$image_no_alt_path = image_path($image_no_alt_name, '_theme_');
 	
 	
@@ -132,6 +134,7 @@ function validate_form() {
 		<div class="min-width">
 			<div id="center">
 
+
 <?php echo validation_errors(); ?>
 <br/>
 			
@@ -174,7 +177,7 @@ function validate_form() {
 						<input type="hidden" name="submit" id="submit" value="submit" />
 						<input type='image'
 							src='<?php
-								$image = 'wedding_update-'.$strategy['language'].'.png';
+								$image = 'wedding_update-'.$language.'.png';
 								echo image_path($image, '_theme_'); 
 								?>'
 							name='' value='' alt='submit' class='button' onClick="javascript:return validate_form();" />

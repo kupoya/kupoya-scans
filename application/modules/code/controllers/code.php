@@ -25,6 +25,7 @@ class Code extends MY_Controller {
 		$this->load->library('cache');
 			
 		$this->load->helper('array');
+		$this->load->helper('user_experience');
 		
 	}
 	
@@ -137,6 +138,11 @@ class Code extends MY_Controller {
 		// get the login url with all of facebook url info
 		$fbLoginUrl = $this->fbconnect->getLoginUrl();
 		
+		// load language from strategy definition
+		$language = $this->getLanguageInitialize($strategy_info);
+		$this->lang->load('code/code', $language);
+		$this->lang->load('app', $language);
+		
 		// save all data we got so far to the session
 		$this->session->set_userdata(array(
 				'code_id' => $code_id,
@@ -147,12 +153,6 @@ class Code extends MY_Controller {
 				'login_url' => $fbLoginUrl,
 			)
 		);
-
-
-		// load language from strategy definition
-		$language = $this->getLanguage();
-		$this->lang->load('code/code', $language);
-		$this->lang->load('app', $language);
 		
 		
 		// if no medium is set we redirect directly to the strategy view page

@@ -32,6 +32,7 @@ Class Wedding extends MY_Controller {
 		$this->load->library('form_validation');
 		$this->load->helper('form');
 		
+		$this->load->helper('user_experience');
 		
 	}
 	
@@ -52,7 +53,7 @@ Class Wedding extends MY_Controller {
 		
 		$data['brand'] = $this->session->userdata('brand');
 		$data['strategy'] = $this->session->userdata('strategy');
-		
+
 		// check wedding is still valid to display
 		$ret = $this->wedding_model->check_valid($data['strategy']);
 		if ($ret === false) {
@@ -72,7 +73,7 @@ Class Wedding extends MY_Controller {
 			redirect('code/invalid');
 		}
 
-		
+
 		$data['wedding'] = $wedding_info;
 		$this->template->build('wedding/wedding', $data);
 		

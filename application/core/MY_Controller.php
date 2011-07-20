@@ -20,6 +20,8 @@ class MY_Controller extends CI_Controller {
 		$this->template->set_partial('header', 'layouts/partials/header', FALSE);
 		$this->template->set_partial('footer', 'layouts/partials/footer', FALSE);
 		
+		$this->load->library('UserExp');
+		
 		
 	}
 	
@@ -55,21 +57,58 @@ class MY_Controller extends CI_Controller {
 	 * 
 	 * return language based on strategy definition, by default returns 'en-us' as default language
 	 */
-	protected function getLanguage() {
+	public function getLanguage() {
 		
-		$strategy = $this->session->userdata('strategy');
-		if (!$strategy || !isset($strategy['language']) || empty($strategy['language'])) 
-			$language = 'en-us';
-		else
+		$language = $this->userexp->language_detect_quick();
+		if ($language)
+			return $language;
+			
+		return $this->getLanguageInitialize();
+			
+	}
+		
+	
+	protected function getLanguageInitialize($strategy = false) {
+		
+		// if no strategy was provided, attempt to get from session
+		if (!$strategy)
+			$strategy = $this->session->userdata('strategy');
+		
+		// still no strategy defined? return default english language
+		if (!$strategy)
+			return 'en-us';
+		
+		// set default language if nothing else is set
+		$language = 'en-us';
+//		$strategy = $this->session->userdata('strategy');
+		if ($strategy && isset($strategy['language']) && !empty($strategy['language'])) 
 			$language = $strategy['language'];
-		
-		switch($language) {
+	
+
+		// set the strategy language to the detected language
+		//$strategy['language'] = $language;
+		// prepare the session variable to be set and set it 
+		//$session_var = array('strategy' => $strategy);
+		// set the session info
+		//$this->session->set_userdata($session_var, $language);
+		if ($language == 'auto')
+			$language = $this->userexp->language_detect();
+			
+		switch($language) {				
 			case 'he':
 				$this->template->set_partial('css', 'layouts/partials/css-rtl', FALSE);
+				break;
 		}
+		
+		if ($language != 'auto')
+			$this->userexp->language_set($language);
 		
 		return $language;
 	} 
+	
+	
+	
+	
 	
 	/*
 	public function Login() {

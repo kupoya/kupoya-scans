@@ -11,7 +11,6 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 //var_dump($ret);
 //var_dump($facebook['loginUrl'])
 
-
 	$website = (isset($strategy['website']) && !empty($strategy['website'])) ? $strategy['website'] : '';
 
 	$picture_height = '100';

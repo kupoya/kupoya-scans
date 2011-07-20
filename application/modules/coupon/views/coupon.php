@@ -17,6 +17,8 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 //	$picture = (!empty($strategy['picture'])) ? $strategy['picture'] : $brand['picture'];
 //	$description = (!empty($strategy['description'])) ? $strategy['description'] : $brand['description'];
+
+	$language = user_language();
 	
 	$picture_height = '100';
 	if ( (isset($strategy['picture'])) && (!empty($strategy['picture'])) )
@@ -77,7 +79,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 			<br/><br/>
 			<a href='#' onclick='javascript:form_submit("tos");'>
 				<?php
-				$image = 'get_coupon-'.$strategy['language'].'.png'; 
+				$image = 'get_coupon-'.$language.'.png'; 
 				echo image($image, '_theme_', array('alt' => $this->lang->line('Get_your_coupon') )) ?>
 			</a>
 			
