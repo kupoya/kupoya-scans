@@ -15,6 +15,15 @@ class UserExp {
 	private $theme = NULL;
 	private $_ci;
 	
+	// language mapping for non-standard user agents
+	// map some langauge code to another
+	private $language_mapping = array(
+		'iw-il' => 'he',
+		'iw' => 'he',
+		'en' => 'en-us',
+		'us' => 'en-us',
+	);
+	
 	public $language = 'en-us';
 
 	/**
@@ -90,6 +99,11 @@ class UserExp {
 				if (empty($browser_lang))
 					continue;
 					
+				// perform language mapping
+				$lang_mapped = $this->language_mapping[$browser_lang];
+				if ($lang_mapped)
+					$browser_lang = $lang_mapped;
+					
 				// see if we have this language in the vocab
 				//if (in_array($browser_lang, $languages_vocab)) {
 				// check if this language directory exists
@@ -115,6 +129,7 @@ class UserExp {
 	
 	
 
+	
 
 	/**
 	 * 
