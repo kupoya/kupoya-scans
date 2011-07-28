@@ -10,21 +10,13 @@ $lang['campaign_ended'] = 'תודה לך , אבל הקמפיין שלך נגמר
 // array of random messages to put in post actions
 $lang['message_generic_post'] = array(
 	// [brand_name] [brand_address] [strategy_name]
-	"Hi all, I've just visited %s in %s and enjoyed %s",
+	"וואו ל %s, %s יש מבצע מוגבל, ברגע קבלתי %s",
 	// [brand_name] [brand_address] [strategy_name]
-	"Hi friends, right now I'm at %s in %s enjoying %s",
+	"חברים, תקפצו ל %s, %s - הם נותנים %s לכל מי שסורק את הקוד שלהם, אני כבר קבלתי :-)",
 	// [brand_name] [brand_address] [strategy_name]
-	"Hi everyone, %s in %s is having a time limited campaign - I've just received %s",
+	"וואו! %s, %s נתנו לי %s. מגניב הא?!",
 	// [brand_name] [brand_address] [strategy_name]
-	"All, check up %s in %s for %s - I just did :-)",
-	// [brand_name] [brand_address] [strategy_name]
-	"Wow, %s in %s just gave me a %s - how cool is that ?!",
-	// [brand_name] [brand_address] [strategy_name]
-	"Join me at %s in %s for a %s - see you there!",
-	// [brand_name] [brand_address] [strategy_name]
-	"I'm at %s in %s. Getting a %s was never so easy!",
-	// [brand_name] [brand_address] [strategy_name]
-	"10x %s, I decided to visit %s and you just made my day happier with %s",
+	"תודה %s, %s. עשיתם לי את היום עם %s.",
 	);
 
 // array of random kupoya signatures to be included in post messages
