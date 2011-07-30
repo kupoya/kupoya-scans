@@ -109,6 +109,9 @@ function validate_form() {
 	
 	weddingFormObj.submit();
 	
+	// disable the submit button to prevent from users clicking on it again
+	document.getElementById('submit_button').disabled = true;
+	
 }
 
 
@@ -180,7 +183,7 @@ function validate_form() {
 								$image = 'wedding_update-'.$language.'.png';
 								echo image_path($image, '_theme_'); 
 								?>'
-							name='' value='' alt='submit' class='button' onClick="javascript:return validate_form();" />
+							id='submit_button' name='' value='' alt='submit' class='button' onClick="javascript:return validate_form();" />
 					</div>
 				</form>
 			
