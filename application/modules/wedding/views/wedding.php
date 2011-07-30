@@ -106,11 +106,11 @@ function validate_form() {
 		alert('<?= $this->lang->line('Please_provide_your_name'); ?>');
 		return false;
 	}
-	
-	weddingFormObj.submit();
-	
+
 	// disable the submit button to prevent from users clicking on it again
 	document.getElementById('submit_button').disabled = true;
+	
+	weddingFormObj.submit();
 	
 }
 
