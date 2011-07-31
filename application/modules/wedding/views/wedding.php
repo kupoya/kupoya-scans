@@ -107,10 +107,10 @@ function validate_form() {
 		return false;
 	}
 
+	weddingFormObj.submit();
+
 	// disable the submit button to prevent from users clicking on it again
 	document.getElementById('submit_button').disabled = true;
-	
-	weddingFormObj.submit();
 	
 }
 
