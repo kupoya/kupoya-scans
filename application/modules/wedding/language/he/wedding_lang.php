@@ -6,7 +6,7 @@
 // wedding/wedding.php
 $lang['Your_name'] = 'אנא הכנס/י את שמך המלא';
 $lang['Are_you_planning_to_attend'] = 'האם את/ה מתכננ/ת להגיע?';
-$lang['If_so_with_how_many_attendees'] = 'אם כן, יחד עם כמה אנשים?';
+$lang['If_so_with_how_many_attendees'] = 'אם כן, כמה יתלוו אליך?';
 $lang['You_may_leave_a_message_to_the_happy_couple'] = 'הנך מוזמנ/ת להשאיר הודעה לזוג המאושר';
 
 $lang['married_header'] = array(
