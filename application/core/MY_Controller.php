@@ -21,6 +21,7 @@ class MY_Controller extends CI_Controller {
 		$this->template->set_partial('footer', 'layouts/partials/footer', FALSE);
 		
 		$this->load->library('UserExp');
+		$this->load->helper('microsite');
 		
 		
 	}
