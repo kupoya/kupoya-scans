@@ -108,9 +108,6 @@ function validate_form() {
 	}
 
 	weddingFormObj.submit();
-
-	// disable the submit button to prevent from users clicking on it again
-	document.getElementById('submit_button').disabled = true;
 	
 }
 
@@ -143,7 +140,9 @@ function validate_form() {
 			
 				<?= strip_tags($description, $this->wedding_model->html_tags());  ?>
 				
-				<form method="post" action="<?= site_url('wedding/confirm')?>" id="ContactForm" name="wedding_form">
+				<form method="post" action="<?= site_url('wedding/confirm')?>" id="ContactForm" name="wedding_form"
+					onsubmit="document.getElementById('submit_button').disabled = 1;"
+					>
 					<div>
 						<br/><br/>
 						
