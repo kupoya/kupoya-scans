@@ -30,16 +30,16 @@
 
 	
 	// setup button images for this strategy
-	$image_yes_name = 'wedding_yes_pressed-'.$language.'.png';
+	$image_yes_name = 'wedding_yes-'.$language.'.png';
 	$image_yes_path = image_path($image_yes_name, '_theme_');
 	
-	$image_yes_alt_name = 'wedding_yes-'.$language.'.png';
+	$image_yes_alt_name = 'wedding_yes_alt-'.$language.'.png';
 	$image_yes_alt_path = image_path($image_yes_alt_name, '_theme_');
 	
-	$image_no_name = 'wedding_no_pressed-'.$language.'.png';
+	$image_no_name = 'wedding_no-'.$language.'.png';
 	$image_no_path = image_path($image_no_name, '_theme_');
 	
-	$image_no_alt_name = 'wedding_no-'.$language.'.png';
+	$image_no_alt_name = 'wedding_no_alt-'.$language.'.png';
 	$image_no_alt_path = image_path($image_no_alt_name, '_theme_');
 	
 	
@@ -119,7 +119,7 @@ function validate_form() {
 	<div id="header">
 		
 		<div id="logo">
-			<img alt="logo" src="<?= site_url(htmlentities($picture)) ?>" width="" height="100" />
+			<img alt="logo" src="<?= site_url(htmlentities($picture)) ?>" width="" height="<?= $picture_height ?>" />
 		</div>
 
 		<div id="breadcrumb">
