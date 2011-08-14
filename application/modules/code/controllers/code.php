@@ -35,6 +35,10 @@ class Code extends MY_Controller {
 	
 	protected function _validate() {
 		
+		// @TODO fix support for mobile devices
+		// we know that there's a problem with detecting the Samsung S2 device
+		return true;
+		
 		// check if the useragent is detected as a mobile device
 		if (!$this->agent->is_mobile()) {
 			// if it's not a mobile device we redirect to the code invalid page
