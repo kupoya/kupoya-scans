@@ -17,18 +17,30 @@
 	    var APPPATH_URL = "<?php echo APPPATH_URL; ?>";
 	</script>
 
+    <?php if (isset($template['partials']['pre_css'])) echo $template['partials']['pre_css']; ?>
 
 	<!-- CSS base -->
+	<?php echo css('jquery.mobile.min.css', '_theme_'); ?>
 	<?php echo $template['partials']['css']; ?>
-	<?php //css('style.css', '_theme_', array('media' => 'handheld, screen')); ?>
 
-	<!-- JavaScript base 
-	<?php //echo js('ajax.js', '_theme_')?>
-	-->
+	<?php if (isset($template['partials']['pre_javascript'])) echo $template['partials']['pre_javascript']; ?>
+	
+	<!-- JavaScript base  -->
+	<?php 
+    	echo js('jquery-1.6.2.min.js', '_theme_');
+    ?>
+    
+    <?php if (isset($template['partials']['pre_jquerymobile'])) echo $template['partials']['pre_jquerymobile']; ?>
+    
+    <?php
+        echo js('jquery.mobile.min.js', '_theme_');
+	?>
+	
+	<?php if (isset($template['partials']['post_javascript'])) echo $template['partials']['post_javascript']; ?>
+	
 </head>
 <body>
-<div class="mainwrapper">
-<div class="top-bg">
+<div data-role="page">
 
 
 		<?php echo $template['partials']['header']; ?>
@@ -38,7 +50,7 @@
 	<div id="footer">
 		<?php echo $template['partials']['footer']; ?>
 	</div>
-</div>
+
 </div>
 </body>
 </html>

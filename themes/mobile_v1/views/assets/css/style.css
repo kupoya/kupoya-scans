@@ -2,7 +2,7 @@
 	
 	* { margin: 0; padding: 0; }
 	
-	body {
+	html, body {
 		font-family:Arial, Helvetica, sans-serif; 
 		font-size:medium; 
 		color:#616161; 
@@ -10,7 +10,13 @@
 		padding:0; 
 		margin:0;
 	}
+
+	input.error {background:#FFFF00;}
 	
+	
+	
+	
+
 	#center {text-align: center;}
 	
 	#white {color:white;}
@@ -23,7 +29,8 @@
 	.nowrp {white-space:nowrap;}
 	.wrapper {width:100%; overflow:hidden;}
 
-	.top-bg {background:url(../img/body-bg.jpg) top right no-repeat;}
+	/*div.top-bg {background:url(../img/body-bg.jpg) top right no-repeat;}*/
+	.ui-page {background: url(../img/body-bg.jpg) top right no-repeat;}
 	
 /* --- END main layout --- */
 
@@ -67,7 +74,7 @@
 	#footer p a {color:#ababab;}
 	*/
 	
-	p.size_small {font-size:small; }
+	p.size_small {font-size:x-small; padding: 0px 0px 0px 0px; }
 	
 	#footer {text-align: center; color:#ababab; font-size:1.125em; line-height:1.459em; top repeat-x; }
 	#footer p { padding:1px 0 0 0;}
@@ -111,6 +118,7 @@
 .box .corner-right-top {background:url(../img/box-corener-right-top.png) right top no-repeat;}
 .box .corner-left-top {background:url(../img/box-corener-left-top.png) left top no-repeat; width:100%;}
 .box .indent {padding:20px 20px 30px 19px;}
+
 
  div.error {color:#FF0000;}
 
