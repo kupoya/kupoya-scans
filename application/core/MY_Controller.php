@@ -20,6 +20,9 @@ class MY_Controller extends CI_Controller {
 		$this->template->set_partial('header', 'layouts/partials/header', FALSE);
 		$this->template->set_partial('footer', 'layouts/partials/footer', FALSE);
 		
+		// do some pre-configuration of jquerymobile  
+		$this->template->set_partial('pre_jquerymobile', 'layouts/partials/pre_jquerymobile', FALSE);
+		
 		$this->load->library('UserExp');
 		$this->load->helper('microsite');
 		
@@ -54,16 +57,18 @@ class MY_Controller extends CI_Controller {
 	public function getLanguage() {
 		
 		$language = $this->userexp->language_detect_quick();
-		if ($language)
+		if ($language) {
+			$this->performLanguageOperations($language);	
 			return $language;
+		}			
+		
 			
 		return $this->getLanguageInitialize();
 			
 	}
 		
 	
-	protected function getLanguageInitialize($strategy = false) {
-		
+	protected function getLanguageInitialize($strategy = false) {		
 		// if no strategy was provided, attempt to get from session
 		if (!$strategy)
 			$strategy = $this->session->userdata('strategy');
@@ -76,8 +81,7 @@ class MY_Controller extends CI_Controller {
 		$language = 'en-us';
 //		$strategy = $this->session->userdata('strategy');
 		if ($strategy && isset($strategy['language']) && !empty($strategy['language'])) 
-			$language = $strategy['language'];
-	
+			$language = $strategy['language'];	
 
 		// set the strategy language to the detected language
 		//$strategy['language'] = $language;
@@ -87,18 +91,28 @@ class MY_Controller extends CI_Controller {
 		//$this->session->set_userdata($session_var, $language);
 		if ($language == 'auto')
 			$language = $this->userexp->language_detect();
-			
-		switch($language) {				
-			case 'he':
-				$this->template->set_partial('css', 'layouts/partials/css-rtl', FALSE);
-				break;
-		}
+		
+		$this->performLanguageOperations($language);
 		
 		if ($language != 'auto')
 			$this->userexp->language_set($language);
 		
 		return $language;
 	} 
+	
+	
+	protected function performLanguageOperations($language) {
+		
+		if (!$language)
+			return false;
+		
+		switch($language) {				
+			case 'he':
+				$this->template->set_partial('css', 'layouts/partials/css-rtl', FALSE);
+				break;
+		}
+		
+	}
 	
 	
 }
