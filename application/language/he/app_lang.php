@@ -30,6 +30,8 @@ $lang['message_generic_signature'] = array(
 	
 $lang['Nice to meet you!'] = "נחמד להכיר אותך!";
 $lang['Welcome!'] = "ברוך הבא!";
+$lang['Update'] = 'עדכן';
+$lang['Send'] = 'שלח';
 
 $lang['Get_a_coupon_in_two_simple_steps'] =  'קבל קופון בשני צעדים פשוטים';
 
