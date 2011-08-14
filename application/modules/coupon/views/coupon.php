@@ -84,11 +84,19 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 			</a>
 			
 			 <form name='get_coupon' action='<?php echo site_url('coupon/view') ?>' method='post'>
-			 	<input id='tos' type='checkbox' name='tos' value='1' />
-			 	<?php
-			 	$terms_of_use_link = '<a href="/info/terms_of_use">'. $this->lang->line('Terms_Of_Use') .'</a>'; 
-			 	echo sprintf($this->lang->line('User_agreement_to_share'), $terms_of_use_link)
-			 	?>
+			 <div data-role="fieldcontain">
+			 	<fieldset data-role="controlgroup">
+			
+					<input type="checkbox" name="tos" id="tos" class="custom" />
+					<label for="tos"'>
+					<?php
+					 	//$terms_of_use_link = '<a href="/info/terms_of_use">'. $this->lang->line('Terms_Of_Use') .'</a>'; 
+					 	//echo sprintf($this->lang->line('User_agreement_to_share'), $terms_of_use_link)
+					 	echo sprintf($this->lang->line('User_agreement_to_share'), $this->lang->line('Terms_Of_Use'));
+					?>
+					</label>
+			    </fieldset>
+			 </div>
 			 </form>
 		</div>
 		</div>
