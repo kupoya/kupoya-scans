@@ -81,16 +81,13 @@ function validate_form() {
 			
 				<?= strip_tags($description, html_tags());  ?>
 				
-				<form method="post" action="<?= site_url('registration/confirm')?>" id="ContactForm" name="registration_form"
-					onsubmit="document.getElementById('submit_button').disabled = 1;"
-					>
+				<form method="post" action="<?= site_url('registration/confirm')?>" name="registration_form" >
 					<div>
 						<br/><br/>
 						
 						<?= $this->lang->line('Your_name'); ?> <br />
 						<input type="text" <?php if (form_error('name')) echo 'class="error"'; ?>
 								name="name" id="name" value="<?= set_value('name', '') ?>" /><br/><br/>
-						
 						
 
 						<?= $this->lang->line('Your_contact_info'); ?> <br />
@@ -103,13 +100,12 @@ function validate_form() {
 						<textarea <?php if (form_error('message')) echo 'class="error"'; ?>
 								name="message" id="message" rows="5" cols="10"><?= set_value('message', '')?></textarea>
 						<br/><br/>
-						<input type="hidden" name="submit" id="submit" value="submit" />
-						<input type='image'
-							src='<?php
-								$image = 'wedding_update-'.$language.'.png';
-								echo image_path($image, '_theme_'); 
-								?>'
-							id='submit_button' name='' value='' alt='submit' class='button' onClick="javascript:return validate_form();" />
+
+ 					<input type='submit' name='submit' class='ui-btn-hidden'
+						 	<?php //onClick="javascript:return validate_form();" ?>
+						 	value='<?= $this->lang->line('Send'); ?>' />
+
+
 					</div>
 				</form>
 			
