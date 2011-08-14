@@ -14,6 +14,8 @@ $lang['married_header'] = array(
 	'are uniting vows',
 );
 
+$lang['Update_Status'] = 'Update Status';
+
 // validation messages
 $lang['Please_provide_your_name'] = 'Please provide your name';
 

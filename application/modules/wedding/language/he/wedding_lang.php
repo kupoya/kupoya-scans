@@ -15,6 +15,8 @@ $lang['married_header'] = array(
 	'נשבעים לעולמים',
 );
 
+$lang['Update_Status'] = 'עדכן';
+
 // validation messages
 $lang['Please_provide_your_name'] = 'אנא הכנס את שמך המלא';
 
