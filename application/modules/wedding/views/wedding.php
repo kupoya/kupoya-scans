@@ -55,7 +55,6 @@ function validate_form() {
 
 </script>
 
-<?php  ?>
 
 	<div id="header">
 		
