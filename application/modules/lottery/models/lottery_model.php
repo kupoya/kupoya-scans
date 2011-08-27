@@ -17,7 +17,7 @@ class Lottery_Model extends CI_Model {
 	/**
 	 * 
 	 * delete the ticket from the database
-	 * @param integer $coupon_id
+	 * @param integer $ticket_id
 	 */
 	function del_ticket($ticket_id) {
 		
@@ -125,7 +125,7 @@ class Lottery_Model extends CI_Model {
 			return false;
 		
 		$ticket = array(
-			'id' => $coupon_id,
+			'id' => $ticket_id,
 			'serial' => $row['ticket_serial'],
 			'user_id' => $user['id'],
 			'purchased_time' => $row['purchased_time'],
