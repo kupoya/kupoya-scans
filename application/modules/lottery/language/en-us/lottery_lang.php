@@ -15,7 +15,7 @@ $lang['this_is_your_lottery_ticket'] = 'This is your lottery ticket!';
 
 // lottery.php
 //$lang['lottery_usage_information'] = 'up until now %s users have entered the lottery, %s remaining for lottery to commence';
-$lang['users_remaining_for_lottery'] = '%s remaining for lottery to commence';
+$lang['users_remaining_for_lottery'] = '%s remaining for lottery to start';
 $lang['users_entered_the_lottery'] = '%s users joined the lottery';
 $lang['lottery_time_left'] = '%s until lottery ends';
 
