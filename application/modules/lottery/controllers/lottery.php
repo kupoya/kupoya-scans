@@ -166,7 +166,7 @@ log_message('debug', ' === which returned: '.$ret);
 		// set the lottery info in the session
 		$this->session->set_userdata('lottery', $data['lottery']);
 		
-		$this->template->build('ticket/ticket_view', $data);
+		$this->template->build('lottery/lottery_view', $data);
 		
 	}	
 	
