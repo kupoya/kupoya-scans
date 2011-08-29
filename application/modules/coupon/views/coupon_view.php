@@ -63,9 +63,9 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 		<div class="min-width">
 		<div id="center">
-			<?= htmlentities($description) ?>
+			<?= htmlentities($description, ENT_QUOTES, "UTF-8") ?>
 			<br/>
-			<a href='<?= htmlentities($website) ?>'><?= htmlentities($website) ?></a>
+			<a href='<?= htmlentities($website, ENT_QUOTES, "UTF-8") ?>'><?= htmlentities($website, ENT_QUOTES, "UTF-8") ?></a>
 			<br/>
 
 			<div class="box">

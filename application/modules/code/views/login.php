@@ -45,7 +45,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 		</div>
 
 		<div id="breadcrumb">
-			<h3 id='white'> <?= htmlentities($description) ?> </h3>
+			<h3 id='white'> <?= htmlentities($description, ENT_QUOTES, "UTF-8") ?> </h3>
 		</div>
 		
 	</div>
