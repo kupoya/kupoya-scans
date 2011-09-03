@@ -35,6 +35,7 @@ $lang['Send'] = 'שלח';
 
 $lang['Get_a_coupon_in_two_simple_steps'] =  'קבל קופון בשני צעדים פשוטים';
 
+$lang['visit_brand_website'] = 'בקר באתר של %s';
 $lang['tip'] = "טיפ";
 $lang['Privacy Policy'] = "מדיניות הפרטיות";
 $lang['Terms_Of_Use'] = "תנאי השימוש";
