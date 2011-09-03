@@ -86,9 +86,8 @@ function validate_form() {
 						
 						<?= $this->lang->line('Your_name'); ?> <br />
 						<input type="text" <?php if (form_error('name')) echo 'class="error"'; ?>
-								name="name" id="name" value="<?= set_value('name', '') ?>" /><br/><br/>
+								name="name" id="name" value="<?= set_value('name', '') ?>" />
 
-									
 						<div data-role="fieldcontain">
 							<?= $this->lang->line('Are_you_planning_to_attend'); ?><br/>
 							<select name="attending" id="attending" value="<?= set_value('attending', '0') ?>" data-role="slider">
@@ -96,15 +95,12 @@ function validate_form() {
 								<option value="1"><?= $this->lang->line('Yes');?></option>
 							</select>
 						</div>
-
-						<br/>
 						
 						<div data-role="fieldcontain">
 							<?= $this->lang->line('If_so_with_how_many_attendees'); ?><br/>
 						 	<input type="range" name="attendees" id="attendees" value="<?= set_value('attendees', '0') ?>" min="0" max="10" 
 						 			<?php if (form_error('attendees')) echo 'class="error"'; ?>  />
 						</div>
-						<br/>
 
 						<?= $this->lang->line('You_may_leave_a_message_to_the_happy_couple'); ?><br/>
 						<textarea <?php if (form_error('message')) echo 'class="error"'; ?>
