@@ -16,9 +16,12 @@ class Barcode extends MY_Controller {
 		echo 'hello';
 	}
 	
-	public function code128($text, $imgtype = 'png')
+	public function code128($text = null, $imgtype = 'png')
 	{
 			
+		if ($text === null)
+			return;
+		
 		$this->load->library('Barcode/Image_Barcode_code128');
 		
 		$obj = new Image_Barcode_code128();
