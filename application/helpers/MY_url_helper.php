@@ -37,13 +37,19 @@
  * @param	string
  * @return	string
  */
-function site_url($uri = '')
+function site_url($uri = '', $override = false)
 {
 	
 	// if we recieved a full path simply return it and do not change
-	if ( (substr($uri, 0, 7) === 'http://') || (substr($uri, 0, 8) === 'https://') )
-		return $uri;
-
-	$CI =& get_instance();
-	return $CI->config->site_url($uri);
+	if ( (substr($uri, 0, 7) === 'http://') || (substr($uri, 0, 8) === 'https://') ) {
+		$full_url = $uri;
+	} else {
+		$CI =& get_instance();
+		$full_url = $CI->config->site_url($uri);
+	}
+	
+	if ($override === true)
+		return str_ireplace('https://', 'http://', $full_url);
+	
+	return $full_url;
 }
