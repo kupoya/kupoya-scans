@@ -97,7 +97,6 @@ class Lottery_Model extends CI_Model {
 		
 		// create a random serial number 
 		$ticket_serial = uniqid().'-'.rand(100, 999);
-	
 
 		// initialize variables to their default states and call the stored procedure 
 		$this->db->query("SET @last_insert_id = 0");
@@ -126,7 +125,7 @@ class Lottery_Model extends CI_Model {
 		
 		$ticket = array(
 			'id' => $ticket_id,
-			'serial' => $row['ticket_serial'],
+			'serial' => $ticket_serial,
 			'user_id' => $user['id'],
 			'purchased_time' => $row['purchased_time'],
 			'strategy_id' => $strategy['id'],
