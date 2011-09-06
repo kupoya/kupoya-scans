@@ -29,7 +29,13 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 		list($date, $time) = explode(' ', $lottery['purchased_time']);
 	else  
 		$date = $time = '00-00';
-	
+		
+	if (!empty($brand['name']))
+		$website_text = $brand['name'];
+	else
+		$website_text = $website;
+		
+	$website_text = sprintf($website_text, $this->lang->line('visit_brand_website'));
 ?>
 
 
@@ -55,7 +61,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 		<div id="center">
 			<?= htmlentities($description, ENT_QUOTES, "UTF-8") ?>
 			<br/>
-			<a href='<?= htmlentities($website) ?>'><?= htmlentities($website) ?></a>
+			<a href='<?= htmlentities($website, ENT_QUOTES, "UTF-8") ?>'><?= htmlentities($website_text, ENT_QUOTES, "UTF-8") ?></a>
 			<br/>
 
 			<div class="box">
