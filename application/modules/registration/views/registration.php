@@ -83,23 +83,25 @@ function validate_form() {
 				
 				<form method="post" action="<?= site_url('registration/confirm')?>" name="registration_form" >
 					<div>
-						<br/><br/>
 						
-						<?= $this->lang->line('Your_name'); ?> <br />
+						<div data-role="fieldcontain">
+						<?= $this->lang->line('Your_name'); ?> <br/>
 						<input type="text" <?php if (form_error('name')) echo 'class="error"'; ?>
-								name="name" id="name" value="<?= set_value('name', '') ?>" /><br/><br/>
-						
+								name="name" id="name" value="<?= set_value('name', '') ?>" />
+						</div>
 
-						<?= $this->lang->line('Your_contact_info'); ?> <br />
+						<div data-role="fieldcontain">
+						<?= $this->lang->line('Your_contact_info'); ?> <br/>
 						<input type="text" <?php if (form_error('contact')) echo 'class="error"'; ?>
-								name="contact" id="contact" value="<?= set_value('contact', '') ?>" /><br/>
-						<p class='size_small'><?= $this->lang->line('Your_contact_info:help'); ?></p> <br/><br/>
-
+								name="contact" id="contact" value="<?= set_value('contact', '') ?>" />
+						<p class='size_small'><?= $this->lang->line('Your_contact_info:help'); ?></p>
+						</div>
 						
+						<div data-role="fieldcontain">
 						<?= $this->lang->line('Message'); ?><br/>
 						<textarea <?php if (form_error('message')) echo 'class="error"'; ?>
 								name="message" id="message" rows="5" cols="10"><?= set_value('message', '')?></textarea>
-						<br/><br/>
+						</div>
 
  					<input type='submit' name='submit' class='ui-btn-hidden'
 						 	<?php //onClick="javascript:return validate_form();" ?>
