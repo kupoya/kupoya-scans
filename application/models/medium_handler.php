@@ -62,6 +62,7 @@ log_message('debug', ' === handling wallpost ');
 				$link = (!empty($strategy['alt_website'])) ? $strategy['alt_website'] : $strategy['website'];
 				$name = (!empty($strategy['alt_name'])) ? $strategy['alt_name'] : $strategy['name'];
 				$picture = (!empty($strategy['alt_picture'])) ? $strategy['alt_picture'] : $strategy['picture'];
+				$picture = site_url($picture, true);
 				
 				// the message
 				// example: $message = "Hi all, I've just visited ".$brand['name']." in ".$brand_contact['address']." and enjoyed ".$name;
@@ -72,9 +73,10 @@ log_message('debug', ' === handling wallpost ');
 				
 			} else {
 			
-				$link = (!empty($strategy['website'])) ? $strategy['website'] : $brand['website'];
-				$name = (!empty($strategy['name'])) ? $strategy['name'] : $brand['name'];
-				$picture = (!empty($strategy['picture'])) ? $strategy['picture'] : $brand['picture'];
+				$link = (isset($strategy['website']) && !empty($strategy['website'])) ? $strategy['website'] : $brand['website'];
+				$name = (isset($strategy['name']) && !empty($strategy['name'])) ? $strategy['name'] : $brand['name'];
+				$picture = (isset($strategy['picture']) && !empty($strategy['picture'])) ? $strategy['picture'] : $brand['picture'];
+				$picture = site_url($picture, true);
 				
 				// the message
 				// example: $message = "Hi all, I've just visited ".$brand['name']." in ".$brand_contact['address']." and enjoyed ".$name;
