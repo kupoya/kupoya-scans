@@ -45,7 +45,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 	else
 		$website_text = $website;
 		
-	$website_text = sprintf($website_text, $lang['visit_brand_website']);
+	$website_text = sprintf($website_text, $this->lang->line('visit_brand_website'));
 	
 ?>
 
