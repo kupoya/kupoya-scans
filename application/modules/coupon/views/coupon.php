@@ -69,6 +69,8 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 	</div>
 
 
+
+
 	<div id="content">
 
 		<div class="min-width">
@@ -77,12 +79,10 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 				echo $this->lang->line('Step_2/2')?>: <?php echo $this->lang->line('Get_your_coupon')
 				?>
 			<br/><br/>
-			<a href='#' onclick='javascript:form_submit("tos");'>
-				<?php
-				$image = 'get_coupon-'.$language.'.png'; 
-				echo image($image, '_theme_', array('alt' => $this->lang->line('Get_your_coupon') )) ?>
-			</a>
-			
+			<button type="reset" onClick="javascript:form_submit('tos');" data-theme="e">
+			 	<?= $this->lang->line('Get_your_coupon'); ?>
+			 </button>
+
 			 <form name='get_coupon' action='<?php echo site_url('coupon/view') ?>' method='post'>
 			 <div data-role="fieldcontain">
 			 	<fieldset data-role="controlgroup">
@@ -103,4 +103,3 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 	</div>
 
-	
