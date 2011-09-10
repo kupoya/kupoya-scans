@@ -108,7 +108,7 @@ Class Registration extends MY_Controller {
 				
 				$ret = $this->registration_model->insert($data['strategy']['id'], $data);
 				// notify the strategy owner of new entry
-				/*
+				
 				if ($ret) {
 					// create the jobserver client to dispatch jobs
 					if (class_exists('GearmanClient')) {
@@ -116,10 +116,9 @@ Class Registration extends MY_Controller {
 						// initialize localhost server with default connection info
 						$gm_client->addServer();
 						// perform background job
-						$gm_client->doBackground('wedding-email-notification', serialize($data));
+						$gm_client->doBackground('registration_email_notification', serialize($data));
 					}
 				}
-				*/
 				
 				
 				$this->template->build('registration/registration_confirm', $data);

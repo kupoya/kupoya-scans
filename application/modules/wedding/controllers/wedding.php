@@ -131,7 +131,7 @@ Class Wedding extends MY_Controller {
 						// initialize localhost server with default connection info
 						$gm_client->addServer();
 						// perform background job
-						$gm_client->doBackground('wedding-email-notification', serialize($data));
+						$gm_client->doBackground('wedding_email_notification', serialize($data));
 					}
 				}
 				

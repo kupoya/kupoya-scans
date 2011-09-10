@@ -159,7 +159,7 @@ log_message('debug', ' === which returned: '.$ret);
 			// initialize localhost server with default connection info
 			$gm_client->addServer();
 			// perform background job
-			$gm_client->doBackground('email-notification', serialize($data));
+			$gm_client->doBackground('lottery_email_notification', serialize($data));
 		}
 		
 		
