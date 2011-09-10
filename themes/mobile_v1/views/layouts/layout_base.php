@@ -25,23 +25,6 @@
 
 	<?php if (isset($template['partials']['pre_javascript'])) echo $template['partials']['pre_javascript']; ?>
 	
-	<!-- JavaScript base  -->
-	<?php 
-    	echo js('jquery-1.6.2.min.js', '_theme_');
-    ?>
-    
-    <?php if (isset($template['partials']['pre_jquerymobile'])) echo $template['partials']['pre_jquerymobile']; ?>
-    
-    <?php
-        echo js('jquery.mobile.min.js', '_theme_');
-	?>
-	
-	<?php if (isset($template['partials']['post_javascript'])) echo $template['partials']['post_javascript']; ?>
-	
-	<?php
-	    echo js('microsite.js', '_theme_');
-    ?>
-	
 </head>
 <body>
 
@@ -78,6 +61,23 @@
 
 </div>
 
+	<!-- JavaScript base  -->
+	<?php 
+    	echo js('jquery-1.6.2.min.js', '_theme_');
+    ?>
+    
+    <?php if (isset($template['partials']['pre_jquerymobile'])) echo $template['partials']['pre_jquerymobile']; ?>
+    
+    <?php
+        echo js('jquery.mobile.min.js', '_theme_');
+	?>
+
+	<?php if (isset($template['partials']['post_javascript'])) echo $template['partials']['post_javascript']; ?>
+	
+	<?php
+	    echo js('microsite.js', '_theme_');
+    ?>
+	
 </body>
 </html>
 
