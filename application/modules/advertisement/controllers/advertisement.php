@@ -70,6 +70,8 @@ Class Advertisement extends MY_Controller {
 		}
 		
 		
+		$this->_firstLogin();
+				
 		// check if we should forward to a url		
 		if ( isset($advertisement_info['redirect_url']) && !empty($advertisement_info['redirect_url'])) {
 			redirect($advertisement_info['redirect_url']);

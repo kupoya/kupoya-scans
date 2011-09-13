@@ -33,7 +33,7 @@ Class Registration extends MY_Controller {
 		$this->load->helper('form');
 		
 		$this->load->helper('user_experience');
-		
+
 	}
 	
 	
@@ -64,6 +64,8 @@ Class Registration extends MY_Controller {
 		}
 
 
+		$this->_firstLogin();
+		
 		$data['registration'] = $registration_info;
 		$this->template->build('registration/registration', $data);
 		

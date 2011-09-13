@@ -33,7 +33,7 @@ Class Wedding extends MY_Controller {
 		$this->load->helper('form');
 		
 		$this->load->helper('user_experience');
-		
+
 	}
 	
 	
@@ -73,6 +73,7 @@ Class Wedding extends MY_Controller {
 			redirect('code/invalid');
 		}
 
+		$this->_firstLogin();
 
 		$data['wedding'] = $wedding_info;
 		$this->template->build('wedding/wedding', $data);

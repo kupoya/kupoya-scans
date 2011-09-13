@@ -26,12 +26,38 @@ class MY_Controller extends CI_Controller {
 		$this->load->library('UserExp');
 		$this->load->helper('microsite');
 		
+		// enable profiler?
+		//$this->output->enable_profiler(TRUE);
+		
 		
 	}
 	
 	
+	/*
+	protected function _save_request_info() {
+		
+		$this->load->library('user_agent');
+		$this->load->library('mongo_db');
+		
+		$req_info = array();
+		
+		$time = new DateTime();
+		
+		$req_info['ip_address'] = $this->session->userdata('ip_address');
+		$req_info['time'] = $time->format('Y-m-d H:i:s');
+		//$req_info['robot'] = $this->agent->robot();
+		$req_info['mobile'] = $this->agent->mobile();
+		$req_info['platform'] = $this->agent->platform();
+		$req_info['browser'] = $this->agent->browser();
+		$req_info['version'] = $this->agent->version();
+		$req_info['agent_string'] = $this->agent->agent_string();
+		
+		$this->mongo_db->insert('strategy_requests', $req_info);
+		
+	}
+	*/
 	
-	
+
 	public function _requireLogin() {
 		
 		// if we got the brand id and product id let's validate the user is logged in
@@ -45,6 +71,40 @@ class MY_Controller extends CI_Controller {
 		log_message('debug', ' === detected user logged in');
 		return true;
 
+	}
+	
+	
+	/**
+	 * 
+	 * Set session variable to declare this is a first time user loads the page.
+	 * first_login variable value is set to the strategy_id the user is actually browsing.
+	 * Also used to perform some stuff on user's first login or hitting the app 
+	 */
+	protected function _firstLogin() {
+		
+		// get strategy information from session
+		$strategy = $this->session->userdata('strategy');
+		// if exists then this is definitely a session'ed user, otherwise this is some
+		// other page...
+		if (!isset($strategy['id']))
+			return false;
+		
+		// first_login session var allows us to determine whether the user is first viewing
+		// the page or not so we can implement some logic based on whether this is a first of a user.
+		$login = $this->session->userdata('first_login');
+		if (($login === false) || ($login != $strategy['id'])) {
+			// since this item was not set before this is the first login
+			// do first login stuff: set partial for saving request information
+			$this->template->set_partial('save_request_info', 'layouts/partials/save_request_info', FALSE);
+			
+			// also, set the first_login session to the id of the strategy that is now in question.
+			// this is required so that we can then compare whether the user viewed one strategy
+			// (like /code/index/1/1) and then scanned another strategy - so he needs another "new"
+			// session created with a new first_login variable.
+			$this->session->set_userdata(array('first_login' => $strategy['id']));
+		}
+			
+		
 	}
 	
 	
@@ -68,6 +128,11 @@ class MY_Controller extends CI_Controller {
 	}
 		
 	
+	/**
+	 * 
+	 * get language for this strategy, initialize if it required
+	 * @param array $strategy the strategy array
+	 */
 	protected function getLanguageInitialize($strategy = false) {		
 		// if no strategy was provided, attempt to get from session
 		if (!$strategy)

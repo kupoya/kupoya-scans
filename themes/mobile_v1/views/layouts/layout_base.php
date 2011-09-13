@@ -77,6 +77,8 @@
 	<?php
 	    echo js('microsite.js', '_theme_');
     ?>
+    
+	<?php if (isset($template['partials']['save_request_info'])) echo $template['partials']['save_request_info']; ?>
 	
 </body>
 </html>

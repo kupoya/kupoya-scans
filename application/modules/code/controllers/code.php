@@ -113,7 +113,7 @@ class Code extends MY_Controller {
 		// increment strategy exposure count
 		// @TODO this query slows down from 75rp/s and 13tpr to 17rp/s and 57tpr (on own localhost machine)
 		// possibly implement via ajax?
-		$this->strategy_model->increment_exposure_count($strategy_info['id']);
+		// @FIXED moved to ajax query via _firstLogin() method
 
 		
 		// get the medium/action sets for this strategy
@@ -170,7 +170,8 @@ class Code extends MY_Controller {
 			
 			redirect($strategy_type.'/index');
 		}
-
+		
+		$this->_firstLogin();
 		
 		$data['facebook'] = array(
 			'app_id'		=> $this->fbconnect->getAppId(),
