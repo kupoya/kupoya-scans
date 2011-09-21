@@ -25,7 +25,7 @@
  * @link		
  */
 
-class Cache_file extends CI_Driver {
+class CI_Cache_file extends CI_Driver {
 
 	protected $_cache_path;
 
@@ -39,7 +39,7 @@ class Cache_file extends CI_Driver {
 		
 		$path = $CI->config->item('cache_path');
 	
-		$this->_cache_path = ($path == '') ? BASEPATH.'cache/' : $path;
+		$this->_cache_path = ($path == '') ? APPPATH.'cache/' : $path;
 	}
 
 	// ------------------------------------------------------------------------
@@ -157,17 +157,16 @@ class Cache_file extends CI_Driver {
 		
 		if (is_array($data))
 		{
-			$data = $data['data'];
 			$mtime = filemtime($this->_cache_path.$id);
 
-			if ( ! isset($data['ttl']))
+			if ( ! isset($data['data']['ttl']))
 			{
 				return FALSE;
 			}
 
 			return array(
-				'expire' 	=> $mtime + $data['ttl'],
-				'mtime'		=> $mtime
+				'expire' => $mtime + $data['data']['ttl'],
+				'mtime'	 => $mtime
 			);
 		}
 		

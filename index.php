@@ -28,10 +28,12 @@
  * By default development will show errors but testing and live will hide them.
  */
 
+if (defined('ENVIRONMENT'))
+{
 	switch (ENVIRONMENT)
 	{
 		case 'development':
-			error_reporting(E_ALL);
+			error_reporting(-1);
 		break;
 	
 		case 'testing':
@@ -42,6 +44,7 @@
 		default:
 			exit('The application environment is not set correctly.');
 	}
+}
 
 /*
  *---------------------------------------------------------------
@@ -70,6 +73,23 @@
  *
  */
 	$application_folder = 'application';
+		
+/*
+ *---------------------------------------------------------------
+ * VIEW FOLDER NAME
+ *---------------------------------------------------------------
+ * 
+ * If you want to move the view folder out of the application 
+ * folder set the path to the folder here. The folder can be renamed
+ * and relocated anywhere on your server. If blank, it will default 
+ * to the standard location inside your application folder.  If you 
+ * do move this, use the full server path to this folder 
+ *
+ * NO TRAILING SLASH!
+ *
+ */
+	$view_folder = '';	
+
 
 /*
  * --------------------------------------------------------------------
@@ -95,7 +115,7 @@
 	// if your controller is not in a sub-folder within the "controllers" folder
 	// $routing['directory'] = '';
 
-	// The controller class file name.  Example:  Mycontroller.php
+	// The controller class file name.  Example:  Mycontroller
 	// $routing['controller'] = '';
 
 	// The controller function you wish to be called.
@@ -160,6 +180,7 @@
 	define('SELF', pathinfo(__FILE__, PATHINFO_BASENAME));
 
 	// The PHP file extension
+	// this global constant is deprecated.
 	define('EXT', '.php');
 
 	// Path to the system folder
@@ -186,6 +207,22 @@
 
 		define('APPPATH', BASEPATH.$application_folder.'/');
 	}
+	
+	// The path to the "views" folder
+	if (is_dir($view_folder)) 
+	{
+		define ('VIEWPATH', $view_folder .'/');
+	}
+	else 
+	{
+		if ( ! is_dir(APPPATH.'views/'))
+		{
+			exit("Your view folder path does not appear to be set correctly. Please open the following file and correct this: ".SELF);
+		}
+				
+		define ('VIEWPATH', APPPATH.'views/' );	
+	}
+	
 
 /*
  * --------------------------------------------------------------------
@@ -195,7 +232,7 @@
  * And away we go...
  *
  */
-require_once BASEPATH.'core/CodeIgniter'.EXT;
+require_once BASEPATH.'core/CodeIgniter.php';
 
 /* End of file index.php */
 /* Location: ./index.php */

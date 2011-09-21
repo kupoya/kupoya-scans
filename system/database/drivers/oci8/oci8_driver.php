@@ -253,7 +253,7 @@ class CI_DB_oci8_driver extends CI_DB {
 		$sql = "begin $package.$procedure(";
 
 		$have_cursor = FALSE;
-		foreach($params as $param)
+		foreach ($params as $param)
 		{
 			$sql .= $param['name'] . ",";
 
@@ -395,7 +395,7 @@ class CI_DB_oci8_driver extends CI_DB {
 	{
 		if (is_array($str))
 		{
-			foreach($str as $key => $val)
+			foreach ($str as $key => $val)
 			{
 				$str[$key] = $this->escape_str($val, $like);
 			}
@@ -404,6 +404,7 @@ class CI_DB_oci8_driver extends CI_DB {
 		}
 
 		$str = remove_invisible_characters($str);
+		$str = str_replace("'", "''", $str);
 
 		// escape LIKE condition wildcards
 		if ($like === TRUE)
@@ -470,6 +471,7 @@ class CI_DB_oci8_driver extends CI_DB {
 		}
 
 		$row = $query->row();
+		$this->_reset_select();
 		return (int) $row->numrows;
 	}
 
@@ -655,7 +657,7 @@ class CI_DB_oci8_driver extends CI_DB {
 	 */
 	function _update($table, $values, $where, $orderby = array(), $limit = FALSE)
 	{
-		foreach($values as $key => $val)
+		foreach ($values as $key => $val)
 		{
 			$valstr[] = $key." = ".$val;
 		}
