@@ -14,7 +14,6 @@ class Code extends MY_Controller {
 		$this->load->model('medium_model');	
 		
 		//$this->load->model('user_model');
-		$this->load->library('security');
 		$this->load->helper('security');
 		$this->load->helper('url');
 		
