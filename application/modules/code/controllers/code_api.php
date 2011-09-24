@@ -47,6 +47,14 @@ class Code_api extends CI_Controller {
 	 */
 	protected function _save_request_info() {
 		
+		$strategy = $this->session->userdata('strategy');
+			
+		// still can't find strategy in session? go rest in null land
+		if (!$strategy)
+			return false;
+			
+		$strategy_id = $strategy['id']; 
+		
 		$this->load->library('user_agent');
 		$this->load->library('mongo_db');
 		
@@ -54,6 +62,7 @@ class Code_api extends CI_Controller {
 		
 		$time = new DateTime();
 		
+		$req_info['strategy_id'] = $strategy_id;
 		$req_info['ip_address'] = $this->session->userdata('ip_address');
 		$req_info['time'] = $time->format('Y-m-d H:i:s');
 		//$req_info['robot'] = $this->agent->robot();
