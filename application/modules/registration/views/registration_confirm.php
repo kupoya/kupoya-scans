@@ -36,6 +36,16 @@
 	<div id="content">
 
 		<div class="min-width">
+		
+			<!--  BLOCK_1 -->
+			<div id="block">
+				<?php
+					if (isset($blocks['block_1']))
+						echo Template_Model::html_view($blocks['block_1']);
+				?>		
+			</div>
+			<!--  /BLOCK_1 -->
+					
 			<div id="center">
 			
 				<br/>
@@ -43,6 +53,7 @@
 				<br/><br/>
 				<br/><br/>
 			</div>
+			
 		</div>
 
 	</div>

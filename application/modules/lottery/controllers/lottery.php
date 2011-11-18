@@ -31,6 +31,7 @@ log_message('debug', ' === STRATEGY ID: '.$strategy['id']);
 		
 		$this->load->model('lottery_model');
 		$this->load->model('strategy_model');
+		$this->load->library('cache');
 		
 		$this->load->helper('user_experience');
 		
@@ -61,9 +62,12 @@ log_message('debug', ' === STRATEGY ID: '.$strategy['id']);
 		// add the lottery ticket count
 		$lottery['tickets_usage_info'] = $this->lottery_model->get_lottery_usage($data['strategy']);
 		$data['lottery'] = $lottery;
-		
+
+		// deprecating this view for now as the JS is not working on mobile devices
+		//$this->template->set_partial('post_javascript', 'lottery/lotteryjs.php', $data);
+
 		$this->template->build('lottery/lottery', $data);
-		
+
 	}
 	
 	
@@ -92,6 +96,12 @@ log_message('debug', ' === STRATEGY ID: '.$strategy['id']);
 			$data['brand'] = $brand;
 			$data['strategy'] = $strategy;
 			$data['lottery'] = $lottery;
+			
+			// get blocks for this view
+			$blocks = $this->cache->model('template_model', 'get_blocks_by_strategy', 
+												array($strategy['id'], 'lottery'), $this->MODEL_CACHE_SECS);
+		
+			$data['blocks'] = $blocks;
 			
 			// set the lottery info in the session
 			$this->session->set_userdata('lottery', $data['lottery']);
@@ -162,6 +172,11 @@ log_message('debug', ' === which returned: '.$ret);
 			$gm_client->doBackground('lottery_email_notification', serialize($data));
 		}
 		
+		// get blocks for this view
+		$blocks = $this->cache->model('template_model', 'get_blocks_by_strategy', 
+												array($strategy['id'], 'lottery_view'), $this->MODEL_CACHE_SECS);
+		
+		$data['blocks'] = $blocks;
 		
 		// set the lottery info in the session
 		$this->session->set_userdata('lottery', $data['lottery']);

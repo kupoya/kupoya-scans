@@ -2,9 +2,7 @@
 
 Class Advertisement extends MY_Controller {
 	
-	const MODEL_CACHE_SECS = 3600;
-	
-	
+
 	public function __construct() {
 
 		parent::__construct();
@@ -63,7 +61,7 @@ Class Advertisement extends MY_Controller {
 
 		// get advertisement info
 		$advertisement_info = $this->cache->model('advertisement_model', 'get_by_strategy', 
-												array($data['strategy']['id']), self::MODEL_CACHE_SECS);
+												array($data['strategy']['id']), $this->MODEL_CACHE_SECS);
 		if (!$advertisement_info) {
 			// no advertisement record in the database?
 			redirect('code/invalid');
@@ -76,6 +74,12 @@ Class Advertisement extends MY_Controller {
 		if ( isset($advertisement_info['redirect_url']) && !empty($advertisement_info['redirect_url'])) {
 			redirect($advertisement_info['redirect_url']);
 		}
+		
+		// get blocks for this view
+		$blocks = $this->cache->model('template_model', 'get_blocks_by_strategy', 
+												array($data['strategy']['id'], 'coupon'), $this->MODEL_CACHE_SECS);
+		
+		$data['blocks'] = $blocks;
 		
 		$data['advertisement'] = $advertisement_info;
 		$this->template->build('advertisement/advertisement', $data);

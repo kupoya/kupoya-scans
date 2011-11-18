@@ -31,6 +31,7 @@ log_message('debug', ' === STRATEGY ID: '.$strategy['id']);
 		
 		$this->load->model('coupon_model');
 		$this->load->model('strategy_model');
+		$this->load->library('cache');
 		
 		$this->load->helper('user_experience');
 		
@@ -58,6 +59,11 @@ log_message('debug', ' === STRATEGY ID: '.$strategy['id']);
 		$data['strategy'] = $this->session->userdata('strategy');
 		//$data['fbUser'] = $this->fbconnect->user;
 		
+		// get blocks for this view
+		$blocks = $this->cache->model('template_model', 'get_blocks_by_strategy', 
+												array($data['strategy']['id'], 'coupon'), $this->MODEL_CACHE_SECS);
+		
+		$data['blocks'] = $blocks;
 		$this->template->build('coupon/coupon', $data);
 		
 	}
@@ -76,7 +82,6 @@ log_message('debug', ' === STRATEGY ID: '.$strategy['id']);
 		// validate the user is able to use the coupon
 		$this->load->model('couponvalidate_model');
 		
-		
 		// check if the user already used up a coupon, if so, deliver it to him
 		$coupon = $this->couponvalidate_model->check_coupon_used_by_user($strategy['id'], $user['id']);
 		if ($coupon) {
@@ -87,6 +92,12 @@ log_message('debug', ' === STRATEGY ID: '.$strategy['id']);
 			$data['brand'] = $brand;
 			$data['strategy'] = $strategy;
 			$data['coupon'] = $coupon;
+			
+			// get blocks for this view
+			$blocks = $this->cache->model('template_model', 'get_blocks_by_strategy', 
+												array($strategy['id'], 'coupon_view'), $this->MODEL_CACHE_SECS);
+		
+			$data['blocks'] = $blocks;
 			
 			// set the coupon's info in the session
 			$this->session->set_userdata('coupon', $data['coupon']);
@@ -160,7 +171,12 @@ log_message('debug', ' === which returned: '.$ret);
 			// perform background job
 			$gm_client->doBackground('coupon_email_notification', serialize($data));
 		}
+
+		// get blocks for this view
+		$blocks = $this->cache->model('template_model', 'get_blocks_by_strategy', 
+												array($strategy['id'], 'coupon_view'), $this->MODEL_CACHE_SECS);
 		
+		$data['blocks'] = $blocks;
 		
 		// set the coupon's info in the session
 		$this->session->set_userdata('coupon', $data['coupon']);

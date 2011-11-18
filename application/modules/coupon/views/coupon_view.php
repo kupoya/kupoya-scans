@@ -69,6 +69,16 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 	<div id="content">
 
 		<div class="min-width">
+		
+		<!--  BLOCK_1 -->
+		<div id="block">
+			<?php
+				if (isset($blocks['block_1']))
+					echo Template_Model::html_view($blocks['block_1']);
+			?>		
+		</div>
+		<!--  /BLOCK_1 -->
+		
 		<div id="center">
 			<?= htmlentities($description, ENT_QUOTES, "UTF-8") ?>
 			<br/>
@@ -107,6 +117,16 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 			</div>
 
 		</div>
+		
+		<!--  BLOCK_2 -->
+		<div id="block">
+			<?php
+				if (isset($blocks['block_2']))
+					echo Template_Model::html_view($blocks['block_2']);
+			?>		
+		</div>
+		<!--  /BLOCK_2 -->
+		
 		</div>
 
 	</div>

@@ -1,8 +1,7 @@
 <?php
 
 Class Registration extends MY_Controller {
-	
-	const MODEL_CACHE_SECS = 3600;
+
 	
 	public function __construct() {
 
@@ -57,7 +56,7 @@ Class Registration extends MY_Controller {
 
 		// get strategy info
 		$registration_info = $this->cache->model('registration_model', 'get_by_strategy', 
-												array($data['strategy']['id']), self::MODEL_CACHE_SECS);
+												array($data['strategy']['id']), $this->MODEL_CACHE_SECS);
 		if (!$registration_info) {
 			// no record in the database?
 			redirect('code/invalid');
@@ -65,6 +64,12 @@ Class Registration extends MY_Controller {
 
 
 		$this->_firstLogin();
+		
+		// get blocks for this view
+		$blocks = $this->cache->model('template_model', 'get_blocks_by_strategy', 
+												array($data['strategy']['id'], 'registration'), $this->MODEL_CACHE_SECS);
+		
+		$data['blocks'] = $blocks;
 		
 		$data['registration'] = $registration_info;
 		$this->template->build('registration/registration', $data);
@@ -78,7 +83,7 @@ Class Registration extends MY_Controller {
 		$data['strategy'] = $this->session->userdata('strategy');
 		
 		$registration_info = $this->cache->model('registration_model', 'get_by_strategy', 
-												array($data['strategy']['id']), self::MODEL_CACHE_SECS);
+												array($data['strategy']['id']), $this->MODEL_CACHE_SECS);
 		if (!$registration_info) {
 			// no record in the database?
 			redirect('code/invalid');
@@ -122,6 +127,11 @@ Class Registration extends MY_Controller {
 					}
 				}
 				
+				// get blocks for this view
+				$blocks = $this->cache->model('template_model', 'get_blocks_by_strategy', 
+														array($data['strategy']['id'], 'registration_confirm'), $this->MODEL_CACHE_SECS);
+				
+				$data['blocks'] = $blocks;
 				
 				$this->template->build('registration/registration_confirm', $data);
 			}

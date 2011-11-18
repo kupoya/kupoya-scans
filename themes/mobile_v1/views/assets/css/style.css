@@ -19,6 +19,8 @@
 
 	#center {text-align: center;}
 	
+	#block {text-align: center; direction: rtl; padding-top: 15px; padding-bottom: 15px}
+	
 	#white {color:white;}
 	#green {color:#7abf00;}
 
@@ -170,3 +172,59 @@ div.spinner div.bar12 {-webkit-transform:rotate(330deg) translate(0, -142%); -we
 }
 
 /* --- END */
+
+/* ---- START ----- */
+/* lwtCountdown css */
+#countdown_dashboard {
+	height: 66px;
+	width: 304px;
+	margin: auto;
+	/*background: #053650 url('dashboard_bg.png') 0 0 no-repeat;*/
+}
+
+#countdown_dashboard2 {
+	height: 66px;
+	width: 304px;
+	margin: auto;
+	/*background: #053650 url('dashboard_bg.png') 0 0 no-repeat;*/
+}
+
+.digits {
+	color: #333333;
+	font: bold 16pt Verdana;
+	font-weight: bold;
+}
+
+.digits span {
+	font-family:Arial, Helvetica, sans-serif; 
+	font-size:medium;
+	color:#616161;
+}
+
+.dash {
+	width: 45px;
+	height: 30px;
+	float: left;
+	margin-top: 10px;
+	margin-left: 2px;
+	padding-left: 23px;
+	position: relative;
+	color: #333333;
+}
+.dash .digit {
+	font: bold 14pt Verdana;
+	font-weight: bold;
+	float: left;
+	width: 20px;
+	text-align: center;
+	position: relative;
+}
+
+.dash_title {
+	font-size: 8pt;
+	display: block;
+	text-align: left;
+	padding-left: 3px;
+	color: #333333;
+}
+/* ---- END ----- */

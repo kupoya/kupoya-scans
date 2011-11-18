@@ -72,13 +72,32 @@ function validate_form() {
 	<div id="content">
 
 		<div class="min-width">
+		
+		<!--  BLOCK_1 -->
+		<div id="block">
+			<?php
+				if (isset($blocks['block_1']))
+					echo Template_Model::html_view($blocks['block_1']);
+			?>		
+		</div>
+		<!--  /BLOCK_1 -->
+		
 			<div id="center">
 
 
 <?php echo validation_errors(); ?>
 <br/>
 			
-				<?= strip_tags($description, $this->wedding_model->html_tags());  ?>
+				<?= Template_Model::html_view($description); ?>
+				
+				<!--  BLOCK_2 -->
+				<div id="block">
+					<?php
+						if (isset($blocks['block_2']))
+							echo Template_Model::html_view($blocks['block_2']);
+					?>		
+				</div>
+				<!--  /BLOCK_2 -->
 				
 				<form method="post" action="<?= site_url('wedding/confirm')?>" name="wedding_form">
 					<div>
@@ -119,6 +138,16 @@ function validate_form() {
 				</form>
 			
 			</div>
+			
+		<!--  BLOCK_3 -->
+		<div id="block">
+			<?php
+				if (isset($blocks['block_3']))
+					echo Template_Model::html_view($blocks['block_3']);
+			?>		
+		</div>
+		<!--  /BLOCK_3 -->
+		
 		</div>
 
 	</div>

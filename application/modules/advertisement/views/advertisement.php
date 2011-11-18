@@ -43,7 +43,7 @@
 		</div>
 
 		<div id="breadcrumb">
-			<h3 id='white'> <?= htmlentities($name) ?> <br/> <?= htmlentities($description) ?> </h3>
+			<h3 id='white'> <?= htmlentities($name, ENT_QUOTES, "UTF-8") ?> <br/> <?= htmlentities($description, ENT_QUOTES, "UTF-8") ?> </h3>
 		</div>
 		
 	</div>
@@ -52,8 +52,18 @@
 	<div id="content">
 
 		<div class="min-width">
+		
+		<!--  BLOCK_1 -->
+		<div id="block">
+			<?php
+				if (isset($blocks['block_1']))
+					echo Template_Model::html_view($blocks['block_1']);
+			?>		
+		</div>
+		<!--  /BLOCK_1 -->
+		
 			<div id="center">
-			<?= strip_tags($text, $this->advertisement_model->html_tags());?>
+			<?= Template_Model::html_view($text); ?>
 			</div>
 		</div>
 

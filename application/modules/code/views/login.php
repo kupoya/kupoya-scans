@@ -54,8 +54,19 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 	<div id="content">
 
 		<div class="min-width">
+		
+		<!--  BLOCK_1 -->
+		<div id="block">
+			<?php
+				if (isset($blocks['block_1']))
+					echo Template_Model::html_view($blocks['block_1']);
+			?>		
+		</div>
+		<!--  /BLOCK_1 -->
+		
 		<div id="center">
 			<?php
+			
 				$content = ''; 
 				
 				if (isset($strategy['type']) && $strategy['type'] === 'coupon') {
@@ -64,7 +75,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 				
 				if (isset($medium['facebook'])) {
 						$content .= $this->lang->line('Step_1/2') . ': ' . $this->lang->line('Login_to_your_facebook_account');
-						$content .= '<br/><br/>';
+						$content .= '<br/>';
 						$content .= anchor($facebook['loginUrl'], 
 											$this->lang->line('facebook_connect'), 
 											array('data-ajax' => 'false', 'data-role' => 'button', 'data-theme' => 'e')
@@ -73,6 +84,15 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 				
 				echo $content;
 			?>
+			
+		<!--  BLOCK_2 -->
+		<div id="block">
+			<?php
+				if (isset($blocks['block_2']))
+					echo Template_Model::html_view($blocks['block_2']);
+			?>		
+		</div>
+		<!--  /BLOCK_2 -->
 			
 		</div>
 		</div>

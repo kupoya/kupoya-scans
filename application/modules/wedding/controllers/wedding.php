@@ -1,9 +1,7 @@
 <?php
 
 Class Wedding extends MY_Controller {
-	
-	const MODEL_CACHE_SECS = 3600;
-	
+		
 	public function __construct() {
 
 		parent::__construct();
@@ -67,13 +65,19 @@ Class Wedding extends MY_Controller {
 
 		// get wedding info
 		$wedding_info = $this->cache->model('wedding_model', 'get_by_strategy', 
-												array($data['strategy']['id']), self::MODEL_CACHE_SECS);
+												array($data['strategy']['id']), $this->MODEL_CACHE_SECS);
 		if (!$wedding_info) {
 			// no advertisement record in the database?
 			redirect('code/invalid');
 		}
 
 		$this->_firstLogin();
+		
+		// get blocks for this view
+		$blocks = $this->cache->model('template_model', 'get_blocks_by_strategy', 
+												array($data['strategy']['id'], 'wedding'), $this->MODEL_CACHE_SECS);
+		
+		$data['blocks'] = $blocks;
 
 		$data['wedding'] = $wedding_info;
 		$this->template->build('wedding/wedding', $data);
@@ -87,7 +91,7 @@ Class Wedding extends MY_Controller {
 		$data['strategy'] = $this->session->userdata('strategy');
 		
 		$wedding_info = $this->cache->model('wedding_model', 'get_by_strategy', 
-												array($data['strategy']['id']), self::MODEL_CACHE_SECS);
+												array($data['strategy']['id']), $this->MODEL_CACHE_SECS);
 		if (!$wedding_info) {
 			// no advertisement record in the database?
 			redirect('code/invalid');
@@ -136,6 +140,11 @@ Class Wedding extends MY_Controller {
 					}
 				}
 				
+				// get blocks for this view
+				$blocks = $this->cache->model('template_model', 'get_blocks_by_strategy', 
+														array($data['strategy']['id'], 'wedding_confirm'), $this->MODEL_CACHE_SECS);
+				
+				$data['blocks'] = $blocks;
 				
 				$this->template->build('wedding/wedding_confirm', $data);
 			}

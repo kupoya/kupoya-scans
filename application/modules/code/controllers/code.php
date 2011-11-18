@@ -2,7 +2,6 @@
 
 class Code extends MY_Controller {
 	
-	const MODEL_CACHE_SECS = 3600;
 	
 	public function __construct() {
 		
@@ -83,7 +82,7 @@ class Code extends MY_Controller {
 		
 		// get campaign
 		$campaign_id = $this->cache->model('code_model', 'get_campaign_by_brand_code', 
-												array($brand_id, $code_id), self::MODEL_CACHE_SECS);
+												array($brand_id, $code_id), $this->MODEL_CACHE_SECS);
 		if (!$campaign_id) {
 			log_message('debug', ' === invalid campaign_id: '.$campaign_id);
 			redirect('code/invalid');
@@ -92,7 +91,7 @@ class Code extends MY_Controller {
 		
 		// if we got the campaign and code ok, let's pull up brand information
 		$brand_info = $this->cache->model('brand_model', 'get_brand_info', 
-												array($brand_id), self::MODEL_CACHE_SECS);
+												array($brand_id), $this->MODEL_CACHE_SECS);
 		// either brand doesnt exist or is blocked
 		if (!$brand_info) { 
 			log_message('debug', ' === invalid brand_id: '.$brand_id);
@@ -101,7 +100,7 @@ class Code extends MY_Controller {
 				
 		// get strategy
 		$strategy_info = $this->cache->model('strategy_model', 'get_strategy_by_campaign', 
-												array($campaign_id), self::MODEL_CACHE_SECS);
+												array($campaign_id), $this->MODEL_CACHE_SECS);
 		if ($strategy_info === false) {
 			log_message('debug', ' === invalid strategy_info: '.$strategy_info);
 			redirect('code/invalid');
@@ -125,7 +124,7 @@ class Code extends MY_Controller {
 
 		
 		$medium_info = $this->cache->model('medium_model', 'get_mediums_by_plan_id',
-												array($plan_id), self::MODEL_CACHE_SECS);
+												array($plan_id), $this->MODEL_CACHE_SECS);
 		if (!$medium_info) {
 			log_message('debug', ' === medium error: '.$strategy_info['type']);
 			redirect('code/invalid');
@@ -184,12 +183,17 @@ class Code extends MY_Controller {
 			'loginUrl'		=> $fbLoginUrl,
 		);
 
+
+		// get blocks for this view
+		$blocks = $this->cache->model('template_model', 'get_blocks_by_strategy', 
+												array($strategy_info['id'], 'login'), $this->MODEL_CACHE_SECS);
 		
 		// add the brand information to the view variables 
 		$data['brand'] = $brand_info;
 		$data['code'] = $code_id;
 		$data['strategy'] = $strategy_info;
 		$data['medium'] = $medium_info;
+		$data['blocks'] = $blocks;
 		
 		$this->template->build('code/login', $data);
 		

@@ -4,6 +4,7 @@
 
 class MY_Controller extends CI_Controller {
 	
+	protected $MODEL_CACHE_SECS = 3600;
 	
 	public function __construct() {
 		
@@ -24,11 +25,14 @@ class MY_Controller extends CI_Controller {
 		$this->template->set_partial('pre_jquerymobile', 'layouts/partials/pre_jquerymobile', FALSE);
 		
 		$this->load->library('UserExp');
-		$this->load->helper('microsite');
+		
+		// unrequired for now since we moved html_tags() to the template_model
+		//$this->load->helper('microsite');
+		
+		$this->load->model('template_model');
 		
 		// enable profiler?
 		//$this->output->enable_profiler(TRUE);
-		
 		
 	}
 	

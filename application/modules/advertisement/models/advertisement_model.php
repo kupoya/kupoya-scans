@@ -9,19 +9,7 @@ Class Advertisement_Model extends CI_Model {
 		parent::__construct();
 		
 	}
-	
-	
-	
-	/**
-	 * 
-	 * define allowed HTML tags to be used in HTML output string/view
-	 */
-	public function html_tags() {
 		
-		return '<p><h1><h2><h3><img><a><br>';
-		
-	}
-	
 	
 	
 	/**

@@ -73,13 +73,23 @@ function validate_form() {
 	<div id="content">
 
 		<div class="min-width">
+		
+		<!--  BLOCK_1 -->
+		<div id="block">
+			<?php
+				if (isset($blocks['block_1']))
+					echo Template_Model::html_view($blocks['block_1']);
+			?>		
+		</div>
+		<!--  /BLOCK_1 -->
+		
 			<div id="center">
 
 
 <?php echo validation_errors(); ?>
 <br/>
 			
-				<?= strip_tags($description, html_tags());  ?>
+				<?= Template_Model::html_view($description); ?>
 				
 				<form method="post" action="<?= site_url('registration/confirm')?>" name="registration_form" >
 					<div>
@@ -103,15 +113,33 @@ function validate_form() {
 								name="message" id="message" rows="5" cols="10"><?= set_value('message', '')?></textarea>
 						</div>
 
+					<!--  BLOCK_2 -->
+					<div id="block">
+						<?php
+							if (isset($blocks['block_2']))
+								echo Template_Model::html_view($blocks['block_2']);
+						?>		
+					</div>
+					<!--  /BLOCK_2 -->
+
  					<input type='submit' name='submit' class='ui-btn-hidden'
 						 	<?php //onClick="javascript:return validate_form();" ?>
 						 	value='<?= $this->lang->line('Send'); ?>' />
-
 
 					</div>
 				</form>
 			
 			</div>
+			
+		<!--  BLOCK_3 -->
+		<div id="block">
+			<?php
+				if (isset($blocks['block_3']))
+					echo Template_Model::html_view($blocks['block_3']);
+			?>		
+		</div>
+		<!--  /BLOCK_3 -->
+		
 		</div>
 
 	</div>
