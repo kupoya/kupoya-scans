@@ -77,7 +77,7 @@ Class Advertisement extends MY_Controller {
 		
 		// get blocks for this view
 		$blocks = $this->cache->model('template_model', 'get_blocks_by_strategy', 
-												array($data['strategy']['id'], 'coupon'), $this->MODEL_CACHE_SECS);
+												array($data['strategy']['id'], 'advertisement'), $this->MODEL_CACHE_SECS);
 		
 		$data['blocks'] = $blocks;
 		
