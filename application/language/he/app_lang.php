@@ -12,7 +12,7 @@ $lang['message_generic_post'] = array(
 	// [brand_name] [brand_address] [strategy_name]
 	"וואו ל%s %s יש מבצע מוגבל, הרגע קיבלתי %s",
 	// [brand_name] [brand_address] [strategy_name]
-	"חברים, תקפצו ל%s %s - הם נותנים %s לכל מי שסורק את הקוד שלהם, אני כבר קיבלתי :-)",
+	"חברים תקפצו ל%s %s - הם נותנים %s לכל מי שסורק את הקוד שלהם, אני כבר קיבלתי :-)",
 	// [brand_name] [brand_address] [strategy_name]
 	"וואו! %s %s נתנו לי %s. מגניב הא?!",
 	// [brand_name] [brand_address] [strategy_name]
