@@ -15,9 +15,11 @@ $lang['this_is_your_lottery_ticket'] = 'זהו כרטיס ההגרלה שלך';
 
 // lottery.php
 //$lang['lottery_usage_information'] = 'up until now %s users have entered the lottery, %s remaining for lottery to commence';
-$lang['users_remaining_for_lottery'] = '%s כרטיסים נשארו להתחלת ההגרלה';
+//$lang['users_remaining_for_lottery'] = '%s כרטיסים נשארו להתחלת ההגרלה';
+$lang['users_remaining_for_lottery'] = 'users remaining for lottery to start';
 $lang['users_entered_the_lottery'] = '%s משתמשים הצטרפו להגרלה';
 $lang['lottery_time_left'] = '%s עד לסגירת ההגרלה';
+$lang['lottery_expires_in'] = 'ההגרלה מסתיימת בעוד';
 
 // coupon.php
 $lang['Get_your_lottery_ticket'] = 'קבל את כרטיס ההגרלה שלך';
