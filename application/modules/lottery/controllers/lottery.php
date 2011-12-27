@@ -58,7 +58,13 @@ log_message('debug', ' === STRATEGY ID: '.$strategy['id']);
 		$data['brand'] = $this->session->userdata('brand');
 		$data['strategy'] = $this->session->userdata('strategy');
 		//$data['fbUser'] = $this->fbconnect->user;
-		
+	
+		// get blocks for this view
+		$blocks = $this->cache->model('template_model', 'get_blocks_by_strategy', 
+											array($data['strategy']['id'], 'lottery'), $this->MODEL_CACHE_SECS);
+	
+		$data['blocks'] = $blocks;
+
 		// add the lottery ticket count
 		$lottery['tickets_usage_info'] = $this->lottery_model->get_lottery_usage($data['strategy']);
 		$data['lottery'] = $lottery;
@@ -99,7 +105,7 @@ log_message('debug', ' === STRATEGY ID: '.$strategy['id']);
 			
 			// get blocks for this view
 			$blocks = $this->cache->model('template_model', 'get_blocks_by_strategy', 
-												array($strategy['id'], 'lottery'), $this->MODEL_CACHE_SECS);
+												array($strategy['id'], 'lottery_view'), $this->MODEL_CACHE_SECS);
 		
 			$data['blocks'] = $blocks;
 			
