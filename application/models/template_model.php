@@ -52,7 +52,7 @@ class Template_Model extends CI_Model {
 	 */
 	public static function html_view($text) {
 		
-		$text_allowed = strip_tags($text, '<div><span><p><h1><h2><h3><img><a><br>'); //$this->html_view_tags);
+		$text_allowed = strip_tags($text, '<div><span><p><h1><h2><h3><img><a><br><ul><li>'); //$this->html_view_tags);
 		echo $text_allowed;
 		
 	}
