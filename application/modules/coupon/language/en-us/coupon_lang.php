@@ -9,6 +9,12 @@ $lang['Your_value'] = 'Your value';
 $lang['website_for'] = 'website for';
 $lang['Coupon'] = 'Coupon';
 $lang['present_this_coupon'] = 'Present this to enjoy your coupon';
+$lang['validate_business_id'] = 'this part is filled by the business';
+$lang['validate_business_id:tooltip'] = 'for brand use only';
+$lang['enter_business_id'] = 'Business ID';
+$lang['enjoy_your_coupon'] = 'Enjoy your coupon!';
+$lang['coupon_has_been_validated'] = 'your coupon has been validated by the business';
+$lang['courtesy_of'] = 'courtesy of...';
 
 // coupon.php
 $lang['Get_your_coupon'] = 'Get your coupon';

@@ -22,6 +22,21 @@ class CouponValidate_Model extends CI_Model {
 	}
 
 
+	public function validate_coupon($coupon_id = 0)
+	{
+		if (!$coupon_id)
+			return false;
+
+		$data = array(
+			'status' => 'validated',
+		);
+
+		$this->db->where('id', $coupon_id);
+		$this->db->update('coupon', $data);
+
+		return true;
+	}
+
 	
 	
 	/**
@@ -87,7 +102,7 @@ class CouponValidate_Model extends CI_Model {
 
 		// 12 hour check
 		$sql = "
-			SELECT coupon.serial, coupon.status, coupon.user_id, coupon.purchased_time
+			SELECT coupon.id, coupon.serial, coupon.status, coupon.user_id, coupon.purchased_time
 			FROM coupon
 			JOIN coupon_settings ON coupon_settings.strategy_id = ?
 			WHERE

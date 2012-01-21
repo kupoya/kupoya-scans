@@ -261,6 +261,20 @@ class Coupon_Model extends CI_Model {
 	}
 
 
+
+	public function get_coupon_settings($strategy)
+	{
+		if (!$strategy || !isset($strategy['id']))
+			return false;
+
+		$this->db->where('strategy_id', $strategy['id']);
+		$this->db->limit(1);
+		$query = $this->db->get('coupon_settings');
+		
+		$coupon_settings = $query->row_array();
+		
+		return $coupon_settings;
+	}
 	
 	
 
@@ -312,7 +326,7 @@ class Coupon_Model extends CI_Model {
 		if (!$query) {
 			return false;
 		}
-		
+
 		$row = $query->row_array();
 		
 		$coupon_id = $row['coupon_insert_id'];

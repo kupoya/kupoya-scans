@@ -70,7 +70,77 @@ log_message('debug', ' === STRATEGY ID: '.$strategy['id']);
 	
 	
 	 
+	public function confirm() {
+
+		$ret = false;
+
+		$brand_id = $this->input->post('brand_id');
+		if (!isset($brand_id) || !$brand_id || !is_numeric($brand_id)) {
+			redirect('coupon/view');
+		}
+
+		$brand = $this->session->userdata('brand');
+
+		// error getting business id? kinda odd, redirect back to coupon view page
+		if (!isset($brand['id']) || !$brand['id']) {
+			redirect('coupon/view');
+		}
+
+		// we consider only the last 4 characters to be the brand id
+		if (substr($brand['id'], 0, 4) === substr($brand_id, 0, 4))
+		{
+			// if they are equal then the business has typed in his business id and confirmed
+			// this coupon so let's update in the database
+
+			$coupon = $this->session->userdata('coupon');
+			if (isset($coupon['id'])) {
+
+				// load coupon validation model
+				$this->load->model('couponvalidate_model');
+			
+				// validated the coupon
+				$result = $this->couponvalidate_model->validate_coupon($coupon['id']);
+
+				// update session data
+				$coupon['status'] == 'validated';
+				$this->session->set_userdata('coupon', $coupon);
+
+				$ret = true;
+			}
+		}
+
+		if ($ret === true) {
+			redirect('coupon/validated');
+		} else {
+			redirect('coupon/view');
+		}
+	}
 	
+
+	public function validated() {
+
+		$coupon = $this->session->userdata('coupon');
+
+		if ($coupon && isset($coupon['status']) && $coupon['status'] == 'validated') {
+
+			$brand = $this->session->userdata('brand');
+			$strategy = $this->session->userdata('strategy');
+			$user = $this->session->userdata('user');
+			$coupon = $this->session->userdata('coupon');
+
+			$data = array();
+
+			$data['brand'] = $brand;
+			$data['strategy'] = $strategy;
+			$data['coupon'] = $coupon;
+
+			return $this->template->build('coupon/coupon_validated', $data);
+
+		} else {
+			redirect('coupon/view');
+		}
+	}
+
 	public function view() {
 		
 		$brand = $this->session->userdata('brand');
@@ -81,6 +151,12 @@ log_message('debug', ' === STRATEGY ID: '.$strategy['id']);
 		
 		// validate the user is able to use the coupon
 		$this->load->model('couponvalidate_model');
+
+		if (isset($strategy['id']))
+			$coupon_settings = $this->coupon_model->get_coupon_settings($strategy['id']);
+		else {
+			$coupon_settings = array();
+		}
 		
 		// check if the user already used up a coupon, if so, deliver it to him
 		$coupon = $this->couponvalidate_model->check_coupon_used_by_user($strategy['id'], $user['id']);
@@ -92,15 +168,20 @@ log_message('debug', ' === STRATEGY ID: '.$strategy['id']);
 			$data['brand'] = $brand;
 			$data['strategy'] = $strategy;
 			$data['coupon'] = $coupon;
+			$data['coupon_settings'] = $coupon_settings;
+			
+			// set the coupon's info in the session
+			$this->session->set_userdata('coupon', $data['coupon']);
+
+			// check if business has validated this coupon and redirect to validated()
+			if (isset($coupon['status']) && $coupon['status'] == 'validated')
+				redirect('coupon/validated');
 			
 			// get blocks for this view
 			$blocks = $this->cache->model('template_model', 'get_blocks_by_strategy', 
 												array($strategy['id'], 'coupon_view'), $this->MODEL_CACHE_SECS);
 		
 			$data['blocks'] = $blocks;
-			
-			// set the coupon's info in the session
-			$this->session->set_userdata('coupon', $data['coupon']);
 			
 			return $this->template->build('coupon/coupon_view', $data);
 			
@@ -160,6 +241,7 @@ log_message('debug', ' === which returned: '.$ret);
 		
 		$data['ret'] = $ret;
 		$data['coupon'] = $coupon;
+		$data['coupon_settings'] = $coupon_settings;
 	
 		$data['user'] = $user;
 		

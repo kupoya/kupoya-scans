@@ -9,6 +9,13 @@ $lang['Your_value'] = 'הערך שלך';
 $lang['website_for'] = 'אתר ל';
 $lang['Coupon'] = 'קופון';
 $lang['present_this_coupon'] = 'הצג עמוד זה כדי להנות מהקופון';
+$lang['validate_business_id'] = 'לשימוש העסק בלבד';
+$lang['validate_business_id:tooltip'] = 'לשימוש העסק בלבד';
+$lang['enter_business_id'] = 'קוד עסק';
+$lang['enjoy_your_coupon'] = 'שמחים לחלק קופונים';
+$lang['coupon_has_been_validated'] = 'העסק אימת את הקופון שלך';
+$lang['courtesy_of'] = 'מתנה מאת';
+
 
 // coupon.php
 $lang['Get_your_coupon'] = 'קבל את הקופון שלך';

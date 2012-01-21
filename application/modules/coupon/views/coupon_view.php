@@ -1,5 +1,7 @@
 <?php
 if ( ! defined('BASEPATH')) exit('No direct script access allowed'); 
+// var_dump($coupon);
+// var_dump($coupon_settings);
 //var_dump($brand);
 //var_dump($strategy);
 //var_dump($agent);
@@ -127,6 +129,31 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 		</div>
 		<!--  /BLOCK_2 -->
 		
+
+		<?php
+			if (isset($coupon_settings['validate']) && $coupon_settings['validate'] == 1):
+		?>
+		<br/><br/>
+		<div id="center">
+			<div data-role="collapsible" data-collapsed="true">
+				<h3><?= $this->lang->line('enter_business_id'); ?> - <?= $this->lang->line('validate_business_id:tooltip'); ?></h3>
+				<p>
+				<form method="post" action="<?= site_url('coupon/confirm')?>" name="coupon_confirm">
+					<div class="ui-grid-a">
+					<div class="ui-block-a">
+					<?= $this->lang->line('enter_business_id'); ?> (<?= $this->lang->line('validate_business_id'); ?>)
+					<input type="text" name="brand_id" id="brand_id" value="" />
+					 </div>
+					 <div class="ui-block-b">
+					 <input type='submit' name='submit' class='ui-btn-hidden'
+					 	value='<?= $this->lang->line('Update'); ?>' />
+					 </div>
+					 </div>
+				</form>
+				</p>
+			</div>
+			<?php endif; ?>
+			</div>
 		</div>
 
 	</div>
