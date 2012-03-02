@@ -52,11 +52,8 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 ?>
 
 
-
-
-
-	<div id="header">
-		
+ 	<div id="header">
+		 
 		<div id="logo">
 			<img src='<?=site_url(htmlentities($picture))?>' alt='logo' width='' height='<?=$picture_height?>' />
 		</div>
@@ -69,7 +66,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 
 	<div id="content">
-
+ 
 		<div class="min-width">
 		
 		<!--  BLOCK_1 -->
@@ -86,7 +83,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 			<br/>
 			<a href='<?= htmlentities($website, ENT_QUOTES, "UTF-8") ?>'><?= htmlentities($website_text, ENT_QUOTES, "UTF-8") ?></a>
 			<br/>
-
+			
 			<div class="box">
 				<div class="tail-top">
 				<div class="tail-bottom">
@@ -131,7 +128,12 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 		
 
 		<?php
-			if (isset($coupon_settings['validate']) && $coupon_settings['validate'] == 1):
+			$validate = variable_get($strategy['id'], 'microdeal_validate');
+			// if (isset($coupon_settings['validate']) && $coupon_settings['validate'] == 1):
+			if (isset($validate) && $validate == '1'):
+
+				// if validate is enabled, check if we need to do lite validation or not
+				$validate_use_code = (bool) variable_get($strategy['id'], 'microdeal_validate_use_code');
 		?>
 		<br/><br/>
 		<div id="center">
@@ -140,14 +142,17 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 				<p>
 				<form method="post" action="<?= site_url('coupon/confirm')?>" name="coupon_confirm">
 					<div class="ui-grid-a">
-					<div class="ui-block-a">
-					<?= $this->lang->line('enter_business_id'); ?> (<?= $this->lang->line('validate_business_id'); ?>)
-					<input type="text" name="brand_id" id="brand_id" value="" />
-					 </div>
-					 <div class="ui-block-b">
-					 <input type='submit' name='submit' class='ui-btn-hidden'
-					 	value='<?= $this->lang->line('Update'); ?>' />
-					 </div>
+						<?php if ($validate_use_code): ?>
+							<div class="ui-block-a">
+							<?= $this->lang->line('enter_business_id'); ?> (<?= $this->lang->line('validate_business_id'); ?>)
+							<input type="text" name="brand_id" id="brand_id" value="" />
+							 </div>
+						<?php endif; ?>
+
+						 <div class="ui-block-b">
+						 <input type='submit' name='submit' class='ui-btn-hidden'
+						 	value='<?= $this->lang->line('Update'); ?>' />
+						 </div>
 					 </div>
 				</form>
 				</p>

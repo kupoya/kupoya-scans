@@ -55,6 +55,12 @@ log_message('debug', ' === STRATEGY ID: '.$strategy['id']);
 	
 	public function index() {
 
+		// due to CI involvement - we're completely bypassing the Get coupon page
+		// and we're redirecting straight to getting a coupon.
+
+		redirect('coupon/view');
+
+		/* the following is deprecated due to above CI comment
 		$data['brand'] = $this->session->userdata('brand');
 		$data['strategy'] = $this->session->userdata('strategy');
 		//$data['fbUser'] = $this->fbconnect->user;
@@ -65,33 +71,64 @@ log_message('debug', ' === STRATEGY ID: '.$strategy['id']);
 		
 		$data['blocks'] = $blocks;
 		$this->template->build('coupon/coupon', $data);
+		*/
 		
 	}
 	
 	
-	 
+	/**
+	 * perform coupon validation by business
+	 */
 	public function confirm() {
 
 		$ret = false;
 
-		$brand_id = $this->input->post('brand_id');
-		if (!isset($brand_id) || !$brand_id || !is_numeric($brand_id)) {
+		$strategy = $this->session->userdata('strategy');
+		// this is kinda bad if the strategy id is not set
+		if (!isset($strategy['id']))
 			redirect('coupon/view');
+
+		// check which kind of validation should we perform (is it ok we simply arrived here or
+		// do we need to check the business id entered)
+		
+		$validate_coupon = false;
+
+		$validate_use_code = (bool) variable_get($strategy['id'], 'microdeal_validate_use_code');
+		// we dont need to validate the entered business id code, let's approve the coupon
+		// and get this over with!
+		if (!$validate_use_code) {
+
+			$validate_coupon = true;
+
+		} else {
+			// we need to validate the business id code
+
+			$brand_id = $this->input->post('brand_id');
+			if (!isset($brand_id) || !$brand_id || !is_numeric($brand_id)) {
+				redirect('coupon/view');
+			}
+
+			$brand = $this->session->userdata('brand');
+
+			// error getting business id? kinda odd, redirect back to coupon view page
+			if (!isset($brand['id']) || !$brand['id']) {
+				redirect('coupon/view');
+			}
+
+			// we consider only the last 4 characters to be the brand id
+			if (substr($brand['id'], 0, 4) === substr($brand_id, 0, 4))
+			{
+				// if they are equal then the business has typed in his business id and confirmed
+				// this coupon so let's update in the database
+				$validate_coupon = true;
+
+			}
 		}
+		
 
-		$brand = $this->session->userdata('brand');
-
-		// error getting business id? kinda odd, redirect back to coupon view page
-		if (!isset($brand['id']) || !$brand['id']) {
-			redirect('coupon/view');
-		}
-
-		// we consider only the last 4 characters to be the brand id
-		if (substr($brand['id'], 0, 4) === substr($brand_id, 0, 4))
-		{
-			// if they are equal then the business has typed in his business id and confirmed
-			// this coupon so let's update in the database
-
+		// so should we validate the coupon?		
+		if ($validate_coupon == true) {
+		
 			$coupon = $this->session->userdata('coupon');
 			if (isset($coupon['id'])) {
 
@@ -109,11 +146,13 @@ log_message('debug', ' === STRATEGY ID: '.$strategy['id']);
 			}
 		}
 
+
 		if ($ret === true) {
 			redirect('coupon/validated');
 		} else {
 			redirect('coupon/view');
 		}
+
 	}
 	
 
@@ -142,7 +181,7 @@ log_message('debug', ' === STRATEGY ID: '.$strategy['id']);
 	}
 
 	public function view() {
-		
+
 		$brand = $this->session->userdata('brand');
 		$strategy = $this->session->userdata('strategy');
 		$user = $this->session->userdata('user');
