@@ -10,9 +10,14 @@ class MY_Controller extends CI_Controller {
 		
 		parent::__construct();
 
+		// get theme from session
+		$theme = $this->session->userdata('theme');
+		if (!$theme)
+			$theme = 'mobile_v1';
+
 		// set theme 
-		$this->asset->set_theme('mobile_v1');
-		$this->template->set_theme('mobile_v1');
+		$this->asset->set_theme($theme);
+		$this->template->set_theme($theme);
 
 		// template settings
 		$this->template->enable_parser(FALSE); // default true
@@ -20,6 +25,7 @@ class MY_Controller extends CI_Controller {
 		$this->template->set_partial('css', 'layouts/partials/css', FALSE);
 		$this->template->set_partial('header', 'layouts/partials/header', FALSE);
 		$this->template->set_partial('footer', 'layouts/partials/footer', FALSE);
+		$this->template->set_partial('theme', 'layouts/partials/theme', FALSe);
 		
 		// do some pre-configuration of jquerymobile  
 		$this->template->set_partial('pre_jquerymobile', 'layouts/partials/pre_jquerymobile', FALSE);
