@@ -73,13 +73,44 @@ class Code extends MY_Controller {
 		
 		if (!$brand_id || !$code_id )
 			redirect('code/invalid');
-		
+
 		$brand_id = xss_clean($brand_id);
 		$code_id = xss_clean($code_id);
 		
 		// initialize template data variable
 		$data = array();
-		
+
+		// set brand template
+		// @TODO this one is a dirty fix for CI (commerce international) to support branded mobile templates
+		// for each brand. (this sets an entire new theme, not just customizable elements)
+		/*
+		if ($brand_id == 1)
+		{
+			// specify their theme
+			$theme = 'mobile_brand_1';
+
+			// set theme settings for assets and template
+			$this->asset->set_theme($theme);
+			$this->template->set_theme($theme);
+
+			// also set this in the session for the rest of the session
+			$this->session->set_userdata(array('theme' => $theme));
+		}
+		else
+		{
+			// specify their theme
+			$theme = 'mobile_v1';
+
+			// set theme settings for assets and template
+			$this->asset->set_theme($theme);
+			$this->template->set_theme($theme);
+
+			// also set this in the session for the rest of the session
+			$this->session->set_userdata(array('theme' => $theme));
+		}
+		*/
+
+
 		// get campaign
 		$campaign_id = $this->cache->model('code_model', 'get_campaign_by_brand_code', 
 												array($brand_id, $code_id), $this->MODEL_CACHE_SECS);
