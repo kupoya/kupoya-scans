@@ -59,7 +59,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 		</div>
 
 		<div id="breadcrumb_happy">
-			<h3 id='white'> <?= $this->lang->line('Congratulations')?> </h3>
+			<h3 class='theme_title_text_color'> <?= $this->lang->line('Congratulations')?> </h3>
 		</div>
 		
 	</div>
@@ -83,38 +83,30 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 			<br/>
 			<a href='<?= htmlentities($website, ENT_QUOTES, "UTF-8") ?>'><?= htmlentities($website_text, ENT_QUOTES, "UTF-8") ?></a>
 			<br/>
-			
-			<div class="box">
-				<div class="tail-top">
-				<div class="tail-bottom">
-				<div class="corner-right-bottom">
-				<div class="corner-left-bottom">
-				<div class="corner-right-top">
-				<div class="corner-left-top">
-					<div class="indent">
-						<div id="center">
-						<h2 id='white'> <?= $this->lang->line('present_this_coupon')?> </h2>
-						<h3><b></b> <?= $coupon['serial'] ?> </b></h3>
-							<div>
-							<img src='<?= base_url()?>barcode/code128/<?= $coupon['serial'] ?>' width="250" height="71"  />
-								<p style='text-align: left; float: left;'> 
-									<?= $date ?>
-								</p>
-								<p style='text-align: right; float: right;'>
-									<?= $time ?>
-								</p>
-								<br/><br/>
+
+
+			<br/>
+			<div data-inline="true" class="highlightBar">
+				<div class="coupon">
+					<ul class="ui-grid-b times">
+						<div class="indent">
+							<div id="center">
+							<h2> <?= $this->lang->line('present_this_coupon')?> </h2>
+							<h3><b></b> <?= $coupon['serial'] ?> </b></h3>
+								<div>
+								<img src='<?= base_url()?>barcode/code128/<?= $coupon['serial'] ?>' width="250" height="71"  />
+									<p style='text-align: left; float: left;'> 
+										<?= $date ?>
+									</p>
+									<p style='text-align: right; float: right;'>
+										<?= $time ?>
+									</p>
+									<br/><br/>
+								</div>
 							</div>
 						</div>
-					</div>
-				</div>
-				</div>
-				</div>
-				</div>
-				</div>
 				</div>
 			</div>
-
 		</div>
 		
 		<!--  BLOCK_2 -->
