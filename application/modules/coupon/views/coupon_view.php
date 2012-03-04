@@ -42,12 +42,16 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 	else  
 		$date = $time = '00-00';
 	
-	if (!empty($brand['name']))
-		$website_text = $brand['name'];
-	else
-		$website_text = $website;
-		
-	$website_text = sprintf($website_text, $this->lang->line('visit_brand_website'));
+	$website_text = '';
+	if ($website && !empty($website))
+	{
+		if (!empty($brand['name']))
+			$website_text = $brand['name'];
+		else
+			$website_text = $website;
+			
+		$website_text = sprintf($website_text, $this->lang->line('visit_brand_website'));
+	}
 	
 ?>
 
