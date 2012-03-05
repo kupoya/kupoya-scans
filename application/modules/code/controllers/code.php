@@ -24,9 +24,6 @@ class Code extends MY_Controller {
 			
 		$this->load->helper('array');
 		$this->load->helper('user_experience');
-
-		$language = $this->getLanguage();
-		$this->lang->load('coupon/coupon', $language);
 		
 	}
 	
@@ -178,6 +175,7 @@ class Code extends MY_Controller {
 		$language = $this->getLanguageInitialize($strategy_info);
 		$this->lang->load('code/code', $language);
 		$this->lang->load('app', $language);
+		$this->lang->load('coupon/coupon', $language);
 		
 		// save all data we got so far to the session
 		$this->session->set_userdata(array(
