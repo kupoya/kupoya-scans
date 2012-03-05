@@ -55,6 +55,16 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 	
 ?>
 
+<script type="text/javascript">
+	function form_submit()
+	{
+		var ret = confirm('Are you sure you want to validate the coupon?');
+		if (ret) {
+			document.coupon_confirm.submit();
+		}
+		return false;
+	}
+</script>
 
  	<div id="header">
 		 
@@ -133,8 +143,6 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 		?>
 		<br/><br/>
 		<div id="center">
-			<div data-role="collapsible" data-collapsed="true" data-theme="e">
-				<h3><?= $this->lang->line('validation'); ?> - <?= $this->lang->line('validate_business_id:tooltip'); ?></h3>
 				<form method="post" action="<?= site_url('coupon/confirm')?>" name="coupon_confirm">
 					<div class="ui-body ui-body-a">
 					<?= $this->lang->line('validation'); ?> <?= $this->lang->line('validate_business_id:tooltip'); ?>
@@ -145,11 +153,13 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 							<input type="text" name="brand_id" id="brand_id" value="" />
 						<?php endif; ?>
 
-						 <input type='submit' data-theme="e" name='submit' class='ui-btn-hidden'
-						 	value='<?= $this->lang->line('validate'); ?>' />
+						 <button type="submit" onClick="javascript:return form_submit('coupon_confirm');" data-theme="e">
+			 				<?= $this->lang->line('validate'); ?>
+						 </button>
+
+
 					 </div>
 				</form>
-			</div>
 			<?php endif; ?>
 		</div>
 
