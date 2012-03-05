@@ -52,7 +52,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 		</div> -->
 
 		<div id="breadcrumb">
-			<h3 id='white'> <?= $this->lang->line('enjoy_your_coupon')?> </h3>
+			<h3 class='theme_title_text_color'> <?= $this->lang->line('enjoy_your_coupon')?> </h3>
 		</div>
 		
 	</div>
@@ -69,7 +69,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 					<ul class="ui-grid-b times">
 						<div class="indent">
 							<div id="center">
-							<h2> <?= $this->lang->line('coupon_has_been_validated'). ', ' .
+							<h2> <?= $this->lang->line('coupon_has_been_validated'). '<br/><br/>' .
 												$this->lang->line('courtesy_of')?>
 							</h2>
 							<div id="logo">
