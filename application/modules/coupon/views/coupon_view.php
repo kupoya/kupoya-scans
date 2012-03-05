@@ -95,7 +95,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 					<ul class="ui-grid-b times">
 						<div class="indent">
 							<div id="center">
-							<h2> <?= $this->lang->line('present_this_coupon')?> </h2>
+							<h2> <?= $this->lang->line('this_is_your_coupon')?> </h2>
 							<h3><b></b> <?= $coupon['serial'] ?> </b></h3>
 								<div>
 								<img src='<?= base_url()?>barcode/code128/<?= $coupon['serial'] ?>' width="250" height="71"  />
@@ -133,25 +133,22 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 		?>
 		<br/><br/>
 		<div id="center">
-			<div data-role="collapsible" data-collapsed="true">
-				<h3><?= $this->lang->line('enter_business_id'); ?> - <?= $this->lang->line('validate_business_id:tooltip'); ?></h3>
-				<p>
+			<div data-role="collapsible" data-collapsed="true" data-theme="e">
+				<h3><?= $this->lang->line('validation'); ?> - <?= $this->lang->line('validate_business_id:tooltip'); ?></h3>
 				<form method="post" action="<?= site_url('coupon/confirm')?>" name="coupon_confirm">
-					<div class="ui-grid-a">
+					<div class="ui-body ui-body-a">
+					<?= $this->lang->line('validation'); ?> <?= $this->lang->line('validate_business_id:tooltip'); ?>
 						<?php if ($validate_use_code): ?>
-							<div class="ui-block-a">
+						<strong>
 							<?= $this->lang->line('enter_business_id'); ?> (<?= $this->lang->line('validate_business_id'); ?>)
+						</strong>
 							<input type="text" name="brand_id" id="brand_id" value="" />
-							 </div>
 						<?php endif; ?>
 
-						 <div class="ui-block-b">
-						 <input type='submit' name='submit' class='ui-btn-hidden'
-						 	value='<?= $this->lang->line('Update'); ?>' />
-						 </div>
+						 <input type='submit' data-theme="e" name='submit' class='ui-btn-hidden'
+						 	value='<?= $this->lang->line('validate'); ?>' />
 					 </div>
 				</form>
-				</p>
 			</div>
 			<?php endif; ?>
 			</div>

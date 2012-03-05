@@ -4,19 +4,23 @@
  */
 
 // coupon_view.php
-$lang['Congratulations'] = 'Congratulations!';
+$lang['Congratulations'] = 'CONGRATS!';
 $lang['Your_value'] = 'Your value';
 $lang['website_for'] = 'website for';
 $lang['Coupon'] = 'Coupon';
+$lang['this_is_your_coupon'] = 'YOUR COUPON';
 $lang['present_this_coupon'] = 'Present this to enjoy your coupon';
 $lang['validate_business_id'] = 'this part is filled by the business';
-$lang['validate_business_id:tooltip'] = 'for brand use only';
+$lang['validation'] = 'Validation';
+$lang['validate'] = 'VALIDATE!';
+$lang['validate_business_id:tooltip'] = '- Business Area';
 $lang['enter_business_id'] = 'Business ID';
 $lang['enjoy_your_coupon'] = 'Enjoy your coupon!';
 $lang['coupon_has_been_validated'] = 'your coupon has been validated by the business';
 $lang['courtesy_of'] = 'courtesy of...';
 
 // coupon.php
+$lang['get_the_deal'] = 'and get this deal!';
 $lang['Get_your_coupon'] = 'Get your coupon';
 $lang['Step_2/2'] = 'Step 2/2';
 $lang['Get_a_coupon_in_two_simple_steps'] =  'Get a coupon in two simple steps';

@@ -45,7 +45,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 		</div>
 
 		<div id="breadcrumb">
-			<h3 id='white'> <?= htmlentities($description, ENT_QUOTES, "UTF-8") ?> </h3>
+			<h3 class='theme_title_text_color'> <?= htmlentities($description, ENT_QUOTES, "UTF-8") ?> </h3>
 		</div>
 		
 	</div>
@@ -70,14 +70,14 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 				$content = ''; 
 				
 				if (isset($strategy['type']) && $strategy['type'] === 'coupon') {
-					$content .= $this->lang->line('Get_a_coupon_in_two_simple_steps') . '<br/>';
+					$content .= $this->lang->line('share_with_friends') . '<br/>';
 				}
 				
 				if (isset($medium['facebook'])) {
-						$content .= $this->lang->line('Step_1/2') . ': ' . $this->lang->line('Login_to_your_facebook_account');
+						$content .= $this->lang->line('get_the_deal');
 						$content .= '<br/>';
 						$content .= anchor($facebook['loginUrl'], 
-											$this->lang->line('facebook_connect'), 
+											$this->lang->line('share_and_get'), 
 											array('data-ajax' => 'false', 'data-role' => 'button', 'data-theme' => 'e')
 										); 
 				}
