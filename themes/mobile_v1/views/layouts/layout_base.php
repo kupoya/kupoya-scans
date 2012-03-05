@@ -17,6 +17,7 @@
 	    var APPPATH_URL = "<?php echo APPPATH_URL; ?>";
 	</script>
 
+
     <?php if (isset($template['partials']['pre_css'])) echo $template['partials']['pre_css']; ?>
 
 	<!-- CSS base -->
@@ -25,6 +26,9 @@
 
 	<?php if (isset($template['partials']['pre_javascript'])) echo $template['partials']['pre_javascript']; ?>
 	
+	<!-- Customized theme layout by each brand -->
+	<?php echo $template['partials']['theme']; ?>
+
 </head>
 <body>
 
@@ -51,11 +55,15 @@
 </div>
 
 <div data-role="page" id="page" style="display: none">
+	<div data-role='header'>
 		<?php echo $template['partials']['header']; ?>
+	</div>
 
+ 	<div data-role="content" >
 		<?php echo $template['body']; ?>
+	</div>
 
-	<div id="footer">
+	<div data-role='footer' id="footer">
 		<?php echo $template['partials']['footer']; ?>
 	</div>
 

@@ -6,16 +6,13 @@
 		font-family:Arial, Helvetica, sans-serif; 
 		font-size:medium; 
 		color:#616161; 
-		background:#fff url(../img/body-tail.gif) top repeat-x; 
+		/*background:#fff url(../img/body-tail.gif) top repeat-x; */
 		padding:0; 
 		margin:0;
+		height: 100%;
 	}
 	
 	input.error {background:#FFFF00;}
-	
-	
-	
-	
 	
 	#center {text-align: center; direction: rtl;}
 	
@@ -32,7 +29,23 @@
 	.wrapper {width:100%; overflow:hidden;}
 
 	/*div.top-bg {background:url(../img/body-bg.jpg) top right no-repeat;}*/
-	.ui-page {background: url(../img/body-bg.jpg) top right no-repeat;}
+	/*.ui-page {background: url(../img/body-bg.jpg) top right no-repeat;}*/
+	.ui-page {
+		/* mobile and desktop targeted ui */
+		background: transparent url(../img/body-bg.jpg) no-repeat center top;
+		-moz-background-size:cover;
+    	background-size:cover;
+    	position: relative;
+    	/* mobile ui, image stretch
+		background: transparent url(../img/body-bg.jpg);
+		background-attachment:fixed;
+		background-repeat: no-repeat;
+		background-size: 100%;*/
+	}
+
+	.ui-content {
+		padding: 2px;
+	}
 	
 /* --- END main layout --- */
 
@@ -94,7 +107,15 @@
 	.margin2 {margin-top:40px;}
 	
 	.link {display:inline-block; margin-top:20px;}
-	h2 {margin-bottom:20px;}
+	h1 {
+		color: #000000;
+	}
+	h2 {
+		margin-bottom:20px;
+	}
+	h3.theme_title_text_color {
+		color: #ffffff;	
+	}
 	
 	#ContactForm input.numbers_1k {width:40px;}
 	#ContactForm input.button {border:0px;background:none;}
@@ -227,3 +248,22 @@ div.spinner div.bar12 {-webkit-transform:rotate(330deg) translate(0, -142%); -we
 	color: #333333;
 }
 /* ---- END ----- */
+
+/* JQM mobile */
+
+/* provides a background box */
+.highlightBar{background:#fff;border:solid 1px #fff;border-radius:6px;-webkit-border-radius:6px;-moz-border-radius:6px;padding:1px;margin:auto auto 5px auto;}
+.highlightBar h1{font-size:22px;margin:.1em;text-shadow:none;color:#4d523f;font-weight:bold;padding-left:10px;}
+.highlightBar .content{
+	background:#99ccff;overflow:hidden;border-radius:5px;-webkit-border-radius:5px;-moz-border-radius:5px;padding:1px;
+}
+.highlightBar .coupon{
+	background:#fff000;overflow:hidden;border-radius:5px;-webkit-border-radius:5px;-moz-border-radius:5px;padding:1px;
+}
+.highlightBar.red .content{background:none;background-color:#900;}
+.highlightBar .content .buttonRight h1{float:left;}
+.highlightBar .content .ui-btn-right{float:right;}
+.highlightBar .ui-btn-inner{padding:0 10px 1px;}
+.highlightBar .ui-btn{margin:1px 1px;}
+.highlightBar .ui-btn-text{font-weight:bold;font-size:13px;}
+/* end */
