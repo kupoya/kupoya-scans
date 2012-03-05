@@ -24,6 +24,9 @@ class Code extends MY_Controller {
 			
 		$this->load->helper('array');
 		$this->load->helper('user_experience');
+
+		$language = $this->getLanguage();
+		$this->lang->load('coupon/coupon', $language);
 		
 	}
 	
