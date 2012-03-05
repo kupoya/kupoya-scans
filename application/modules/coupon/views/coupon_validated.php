@@ -63,29 +63,21 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 		<div class="min-width">
 				
 		<div id="center">
-			<div class="box">
-				<div class="tail-top">
-				<div class="tail-bottom">
-				<div class="corner-right-bottom">
-				<div class="corner-left-bottom">
-				<div class="corner-right-top">
-				<div class="corner-left-top">
-					<div class="indent">
-						<div id="center">
-						<h2 id='white'> <?= $this->lang->line('coupon_has_been_validated'). ', ' .
-											$this->lang->line('courtesy_of')?>
-						</h2>
-						<div id="logo">
-							<img src='<?=site_url(htmlentities($picture))?>' alt='logo' width='' height='<?=$picture_height?>' />
+
+			<div data-inline="true" class="highlightBar">
+				<div class="coupon">
+					<ul class="ui-grid-b times">
+						<div class="indent">
+							<div id="center">
+							<h2> <?= $this->lang->line('coupon_has_been_validated'). ', ' .
+												$this->lang->line('courtesy_of')?>
+							</h2>
+							<div id="logo">
+								<img src='<?=site_url(htmlentities($picture))?>' alt='logo' width='' height='<?=$picture_height?>' />
+							</div>
+							<h2 id='white'> <?php isset($brand['name']) ? $brand['name'] : '' ?></h2>
+							</div>
 						</div>
-						<h2 id='white'> <?php isset($brand['name']) ? $brand['name'] : '' ?></h2>
-						</div>
-					</div>
-				</div>
-				</div>
-				</div>
-				</div>
-				</div>
 				</div>
 			</div>
 

@@ -15,8 +15,8 @@ $lang['validation'] = 'Validation';
 $lang['validate'] = 'VALIDATE!';
 $lang['validate_business_id:tooltip'] = '- Business Area';
 $lang['enter_business_id'] = 'Business ID';
-$lang['enjoy_your_coupon'] = 'Enjoy your coupon!';
-$lang['coupon_has_been_validated'] = 'your coupon has been validated by the business';
+$lang['enjoy_your_coupon'] = 'ENJOY!';
+$lang['coupon_has_been_validated'] = 'your coupon has been validated';
 $lang['courtesy_of'] = 'courtesy of...';
 
 // coupon.php

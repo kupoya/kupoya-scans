@@ -15,7 +15,7 @@ $lang['validate'] = 'בצע';
 $lang['validate_business_id'] = 'לשימוש העסק בלבד';
 $lang['validate_business_id:tooltip'] = 'לשימוש העסק';
 $lang['enter_business_id'] = 'קוד עסק';
-$lang['enjoy_your_coupon'] = 'שמחים לחלק קופונים';
+$lang['enjoy_your_coupon'] = 'תהנו!';
 $lang['coupon_has_been_validated'] = 'העסק אימת את הקופון שלך';
 $lang['courtesy_of'] = 'מתנה מאת';
 
