@@ -73,7 +73,7 @@ log_message('debug', ' === handling wallpost ');
 				
 			} else {
 			
-				$link = (isset($strategy['website']) && !empty($strategy['website'])) ? $strategy['website'] : $brand['website'];
+				$link = (isset($strategy['website']) && !empty($strategy['website'])) ? $strategy['website'] : '';
 				$name = (isset($strategy['name']) && !empty($strategy['name'])) ? $strategy['name'] : $brand['name'];
 				$picture = (isset($strategy['picture']) && !empty($strategy['picture'])) ? $strategy['picture'] : $brand['picture'];
 				$picture = site_url($picture, true);
