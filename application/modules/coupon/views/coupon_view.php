@@ -151,7 +151,6 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 				</form>
 			</div>
 			<?php endif; ?>
-			</div>
 		</div>
 
 	</div>
