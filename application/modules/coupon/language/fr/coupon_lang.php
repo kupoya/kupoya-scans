@@ -20,7 +20,7 @@ $lang['coupon_has_been_validated'] = 'Votre coupon a été validé.';
 $lang['courtesy_of'] = 'Offert avec plaisir par...';
 
 // coupon.php
-$lang['get_the_deal'] = 'ET OBTENEZ CE DEAL!';
+$lang['get_the_deal'] = 'et obtenez ce deal!';
 $lang['Get_your_coupon'] = 'Get your coupon';
 $lang['Step_2/2'] = 'Step 2/2';
 $lang['Get_a_coupon_in_two_simple_steps'] =  'Get a coupon in two simple steps';
