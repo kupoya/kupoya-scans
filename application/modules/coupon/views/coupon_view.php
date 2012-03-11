@@ -58,7 +58,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 <script type="text/javascript">
 	function form_submit()
 	{
-		var ret = confirm('Are you sure you want to validate the coupon?');
+		var ret = confirm('<?= $this->lang->line('Are_you_sure_you_want_to_validate')?>');
 		if (ret) {
 			document.coupon_confirm.submit();
 		}

@@ -45,7 +45,7 @@ $lang['message_generic_signature'] = array(
 	"Powered by kupoya. www.kupoya.com",
 	//"Kupoya. We make social campaigns amazing!",
 	//"Kupoya - bringing the social world to your business",
-	"kupoya social marketing. www.kupoya.com",
+	"kupoya social marketing solutions. www.kupoya.com",
 	);
 	
 $lang['Nice to meet you!'] = "Nice to meet you!";
