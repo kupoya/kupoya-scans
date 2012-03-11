@@ -37,7 +37,7 @@ $lang['Get_a_coupon_in_two_simple_steps'] =  'קבל קופון בשני צעד�
 
 $lang['visit_brand_website'] = 'בקר באתר של %s';
 $lang['tip'] = "טיפ";
-$lang['Privacy Policy'] = "מדיניות הפרטיות";
+$lang['Privacy_Policy'] = "מדיניות הפרטיות";
 $lang['Terms_Of_Use'] = "תנאי השימוש";
 $lang['Accept_TOS'] = "אנא אשר ראשית את תנאי השימוש. תודה";
 
