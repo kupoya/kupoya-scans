@@ -15,6 +15,19 @@
 	    var BASE_URI = "<?php echo BASE_URI;?>";
 	    var APPPATH_URI = "<?php echo APPPATH_URI; ?>";
 	    var APPPATH_URL = "<?php echo APPPATH_URL; ?>";
+
+        // fix for facebook's #_=_ bug, @see http://stackoverflow.com/questions/7131909/facebook-callback-appends-to-return-url
+        // if (String(window.location.hash).substring(0,1) == "#") {
+        if (String(window.location.hash) == '#_=_') {
+			window.location.hash = '';
+			window.location.href=window.location.href.slice(0, -4);
+		}
+        // Firefox version of the hack
+        if (String(location.hash) == "#_=_") {
+        	location.hash = "";
+			location.href=location.href.substring(0,location.href.length-1);
+		}
+
 	</script>
 
 
