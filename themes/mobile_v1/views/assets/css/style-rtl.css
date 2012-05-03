@@ -91,7 +91,8 @@
 	
 	p.size_small {font-size:small; }
 	
-	#footer {text-align: center; color:#ababab; font-size:0.8em; line-height:1.459em; top repeat-x; }
+	/*#footer {position: absolute; bottom:0; height:50px; text-align: center; color:#ababab; font-size:0.8em; line-height:1.459em; top repeat-x; }*/
+	#footer {position: relative; margin-top:-50px; height:50px; clear: both; text-align: center; color:#ababab; font-size:0.8em; line-height:1.459em; top repeat-x; }
 	#footer p { padding:1px 0 0 0;}
 	#footer p a {color:#ababab;}
 	
@@ -111,7 +112,9 @@
 		color: #000000;
 	}
 	h2 {
+		line-height: 1.1em;
 		margin-bottom:20px;
+		padding-top:5px;
 	}
 	h3.theme_title_text_color {
 		color: #ffffff;	
