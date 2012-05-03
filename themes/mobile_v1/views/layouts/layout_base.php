@@ -17,15 +17,16 @@
 	    var APPPATH_URL = "<?php echo APPPATH_URL; ?>";
 
         // fix for facebook's #_=_ bug, @see http://stackoverflow.com/questions/7131909/facebook-callback-appends-to-return-url
-        // if (String(window.location.hash).substring(0,1) == "#") {
-        if (String(window.location.hash) == '#_=_') {
+        if (String(window.location.hash).substring(0,1) == "#") {
+        //if (String(window.location.hash) == '#_=_') {
 			window.location.hash = '';
-			window.location.href=window.location.href.slice(0, -4);
+			window.location.href=window.location.href.slice(0, -1);
 		}
         // Firefox version of the hack
-        if (String(location.hash) == "#_=_") {
+        //if (String(location.hash) == "#_=_") {
+        if (String(window.location.hash).substring(0,1) == "#") {
         	location.hash = "";
-			location.href=location.href.substring(0,location.href.length-1);
+			location.href=location.href.substring(0,location.href.length-3);
 		}
 
 	</script>
