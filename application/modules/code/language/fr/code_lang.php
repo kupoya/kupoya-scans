@@ -4,7 +4,7 @@
  */
 
 // code/login.php
-$lang['share_with_friends'] = 'Partagez avec vos amis,';
+$lang['share_with_friends'] = 'Partagez avec vos amis';
 $lang['Login_to_your_facebook_account'] = 'Share it with your friends,';
 $lang['Step_1/2'] = 'Step1/2';
 $lang['share_and_get'] = "PARTAGEZ ET OBTENEZ!";
