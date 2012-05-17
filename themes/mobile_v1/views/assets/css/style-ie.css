@@ -1,0 +1,7 @@
+div#page {
+	text-align:center;
+	width: 660px;
+	margin: 0px auto !important;
+	position: relative !important;
+	border-right: 5px #666 outset !important;
+}

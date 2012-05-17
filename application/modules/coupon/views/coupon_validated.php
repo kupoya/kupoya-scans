@@ -48,7 +48,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
  		<div id="logo">
 		</div>
 <!-- 		<div id="logo">
-			<img src='<?=site_url(htmlentities($picture))?>' alt='logo' width='' height='<?=$picture_height?>' />
+			<img src='<?=site_url(htmlentities($picture))?>' alt='logo' />
 		</div> -->
 
 		<div id="breadcrumb">
@@ -73,7 +73,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 												$this->lang->line('courtesy_of')?>
 							</h2>
 							<div id="logo">
-								<img src='<?=site_url(htmlentities($picture))?>' alt='logo' width='' height='<?=$picture_height?>' />
+								<img src='<?=site_url(htmlentities($picture))?>' alt='logo' />
 							</div>
 							<h2 id='white'> <?php isset($brand['name']) ? $brand['name'] : '' ?></h2>
 							</div>
@@ -84,3 +84,5 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 		</div>
 
 	</div>
+
+	<br/><br/>

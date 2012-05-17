@@ -34,14 +34,17 @@
 
     <?php if (isset($template['partials']['pre_css'])) echo $template['partials']['pre_css']; ?>
 
+	<!--[if IE]> 
+		<?php echo css('style-ie.css', '_theme_'); ?>
+	<![endif]-->
+
 	<!-- CSS base -->
 	<?php echo css('jquery.mobile.min.css', '_theme_'); ?>
 	<?php echo $template['partials']['css']; ?>
 
-	<?php if (isset($template['partials']['pre_javascript'])) echo $template['partials']['pre_javascript']; ?>
 	
-	<!-- Customized theme layout by each brand -->
-	<?php echo $template['partials']['theme']; ?>
+
+	<?php if (isset($template['partials']['pre_javascript'])) echo $template['partials']['pre_javascript']; ?>
 
 </head>
 <body>
@@ -87,7 +90,10 @@
 	<?php 
     	echo js('jquery-1.6.2.min.js', '_theme_');
     ?>
-    
+
+    <!-- Customized theme layout by each brand -->
+	<?php echo $template['partials']['theme']; ?>
+
     <?php if (isset($template['partials']['pre_jquerymobile'])) echo $template['partials']['pre_jquerymobile']; ?>
     
     <?php
@@ -99,9 +105,9 @@
 	<?php
 	    echo js('microsite.js', '_theme_');
     ?>
-    
+
 	<?php if (isset($template['partials']['save_request_info'])) echo $template['partials']['save_request_info']; ?>
-	
+
 </body>
 </html>
 

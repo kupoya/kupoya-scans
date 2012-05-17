@@ -1,16 +1,4 @@
 /* --- main layout --- */
-	
-	* { margin: 0; padding: 0; }
-	
-	html, body {
-		font-family:Arial, Helvetica, sans-serif; 
-		font-size:medium; 
-		color:#616161; 
-		/*background:#fff url(../img/body-tail.gif) top repeat-x; */
-		padding:0; 
-		margin:0;
-		height: 100%;
-	}
 
 	input.error {background:#FFFF00;}
 
@@ -30,18 +18,29 @@
 
 	/*div.top-bg {background:url(../img/body-bg.jpg) top right no-repeat;}*/
 	/*.ui-page {background: url(../img/body-bg.jpg) top right no-repeat; width: 100%; height: auto;}*/
+
 	.ui-page {
-		/* mobile and desktop targeted ui */
 		background: transparent url(../img/body-bg.jpg) no-repeat center top;
 		-moz-background-size:cover;
     	background-size:cover;
     	position: relative;
-    	/* mobile ui, image stretch
-		background: transparent url(../img/body-bg.jpg);
-		background-attachment:fixed;
-		background-repeat: no-repeat;
-		background-size: 100%;*/
 	}
+
+	@media only screen and (min-width: 1024px) {
+        .ui-page {
+        	background: transparent url(../img/body-bg.jpg) no-repeat center top;
+        	-moz-background-size:cover;
+    		background-size:cover;
+    		position: relative;
+            width: 660px !important;
+            margin: 0px auto !important;
+            position: relative !important;
+            border-right: 5px #666 outset !important;
+            border-left: 5px #666 outset !important;
+        }
+    }
+
+	
 
 	.ui-content {
 		padding: 2px;
@@ -53,7 +52,12 @@
 
 	#header {font-size:1.125em;}
 	
-	#logo {padding:11px 0 8px 0px; text-align:center;}
+	#logo {
+		padding:11px 0 8px 0px;
+		text-align:center;
+		max-height:100px;
+		max-width:100%;
+	}
 	.banners {text-align:center; padding:0 0 16px 0;}
 	.banners img {margin-bottom:10px;}
 	
@@ -117,6 +121,8 @@
 	}
 	h3.theme_title_text_color {
 		color: #ffffff;	
+		margin: 0px;
+		padding: 0px;
 	}
 	
 	#ContactForm input.numbers_1k {width:40px;}
@@ -155,6 +161,7 @@
 div#loading {
 	text-align: center;
 }
+
 
 div.spinner {
   position: relative;

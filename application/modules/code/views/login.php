@@ -41,7 +41,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 	<div id="header">
 		
 		<div id="logo">
-			<img src='<?=site_url(htmlentities($picture))?>' alt='logo' width='' height='<?=htmlentities($picture_height)?>' />
+			<img src='<?=site_url(htmlentities($picture))?>' alt='logo' />
 		</div>
 
 		<div id="breadcrumb">
@@ -78,7 +78,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 						$content .= '<br/>';
 						$content .= anchor($facebook['loginUrl'], 
 											$this->lang->line('share_and_get'), 
-											array('data-ajax' => 'false', 'data-role' => 'button', 'data-theme' => 'e')
+											array('data-ajax' => 'false', 'data-role' => 'button')
 										); 
 				}
 				
