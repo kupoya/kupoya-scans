@@ -31,6 +31,7 @@ $lang['Your_coupon_is_only_a_click_away'] = 'הקופון שלך במרחק הק
 $lang['User_agreement_to_share'] = 'הנני מסכים ל%s ומאשר לקופויה לחלוק את החוויה עם חברי בפייסבוק';
 $lang['Are_you_sure_you_want_to_validate'] = 'האם הינך בטוח שברצונך לאמת את הקופון?';
 
+$lang['my_coupons'] = 'הקופונים שלי!';
 
 // coupon_invalid.php
 $lang['Oops_something_bad_happened'] = 'אופס...';

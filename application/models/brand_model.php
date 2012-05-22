@@ -42,6 +42,31 @@ class Brand_Model extends CI_Model {
 		
 		
 	}
+
+	public function get_brand_by_strategy($strategy_id = null)
+	{
+		if (!$strategy_id || !is_numeric($strategy_id))
+			return false;
+
+		$sql = "
+			SELECT b . * 
+			FROM strategy s
+			JOIN campaign_strategies cs ON cs.strategy_id = s.id AND cs.active = 1
+			JOIN code ON code.campaign_id = cs.campaign_id
+			JOIN brand b ON b.id = code.brand_id
+			WHERE
+				s.id = ?
+			LIMIT 1
+		";
+
+		$query = $this->db->query($sql, array($strategy_id));
+		
+		if ($query->num_rows() === 1)
+			return $query->row_array();
+		else
+			return false;
+		
+	}
    
    
 	function get_brand_contact_info($brand_id = 0) 

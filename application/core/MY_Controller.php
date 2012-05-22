@@ -82,6 +82,18 @@ class MY_Controller extends CI_Controller {
 		return true;
 
 	}
+
+
+	public function _isLoggedIn() {
+		
+		// checks if the user is logged in or not
+		$status = $this->session->userdata('logged_in');
+		if ($status !== '1') {
+			return false;
+		}
+
+		return true;
+	}
 	
 	
 	/**

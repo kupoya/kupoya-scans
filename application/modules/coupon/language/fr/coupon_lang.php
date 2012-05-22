@@ -29,6 +29,8 @@ $lang['Your_coupon_is_only_a_click_away'] = 'Your coupon is only a click away';
 $lang['User_agreement_to_share'] = 'I agree to the %s and allow kupoya to share my experience with my facebook friends';
 $lang['Are_you_sure_you_want_to_validate'] = 'Etes-vous sûr que vous voulez valider le coupon?';
 
+$lang['my_coupons'] = 'Mes Coupons!';
+
 // coupon_invalid.php
 $lang['Oops_something_bad_happened'] = 'Oops...';
 $lang['Invalid_coupon'] = 'Invalid coupon';

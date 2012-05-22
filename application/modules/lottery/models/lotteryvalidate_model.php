@@ -14,7 +14,7 @@ class LotteryValidate_Model extends CI_Model {
 
 		parent::__construct();
 		
-		$this->load->model('user_model');
+		$this->load->model('user/user_model');
 		
 	}
 

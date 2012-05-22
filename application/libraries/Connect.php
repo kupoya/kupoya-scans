@@ -7,7 +7,7 @@ class Connect extends MY_Controller {
 	{
 		parent::__construct();
 		
-		$this->load->model('user_model');
+		$this->load->model('user/user_model');
 		
 	}
 
@@ -16,19 +16,15 @@ class Connect extends MY_Controller {
 	public function login()
 	{
 		
-log_message('debug', ' === IN Connect parent login()');
+		log_message('debug', ' === IN Connect parent login()');
 		$brand = $this->session->userdata('brand');
 		$code_id = $this->session->userdata('code_id');
 		$strategy = $this->session->userdata('strategy');
 		
-log_message('debug', ' === brand_id: '.$brand['id']);
-log_message('debug', ' === code_id: '.$code_id);
-log_message('debug', ' === strategy id: '.$strategy['id']);
+		log_message('debug', ' === brand_id: '.$brand['id']);
+		log_message('debug', ' === code_id: '.$code_id);
+		log_message('debug', ' === strategy id: '.$strategy['id']);
 
-		if (!$brand['id'] || !$code_id)
-			redirect('code/invalid');
-		
-		
 		$ret = $this->_doLogin();
 		
 		$user_info = $this->session->userdata('user');
@@ -44,6 +40,20 @@ log_message('debug', ' === strategy id: '.$strategy['id']);
 			$date = date('Y-m-d H:i:s');
 			$this->user_model->update_user($user_info['id'], array('lastlogin_time' => $date));
 			
+			/**
+			 * handle user account login and redirect according to destination get var
+			 */
+			$destination = $this->input->get('destination');
+			if (isset($destination) && !empty($destination))
+				redirect($destination);
+
+			/**
+			 * otherwise validate brand and code id in session and continue with redirecting to the correct
+			 * stratregy module entry point
+			 */
+			if (!$brand['id'] || !$code_id)
+				redirect('code/invalid');
+
 			// forward to the coupon page of this brand and product
 			$strategy_type = $strategy['type'];
 			if (!$strategy_type) {

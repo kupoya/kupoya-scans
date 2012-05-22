@@ -8,23 +8,6 @@ class Coupon extends MY_Controller {
 		
 		//parent::MY_Controller();
 		parent::__construct();
-	
-		// check brand and product is in session if segments aren't populated
-		$brand = $this->session->userdata('brand');
-		$code_id = $this->session->userdata('code_id');
-		$strategy = $this->session->userdata('strategy');
-
-log_message('debug', ' === BRNAD ID: '.$brand['id']);
-log_message('debug', ' === CODE ID: '.$code_id);
-log_message('debug', ' === STRATEGY ID: '.$strategy['id']);
-
-		// if brand and products are provided (probably redirected by our system)
-		// then save this info in the user's session
-		if ( !$brand['id'] || !$code_id || !$strategy['id'] ) {
-			// @TODO should we just redirect to the welcome page?
-			log_message('debug', ' === no brand_id || code_id || strategy_id so redirecting to: auth/invalid');
-			redirect('auth/invalid');
-		}
 
 		// require logged-in user
 		$this->_requireLogin();
@@ -48,6 +31,14 @@ log_message('debug', ' === STRATEGY ID: '.$strategy['id']);
 		
 		$data = array();
 		$this->template->build('coupon/coupon_invalid', $data);
+		
+	}
+
+
+	public function campaign_ended() {
+		
+		$data = array();
+		$this->template->build('coupon/coupon_ended', $data);
 		
 	}
 	
@@ -80,6 +71,24 @@ log_message('debug', ' === STRATEGY ID: '.$strategy['id']);
 	 * perform coupon validation by business
 	 */
 	public function confirm() {
+
+
+			// check brand and product is in session if segments aren't populated
+		$brand = $this->session->userdata('brand');
+		$code_id = $this->session->userdata('code_id');
+		$strategy = $this->session->userdata('strategy');
+
+log_message('debug', ' === BRNAD ID: '.$brand['id']);
+log_message('debug', ' === CODE ID: '.$code_id);
+log_message('debug', ' === STRATEGY ID: '.$strategy['id']);
+
+		// if brand and products are provided (probably redirected by our system)
+		// then save this info in the user's session
+		if ( !$brand['id'] || !$code_id || !$strategy['id'] ) {
+			// @TODO should we just redirect to the welcome page?
+			log_message('debug', ' === no brand_id || code_id || strategy_id so redirecting to: auth/invalid');
+			redirect('auth/invalid');
+		}
 
 		$ret = false;
 
@@ -158,14 +167,38 @@ log_message('debug', ' === STRATEGY ID: '.$strategy['id']);
 
 	public function validated() {
 
+			// check brand and product is in session if segments aren't populated
+// 		$brand = $this->session->userdata('brand');
+// 		$code_id = $this->session->userdata('code_id');
+// 		$strategy = $this->session->userdata('strategy');
+
+// log_message('debug', ' === BRNAD ID: '.$brand['id']);
+// log_message('debug', ' === CODE ID: '.$code_id);
+// log_message('debug', ' === STRATEGY ID: '.$strategy['id']);
+
+// 		// if brand and products are provided (probably redirected by our system)
+// 		// then save this info in the user's session
+// 		if ( !$brand['id'] || !$strategy['id'] ) {
+// 			// @TODO should we just redirect to the welcome page?
+// 			log_message('debug', ' === no brand_id || strategy_id so redirecting to: auth/invalid');
+// 			redirect('auth/invalid');
+// 		}
+
 		$coupon = $this->session->userdata('coupon');
 
 		if ($coupon && isset($coupon['status']) && $coupon['status'] == 'validated') {
 
-			$brand = $this->session->userdata('brand');
-			$strategy = $this->session->userdata('strategy');
+			// $brand = $this->session->userdata('brand');
+			// $strategy = $this->session->userdata('strategy');
+
+			$this->load->model('strategy_model');
+			$this->load->model('brand_model');
+
+			$brand = $this->brand_model->get_brand_by_strategy($coupon['strategy_id']);
+			$strategy = $this->strategy_model->get_strategy_info($coupon['strategy_id']);
+
 			$user = $this->session->userdata('user');
-			$coupon = $this->session->userdata('coupon');
+			// $coupon = $this->session->userdata('coupon');
 
 			$data = array();
 
@@ -180,7 +213,52 @@ log_message('debug', ' === STRATEGY ID: '.$strategy['id']);
 		}
 	}
 
-	public function view() {
+
+	public function view($coupon_id = NULL) {
+
+		
+		if ($coupon_id)
+		{
+			$this->load->model('coupon/coupon_model');
+			$my_coupon = $this->coupon_model->get_coupon_by_id($coupon_id);
+			if ($my_coupon && isset($my_coupon['strategy_id'])) {
+
+				$coupon_settings = $this->coupon_model->get_coupon_settings($my_coupon['strategy_id']);
+
+				$this->load->model('strategy_model');
+				$this->load->model('brand_model');
+
+				$brand = $this->brand_model->get_brand_by_strategy($my_coupon['strategy_id']);
+				$strategy = $this->strategy_model->get_strategy_info($my_coupon['strategy_id']);
+
+				// create some coupon code
+				$data = array();
+				
+				$data['brand'] = $brand;
+				$data['strategy'] = $strategy;
+				$data['coupon'] = $my_coupon;
+				$data['coupon_settings'] = $coupon_settings;
+
+log_message('debug', '------=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=---->  1');
+				// set the coupon's info in the session
+				$this->session->set_userdata('coupon', $data['coupon']);
+log_message('debug', '------=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=---->  2');
+				// check if business has validated this coupon and redirect to validated()
+				if (isset($my_coupon['status']) && $my_coupon['status'] == 'validated')
+					redirect('coupon/validated');
+log_message('debug', '------=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=---->  3');
+				// get blocks for this view
+				$blocks = $this->cache->model('template_model', 'get_blocks_by_strategy', 
+													array($strategy['id'], 'coupon_view'), $this->MODEL_CACHE_SECS);
+			
+				$data['blocks'] = $blocks;
+				
+				return $this->template->build('coupon/coupon_view', $data);
+			}
+			
+		}
+
+
 
 		$brand = $this->session->userdata('brand');
 		$strategy = $this->session->userdata('strategy');
@@ -191,9 +269,9 @@ log_message('debug', ' === STRATEGY ID: '.$strategy['id']);
 		// validate the user is able to use the coupon
 		$this->load->model('couponvalidate_model');
 
-		if (isset($strategy['id']))
+		if (isset($strategy['id'])) {
 			$coupon_settings = $this->coupon_model->get_coupon_settings($strategy['id']);
-		else {
+		} else {
 			$coupon_settings = array();
 		}
 		
@@ -223,7 +301,7 @@ log_message('debug', ' === STRATEGY ID: '.$strategy['id']);
 			$data['blocks'] = $blocks;
 			
 			return $this->template->build('coupon/coupon_view', $data);
-			
+
 		}
 		
 		
@@ -250,7 +328,7 @@ log_message('debug', ' === STRATEGY ID: '.$strategy['id']);
 			$flash_value = $this->lang->line('error_no_coupons');
 			$this->session->set_flashdata('error', $flash_value);
 			
-			redirect('coupon/invalid');
+			redirect('coupon/campaign_ended');
 		}
 		
 		// perform medium actions

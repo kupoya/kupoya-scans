@@ -9,7 +9,8 @@
 	 * 
 	 **/
 
- class User_model extends CI_Model {
+ class User_Model extends CI_Model {
+ 	
    var $user_id = "";
    var $full_name = "";
    var $pwd = "";
@@ -20,6 +21,11 @@
       parent::__construct();
    	
    }
+
+ //   public function User_Model()
+	// {
+	// 	parent::__construct();		
+	// }
 
    
    
@@ -84,7 +90,11 @@
 		$data['email'] = isset($info['email']) ? $info['email'] : '';
 		$data['first_name'] = isset($info['first_name']) ? $info['first_name'] : '';
 		$data['last_name'] = isset($info['last_name']) ? $info['last_name'] : '';
+		// @TODO this birthday field should probably be deprecated in favor of a better formatted
+		// field so we can actually do some calculations on it (current it is a varchar stored as 01/01/1980)
 		$data['birthday'] = isset($info['birthday']) ? $info['birthday'] : '';
+		// this new field should be used instead of the above:	
+		$data['dob'] = isset($info['birthday']) ? @date('Y-m-d', @strtotime($data['birthday'])) : '0000-00-00';
 		$data['gender'] = isset($info['gender']) ? $info['gender'] : '';
 		$data['location'] = isset($info['location']) ? $info['location'] : '';
 		$data['timezone'] = isset($info['timezone']) ? $info['timezone'] : 0;

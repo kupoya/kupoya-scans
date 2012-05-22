@@ -12,7 +12,7 @@ class Code extends MY_Controller {
 		$this->load->model('strategy_model');
 		$this->load->model('medium_model');	
 		
-		//$this->load->model('user_model');
+		//$this->load->model('user/user_model');
 		$this->load->helper('security');
 		$this->load->helper('url');
 		

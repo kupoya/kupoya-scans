@@ -262,6 +262,49 @@ class Coupon_Model extends CI_Model {
 
 
 
+	/**
+	 * Get coupon by id
+	 * @param integer $coupon_id the coupon id
+	 * @return array $coupon the coupon result set
+	 */
+	public function get_coupon_by_id($coupon_id)
+	{
+		$this->db->where('c.id', $coupon_id);
+		$this->db->limit(1);
+		$results = $this->db->get('coupon c')->row_array();
+
+		return $results;
+	}
+
+
+	/**
+	 * Get coupons
+	 * @param array $where AR-compatible $where clause
+	 */
+	public function get_coupons_by_user($user_id)
+	{
+		/*
+
+		SELECT *
+		FROM coupon c
+		JOIN strategy s ON s.id = c.strategy_id
+		WHERE c.user_id = 1
+
+		*/
+		
+		if (!$user_id)
+			return false;
+
+		$this->db->select('c.id, c.serial, c.status, c.user_id, c.purchased_time, c.strategy_id, s.name, s.picture');
+		$this->db->join('strategy s', 's.id = c.user_id');
+		$this->db->where(array('c.user_id' => $user_id));
+		$this->db->order_by('c.purchased_time', 'desc');
+		$results = $this->db->get('coupon c')->result_array();
+
+		return $results;
+	}
+
+
 	public function get_coupon_settings($strategy)
 	{
 		if (!$strategy || !isset($strategy['id']))
@@ -286,23 +329,27 @@ class Coupon_Model extends CI_Model {
 	 */
 	function get_coupon_by_strategy_procedure(&$strategy, &$user)
 	{
-
+log_message('debug', '=== TEST 1');	
 		// check strategy param
 		if (!$strategy || !is_array($strategy) || !isset($strategy['plan_type']) || empty($strategy['plan_type']) || 
 			!isset($strategy['id']) || empty($strategy['id']) || !is_numeric($strategy['id']))
+			{
+				log_message('debug', '=== TEST 2');	
 			return false;
 
+}
 		if (!isset($strategy['bank']) || empty($strategy['bank']))
 			$strategy['bank'] = 0;
 
 		if (!isset($strategy['expiration_date']) || empty($strategy['expiration_date']))
 			$strategy['expiration_date'] = 0;
-			
+
+
 		// check user param
 		if (!$user || !is_array($user) || !isset($user['id']) || !is_numeric($user['id']))
 			return false;
 			
-		
+
 		// create a random serial number 
 		$coupon_serial = uniqid().'-'.rand(100, 999);
 	
@@ -319,7 +366,7 @@ class Coupon_Model extends CI_Model {
 
 		// get the last_insert_id which is the inserted coupon row id.
 		// if unsuccessful, it should return 0 (or null)
-		$sql = "SELECT @last_insert_id as coupon_insert_id, @purchased_time as purchased_time, @coupon_custom_serial as coupon_serial";
+		$sql = "SELECT @last_insert_id as coupon_insert_id, @purchased_time as purchased_time, @coupon_custom_serial as coupon_serial, @error as error";
 		//$sql = "SELECT * FROM coupon WHERE id = @last_insert_id";
 		$query = $this->db->query($sql);
 		
@@ -328,6 +375,10 @@ class Coupon_Model extends CI_Model {
 		}
 
 		$row = $query->row_array();
+log_message('debug', '===>>> ' . $row['coupon_insert_id']);
+log_message('debug', '===>>> ' . $row['purchased_time']);
+log_message('debug', '===>>> ' . $row['coupon_serial']);
+log_message('debug', '===>>> ' . $row['error']);
 		
 		$coupon_id = $row['coupon_insert_id'];
 		if ($coupon_id == 0 || !is_numeric($coupon_id))
