@@ -39,7 +39,7 @@
 	<div id="header">
 		
 		<div id="logo">
-			<img alt="logo" src="<?= site_url(htmlentities($picture)) ?>" width="" height="<?= $picture_height ?>" />
+			<img alt="logo" src="<?= site_url(htmlentities($picture)) ?>" />
 		</div>
 
 		<div id="breadcrumb">
