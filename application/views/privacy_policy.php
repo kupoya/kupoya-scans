@@ -8,7 +8,7 @@
 		</div>
 
 		<div id="breadcrumb">
-			<h3 id='white'> <?php echo $this->lang->line('Privacy Policy')?> </h3>
+			<h3 id='white'> <?php echo $this->lang->line('Privacy_Policy')?> </h3>
 		</div>
 		
 	</div>
