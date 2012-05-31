@@ -296,7 +296,7 @@ class Coupon_Model extends CI_Model {
 			return false;
 
 		$this->db->select('c.id, c.serial, c.status, c.user_id, c.purchased_time, c.strategy_id, s.name, s.picture');
-		$this->db->join('strategy s', 's.id = c.user_id');
+		$this->db->join('strategy s', 's.id = c.strategy_id');
 		$this->db->where(array('c.user_id' => $user_id));
 		$this->db->order_by('c.purchased_time', 'desc');
 		$results = $this->db->get('coupon c')->result_array();
@@ -335,9 +335,9 @@ log_message('debug', '=== TEST 1');
 			!isset($strategy['id']) || empty($strategy['id']) || !is_numeric($strategy['id']))
 			{
 				log_message('debug', '=== TEST 2');	
-			return false;
+				return false;
+			}
 
-}
 		if (!isset($strategy['bank']) || empty($strategy['bank']))
 			$strategy['bank'] = 0;
 
