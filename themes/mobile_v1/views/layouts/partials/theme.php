@@ -107,3 +107,24 @@
 	}
 </style>
 
+
+<?php
+	// set jquery theme for what the strategy/campaign defined:
+	$jqm_theme = variable_get($strategy['id'], 'jqm_theme');
+	switch($jqm_theme) {
+		case 'a':
+		case 'b':
+		case 'c':
+		case 'd':
+		case 'e':
+		echo '
+<script type="text/javascript">
+	// disable jquery mobiles automatic ajax on submit and links loading 
+	$(document).bind("mobileinit", function(){
+	  $.mobile.page.prototype.options.theme  = "'.$jqm_theme.'";
+	});
+</script>
+';
+		break;
+	}
+?>
