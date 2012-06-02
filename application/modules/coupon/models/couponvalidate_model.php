@@ -100,16 +100,15 @@ class CouponValidate_Model extends CI_Model {
 		if ( ($strategy_id === 0) || ($user_id === 0) )
 			return false;
 
-		$this->db->select('coupon.id, coupon.serial, coupon.status, coupon.user_id, coupon.purchased_time')
+		$this->db->select('coupon.id, coupon.serial, coupon.status, coupon.user_id, coupon.purchased_time, coupon.strategy_id')
 					->from('coupon AS coupon')
-					->join('coupon_settings AS coupon_settings', 'coupon_settings.strategy_id = coupon.strategy_id')
+					->join('coupon_settings AS coupon_settings', 'coupon_settings.strategy_id = coupon.strategy_id', 'left')
 					->where('coupon.strategy_id', $strategy_id)
 					->where('coupon.user_id', $user_id);
 
 		// get the validation timeout setting for coupons
 		$expires = 0;
 		$expires = (int) variable_get($strategy_id, 'microdeal_expires_interval');
-log_message('debug', ' ************ @@@@@@@@@@@@@@@@ '.$expires);
 
 		if ($expires && !empty($expires) && $expires != 0)
 		{
@@ -121,7 +120,7 @@ log_message('debug', ' ************ @@@@@@@@@@@@@@@@ '.$expires);
 		
 		$query = $this->db->get();
 
-		if ($query->num_rows == 0)
+		if ($query->num_rows() == 0)
 			return false;
 
 		return $query->row_array();

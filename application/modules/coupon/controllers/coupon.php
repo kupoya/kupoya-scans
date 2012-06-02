@@ -263,7 +263,7 @@ log_message('debug', '------=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=---->  3');
 		$brand = $this->session->userdata('brand');
 		$strategy = $this->session->userdata('strategy');
 		$user = $this->session->userdata('user');
-		$coupon = $this->session->userdata('coupon');
+		$coupon_session = $this->session->userdata('coupon');
 		$medium = $this->session->userdata('medium');		
 		
 		// validate the user is able to use the coupon
