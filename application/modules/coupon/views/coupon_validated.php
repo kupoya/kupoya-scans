@@ -66,7 +66,6 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 			<div data-inline="true" class="highlightBar">
 				<div class="coupon">
-					<ul class="ui-grid-b times">
 						<div class="indent">
 							<div id="center">
 							<h2> <?= $this->lang->line('coupon_has_been_validated'). '<br/><br/>' .
