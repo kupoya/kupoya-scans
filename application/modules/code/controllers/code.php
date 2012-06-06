@@ -227,6 +227,7 @@ class Code extends MY_Controller {
 		$data['medium'] = $medium_info;
 		$data['blocks'] = $blocks;
 
+		$this->template->set_partial('footer', 'layouts/partials/footer', FALSE);
 		$this->template->set('page_title', $brand_info['name']);
 		
 		$this->template->build('code/login', $data);
