@@ -52,49 +52,47 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 
 	<div id="content">
-
-		<div class="min-width">
-		
-		<!--  BLOCK_1 -->
-		<div id="block">
-			<?php
-				if (isset($blocks['block_1']))
-					echo Template_Model::html_view($blocks['block_1']);
-			?>		
-		</div>
-		<!--  /BLOCK_1 -->
 		
 		<div id="center">
-			<?php
+
+			<!--  BLOCK_1 -->
+			<div id="block">
+				<?php
+					if (isset($blocks['block_1']))
+						echo Template_Model::html_view($blocks['block_1']);
+				?>		
+			</div>
+			<!--  /BLOCK_1 -->
 			
-				$content = ''; 
+				<?php
 				
-				if (isset($strategy['type']) && $strategy['type'] === 'coupon') {
-					$content .= $this->lang->line('share_with_friends') . '<br/>';
-				}
+					$content = ''; 
+					
+					if (isset($strategy['type']) && $strategy['type'] === 'coupon') {
+						$content .= $this->lang->line('share_with_friends') . '<br/>';
+					}
+					
+					if (isset($medium['facebook'])) {
+							$content .= $this->lang->line('get_the_deal');
+							$content .= '<br/>';
+							$content .= anchor($facebook['loginUrl'], 
+												$this->lang->line('share_and_get'), 
+												array('data-ajax' => 'false', 'data-role' => 'button')
+											); 
+					}
+					
+					echo $content;
+				?>
 				
-				if (isset($medium['facebook'])) {
-						$content .= $this->lang->line('get_the_deal');
-						$content .= '<br/>';
-						$content .= anchor($facebook['loginUrl'], 
-											$this->lang->line('share_and_get'), 
-											array('data-ajax' => 'false', 'data-role' => 'button')
-										); 
-				}
-				
-				echo $content;
-			?>
+			<!--  BLOCK_2 -->
+			<div id="block">
+				<?php
+					if (isset($blocks['block_2']))
+						echo Template_Model::html_view($blocks['block_2']);
+				?>		
+			</div>
+			<!--  /BLOCK_2 -->
 			
-		<!--  BLOCK_2 -->
-		<div id="block">
-			<?php
-				if (isset($blocks['block_2']))
-					echo Template_Model::html_view($blocks['block_2']);
-			?>		
-		</div>
-		<!--  /BLOCK_2 -->
-			
-		</div>
 		</div>
 
 	</div>
