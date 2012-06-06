@@ -24,8 +24,8 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 		<div class="ui-btn-inner ui-li">
 			<div class="ui-btn-text">
 			<a href="<?=site_url('coupon/view/'.$coupon['id']);?>" class="ui-link-inherit">
-			<img src='<?=site_url(htmlentities($coupon['picture']))?>' alt='logo' class="ui-li-thumb" />
-				<h3 class="ui-li-heading"><?=htmlentities($coupon['name'])?></h3>
+			<img src='<?=site_url(htmlentities($coupon['strategy_picture']))?>' alt='logo' class="ui-li-thumb" />
+				<h3 class="ui-li-heading"><?=htmlentities($coupon['strategy_name'])?></h3>
 				<p class="ui-li-desc"><?=htmlentities($coupon['purchased_time'])?></p>
 				<span class="ui-li-count ui-btn-up-c ui-btn-corner-all"><?=htmlentities($coupon['serial'])?></span>
 			</a>

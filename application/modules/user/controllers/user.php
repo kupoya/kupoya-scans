@@ -45,7 +45,7 @@ class User extends MY_Controller {
 			redirect('auth/login');
 		
 		$this->load->model('coupon/coupon_model');
-		$my_coupons = $this->coupon_model->get_coupons_by_user($user['id']);
+		$my_coupons = $this->coupon_model->get_coupons_by_user($user['id'], 'used');
 
 		$data['user'] = $user;
 		$data['my_coupons'] = $my_coupons;

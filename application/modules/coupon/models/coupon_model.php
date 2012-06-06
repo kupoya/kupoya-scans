@@ -281,7 +281,7 @@ class Coupon_Model extends CI_Model {
 	 * Get coupons
 	 * @param array $where AR-compatible $where clause
 	 */
-	public function get_coupons_by_user($user_id)
+	public function get_coupons_by_user($user_id, $status = NULL)
 	{
 		/*
 
@@ -295,9 +295,17 @@ class Coupon_Model extends CI_Model {
 		if (!$user_id)
 			return false;
 
-		$this->db->select('c.id, c.serial, c.status, c.user_id, c.purchased_time, c.strategy_id, s.name, s.picture');
+		//$this->db->select('c.id, c.serial, c.status, c.user_id, c.purchased_time, c.strategy_id, s.name, s.picture');
+		$this->db->select('c.id, c.serial, c.status, c.user_id, c.purchased_time, c.strategy_id, s.name as strategy_name, s.picture as strategy_picture, b.name as brand_name');
 		$this->db->join('strategy s', 's.id = c.strategy_id');
+		$this->db->join('campaign_strategies cs', 'cs.strategy_id = s.id');
+		$this->db->join('code code', 'code.campaign_id = cs.campaign_id');
+		$this->db->join('brand b', 'b.id = code.brand_id');
 		$this->db->where(array('c.user_id' => $user_id));
+
+		if ($status)
+			$this->db->where(array('c.status' => $status));
+			
 		$this->db->order_by('c.purchased_time', 'desc');
 		$results = $this->db->get('coupon c')->result_array();
 
