@@ -109,6 +109,7 @@
 
 
 <?php
+
 	// set jquery theme for what the strategy/campaign defined:
 	$jqm_theme = variable_get($strategy['id'], 'jqm_theme');
 	switch($jqm_theme) {
@@ -127,4 +128,5 @@
 ';
 		break;
 	}
+
 ?>

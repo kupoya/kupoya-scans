@@ -80,9 +80,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 
 	<div id="content">
- 
-		<div class="min-width">
-		
+ 		
 		<!--  BLOCK_1 -->
 		<div id="block">
 			<?php

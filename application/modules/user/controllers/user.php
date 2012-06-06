@@ -27,15 +27,16 @@ class User extends MY_Controller {
 
 		$language = $this->getLanguage();
 		$this->lang->load('coupon/coupon', $language);
+		$this->lang->load('user/user', $language);
 		$this->lang->load('app', $language);
-		
+
 	}
 	
 	
 	
 
 	
-	public function index()
+	public function index($type = 'active')
 	{
 		$data = array();
 
@@ -45,11 +46,25 @@ class User extends MY_Controller {
 			redirect('auth/login');
 		
 		$this->load->model('coupon/coupon_model');
-		$my_coupons = $this->coupon_model->get_coupons_by_user($user['id'], 'used');
+
+		if ($type == 'active')
+			$status = 'used';
+		else 
+			$status = 'validated';
+
+		// get coupons according to status
+		$my_coupons = $this->coupon_model->get_coupons_by_user($user['id'], $status);
+
+		// set header navigation, active menu, etc
+		$my_coupons_nav['type'] = $type;
+		$str = $this->load->view('my_coupons_nav', $my_coupons_nav, true);
 
 		$data['user'] = $user;
 		$data['my_coupons'] = $my_coupons;
-		
+
+		$this->template->set('page_title', 'My Coupons');
+		$this->template->set('header_content', $str);
+
 		$this->template->build('user/my_coupons', $data);
 				
 	}

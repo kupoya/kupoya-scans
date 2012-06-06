@@ -206,6 +206,9 @@ log_message('debug', ' === STRATEGY ID: '.$strategy['id']);
 			$data['strategy'] = $strategy;
 			$data['coupon'] = $coupon;
 
+			$this->template->set('page_title', $brand['name']);
+			$this->template->set('header_follow_link', $strategy['website']);
+
 			return $this->template->build('coupon/coupon_validated', $data);
 
 		} else {
@@ -215,7 +218,6 @@ log_message('debug', ' === STRATEGY ID: '.$strategy['id']);
 
 
 	public function view($coupon_id = NULL) {
-
 		
 		if ($coupon_id)
 		{
@@ -239,19 +241,21 @@ log_message('debug', ' === STRATEGY ID: '.$strategy['id']);
 				$data['coupon'] = $my_coupon;
 				$data['coupon_settings'] = $coupon_settings;
 
-log_message('debug', '------=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=---->  1');
 				// set the coupon's info in the session
 				$this->session->set_userdata('coupon', $data['coupon']);
-log_message('debug', '------=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=---->  2');
+
 				// check if business has validated this coupon and redirect to validated()
 				if (isset($my_coupon['status']) && $my_coupon['status'] == 'validated')
 					redirect('coupon/validated');
-log_message('debug', '------=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=---->  3');
+
 				// get blocks for this view
 				$blocks = $this->cache->model('template_model', 'get_blocks_by_strategy', 
-													array($strategy['id'], 'coupon_view'), $this->MODEL_CACHE_SECS);
+					array($strategy['id'], 'coupon_view'), $this->MODEL_CACHE_SECS);
 			
 				$data['blocks'] = $blocks;
+
+				$this->template->set('page_title', $brand['name']);
+				$this->template->set('header_follow_link', $strategy['website']);
 				
 				return $this->template->build('coupon/coupon_view', $data);
 			}
@@ -299,6 +303,9 @@ log_message('debug', '------=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=---->  3');
 												array($strategy['id'], 'coupon_view'), $this->MODEL_CACHE_SECS);
 		
 			$data['blocks'] = $blocks;
+
+			$this->template->set('page_title', $brand['name']);
+			$this->template->set('header_follow_link', $strategy['website']);
 			
 			return $this->template->build('coupon/coupon_view', $data);
 
@@ -345,8 +352,6 @@ log_message('debug', ' === which returned: '.$ret);
 			redirect($login_url);
 		}
 		
-
-		
 		// add flag that coupon has been used
 		$coupon['used'] = true;
 		
@@ -373,12 +378,15 @@ log_message('debug', ' === which returned: '.$ret);
 
 		// get blocks for this view
 		$blocks = $this->cache->model('template_model', 'get_blocks_by_strategy', 
-												array($strategy['id'], 'coupon_view'), $this->MODEL_CACHE_SECS);
+			array($strategy['id'], 'coupon_view'), $this->MODEL_CACHE_SECS);
 		
 		$data['blocks'] = $blocks;
 		
 		// set the coupon's info in the session
 		$this->session->set_userdata('coupon', $data['coupon']);
+
+		$this->template->set('page_title', $brand['name']);
+		$this->template->set('header_follow_link', $strategy['website']);
 		
 		//$this->load->view('coupon_create', $data);
 		$this->template->build('coupon/coupon_view', $data);

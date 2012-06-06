@@ -37,7 +37,6 @@ $tip = $tips[$random_key];
 
 	<div id="content">
 
-		<div class="min-width">
 		<div id="center">
 			<?php //echo $this->lang->line('Invalid_coupon')?>
 			<?php echo $error ?>
@@ -47,7 +46,6 @@ $tip = $tips[$random_key];
 			<?php	echo $this->lang->line('tip') . ': ' . $tip; ?>
 			<br/>
 			<?= image('kupi_sad_small.png', '_theme_', array( 'alt' => 'kupi is sad','width'=>'123', 'height'=>'132')); ?>
-		</div>
 		</div>
 
 	</div>

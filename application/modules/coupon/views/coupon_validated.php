@@ -59,8 +59,6 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 
 	<div id="content">
-
-		<div class="min-width">
 				
 		<div id="center">
 
@@ -84,4 +82,4 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 	</div>
 
-	<br/><br/>
+	<br/>

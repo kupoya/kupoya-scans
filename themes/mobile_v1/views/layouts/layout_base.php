@@ -5,6 +5,9 @@
 	<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8" />
 	<meta http-equiv="cache-control" content="max-age=200" />
 	<title><?= $template['title']; ?></title>
+	<!--[if IE]>
+  		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
 	<?php echo $template['metadata']; ?>
 	<?php //echo $template['partials']['metadata']; ?>
 	
@@ -40,6 +43,8 @@
 
 	<!-- CSS base -->
 	<?php echo css('jquery.mobile.min.css', '_theme_'); ?>
+	<?php echo css('jquery.mobile.structure-1.1.0.min.css', '_theme_'); ?>
+	<?php echo css('jquery.mobile.theme-1.1.0.min.css', '_theme_'); ?>
 	<?php echo $template['partials']['css']; ?>
 
 	
@@ -72,7 +77,7 @@
 </div>
 
 <div data-role="page" id="page" style="display: none">
-	<div data-role='header'>
+	<div data-role='header' data-position="fixed">
 		<?php echo $template['partials']['header']; ?>
 	</div>
 
@@ -80,7 +85,7 @@
 		<?php echo $template['body']; ?>
 	</div>
 
-	<div data-role='footer' id="footer">
+	<div data-role="footer" class="nav-glyphish-example" data-position="fixed">
 		<?php echo $template['partials']['footer']; ?>
 	</div>
 

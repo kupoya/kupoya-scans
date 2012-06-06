@@ -4,3 +4,5 @@
  */
 
 $lang['test'] = 'test';
+$lang['Active'] = 'Active';
+$lang['History'] = 'History';

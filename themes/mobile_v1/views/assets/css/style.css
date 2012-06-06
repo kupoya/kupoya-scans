@@ -1,3 +1,31 @@
+﻿	.highlightBar .coupon{
+			}	
+	h3.theme_title_text_color {
+		color: #ffffff;	}
+	#breadcrumb_happy {
+		padding:14px 0 11px 0;
+		text-align: center;
+		background:#76cddd url(themes/mobile_v1/views/assets/img/happy_kupi_head_vsmall.png) no-repeat top left;
+        margin-bottom:6px;
+	}
+	#breadcrumb {
+		padding:14px 0 11px 0;
+		text-align: center;
+		background:#76cddd;		margin-bottom:6px;
+	}
+	.ui-page {
+        filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='themes/mobile_v1/views/assets/img/body-bg.jpg',sizingMethod='scale');
+        -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='themes/mobile_v1/views/assets/img/body-bg.jpg',sizingMethod='scale')";
+		background: url(themes/mobile_v1/views/assets/img/body-bg.jpg) top right no-repeat;	
+        -moz-background-size:cover;
+    	background-size:cover;
+    	
+        overflow: hidden;
+        
+    		}
+header {
+    background:transparent;
+}
 /* --- main layout --- */
 
 	input.error {background:#FFFF00;}
@@ -25,40 +53,16 @@
     	background-size:cover;
     	position: relative;
 	}
-
-	@media only screen and (min-width: 1024px) {
-        .ui-page {
-        	background: transparent url(../img/body-bg.jpg) no-repeat center top;
-        	-moz-background-size:cover;
-    		background-size:cover;
-    		position: relative;
-            width: 660px !important;
-            margin: 0px auto !important;
-            position: relative !important;
-            border-right: 5px #666 outset !important;
-            border-left: 5px #666 outset !important;
-        }
-    }
-
-	
-
-	.ui-content {
-		padding: 2px;
-	}
-	
-/* --- END main layout --- */
-
-/* --- header --- */
-
-	#header {font-size:1.125em;}
-	
-	#logo {
+#logo  {
+    text-align:center;
+}
+    #logo img {
 		padding:11px 0 8px 0px;
-		text-align:center;
-		max-height:100px;
+		
+		max-height:100%;
 		max-width:100%;
 	}
-	.banners {text-align:center; padding:0 0 16px 0;}
+   .banners {text-align:center; padding:0 0 16px 0;}
 	.banners img {margin-bottom:10px;}
 	
 	.home-tab {text-align:right; padding:33px 23px 0px 0; margin-bottom:-55px; position:relative;}
@@ -77,33 +81,8 @@
 	.min-width {padding:0px 20px 30px 25px; min-width:200px;}
 	#content .home-tab {margin:0; padding:0px 21px 40px 0; font-size:1.059em;}
 
-	li {list-style:none; margin-bottom:10px; clear:both; background:url(../img/marker2.gif) no-repeat 0 3px; padding-left:15px;}
-	a {color:#7abf00;}
-	
-	#navmenu li {padding:0; background:none;}
-	#navmenu .button {text-transform:uppercase; font-weight:bold; color:#3d3232; font-size:1.059em;}
-	#navmenu .summary {padding:12px 0 11px 0;}
-	
-/* --- END content --- */
-
-/* --- footer --- */
-	/*
-	#footer {height:109px; padding-left:24px; color:#ababab; font-size:1.125em; line-height:1.459em; background:url(../img/footer-bg.gif) top repeat-x; text-transform:uppercase;}
-	#footer p { padding:1px 0 0 0;}
-	#footer p a {color:#ababab;}
-	*/
-	
-	p.size_small {font-size:x-small; padding: 0px 0px 0px 0px; }
-	
-	#footer {text-align: center; color:#ababab; font-size:0.8em; line-height:1.459em; top repeat-x; }
-	#footer p { padding:1px 0 0 0;}
-	#footer p a {color:#ababab;}
-	
-/* --- END footer --- */
-
-/* --- Other --- */
-	
-	.f-left {float:left;}
+    
+    .f-left {float:left;}
 	.f-right {float:right;}
 	.taright {text-align:right;}
 	p {padding-top:20px;}
@@ -278,3 +257,79 @@ div.spinner div.bar12 {-webkit-transform:rotate(330deg) translate(0, -142%); -we
 .highlightBar .ui-btn{margin:1px 1px;}
 .highlightBar .ui-btn-text{font-weight:bold;font-size:13px;}
 /* end */
+
+
+/*Footer Icon Set*/
+
+.nav-glyphish-example .ui-btn .ui-btn-inner { padding-top: 40px !important; }		
+.nav-glyphish-example .ui-btn .ui-icon { width: 30px!important; height: 30px!important; margin-left: -15px !important; box-shadow: none!important; -moz-box-shadow: none!important; -webkit-box-shadow: none!important; -webkit-border-radius: 0 !important; border-radius: 0 !important; }	
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
+#mycopun .ui-icon { 
+	background:  url(../img/icon/09-chat.png) 50% 50% no-repeat;  
+	background-repeat:no-repeat;
+	background-size: 22px 24px;
+}	
+#info .ui-icon {
+	background:  url(../img/icon/18-envelope.png) 50% 50% no-repeat;
+	background-size: 22px 24px; 
+	background-repeat:no-repeat;
+}		
+	
+/*Footer Ends*/
+
+
+.ui-btn-active {
+	border: 1px solid #B3B3B3;
+	background: #E9EAEB;
+	color: #3E3E3E;
+	font-weight: bold;
+	text-shadow: 0 1px 1px white;
+	background-image: -webkit-gradient(linear,left top,left bottom,from(#F0F0F0),to(#E9EAEB));
+	background-image: -webkit-linear-gradient(#F0F0F0,#E9EAEB);
+	background-image: -moz-linear-gradient(#F0F0F0,#E9EAEB);
+	background-image: -ms-linear-gradient(#F0F0F0,#E9EAEB);
+	background-image: -o-linear-gradient(#F0F0F0,#E9EAEB);
+	background-image: linear-gradient(#F0F0F0,#E9EAEB);
+}
+
+
+ul {
+    border:none !important;
+}
+.content {
+     border:none !important;
+}
+.time {
+    color:silver;
+    font-weight:500;
+    font-size:11px;
+    margin-top:5px;
+}
+span.ui-li-desc {
+    color:#666;
+    font-size:13px;
+    margin:0 !important;
+    text-transform:uppercase;
+}
+.ui-li-heading {
+    margin:0 !important;
+}
+.ui-listview img {
+    border:4px solid #fff !important;
+}
+.ui-li-thumb {
+    max-height:74px !important;
+}
+.ui-btn-text {
+    
+}
+footer {
+    border:none;
+}
+
+.footer {
+	text-align:center;
+	font-size:0.7em;
+	line-height:1.459em;
+	text-transform:uppercase;
+}
