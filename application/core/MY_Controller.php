@@ -24,7 +24,13 @@ class MY_Controller extends CI_Controller {
 		$this->template->set_layout('layout_base');
 		$this->template->set_partial('css', 'layouts/partials/css', FALSE);
 		$this->template->set_partial('header', 'layouts/partials/header', FALSE);
-		$this->template->set_partial('footer', 'layouts/partials/footer', FALSE);
+
+
+		if ($this->_isLoggedIn() === TRUE)
+			$this->template->set_partial('footer', 'layouts/partials/footer_app', FALSE);
+		else
+			$this->template->set_partial('footer', 'layouts/partials/footer', FALSE);
+
 		$this->template->set_partial('theme', 'layouts/partials/theme', FALSe);
 		
 		// do some pre-configuration of jquerymobile  
