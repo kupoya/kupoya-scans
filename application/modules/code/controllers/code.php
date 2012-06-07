@@ -218,7 +218,7 @@ class Code extends MY_Controller {
 
 		// get blocks for this view
 		$blocks = $this->cache->model('template_model', 'get_blocks_by_strategy', 
-												array($strategy_info['id'], 'login'), $this->MODEL_CACHE_SECS);
+			array($strategy_info['id'], 'login'), $this->MODEL_CACHE_SECS);
 		
 		// add the brand information to the view variables 
 		$data['brand'] = $brand_info;
@@ -227,7 +227,11 @@ class Code extends MY_Controller {
 		$data['medium'] = $medium_info;
 		$data['blocks'] = $blocks;
 
+		// set partials for generai footer - to display pp/tos
 		$this->template->set_partial('footer', 'layouts/partials/footer', FALSE);
+		// set partials for javascript per this page
+		$this->template->set_partial('post_javascript', 'partials/javascript');
+		
 		$this->template->set('page_title', $brand_info['name']);
 		
 		$this->template->build('code/login', $data);
