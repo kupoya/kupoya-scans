@@ -47,9 +47,29 @@
 	<?php echo css('jquery.mobile.theme-1.1.0.min.css', '_theme_'); ?>
 	<?php echo $template['partials']['css']; ?>
 
-	
 
+	<!-- JavaScript base  -->
+	
 	<?php if (isset($template['partials']['pre_javascript'])) echo $template['partials']['pre_javascript']; ?>
+	
+	<?php 
+    	echo js('jquery-1.6.2.min.js', '_theme_');
+    ?>
+
+    <!-- Customized theme layout by each brand -->
+	<?php echo $template['partials']['theme']; ?>
+
+    <?php if (isset($template['partials']['pre_jquerymobile'])) echo $template['partials']['pre_jquerymobile']; ?>
+    
+    <?php
+        echo js('jquery.mobile.min.js', '_theme_');
+	?>
+
+	<?php if (isset($template['partials']['post_javascript'])) echo $template['partials']['post_javascript']; ?>
+	
+	<?php
+	    echo js('microsite.js', '_theme_');
+    ?>
 
 </head>
 <body>
@@ -77,7 +97,7 @@
 </div>
 
 <div data-role="page" id="page" style="display: none">
-	<div data-role='header' data-position="fixed">
+	<div data-role="header" data-position="fixed" class="ui-header ui-bar-a ui-header-fixed fade ui-fixed-inline" role="banner" style="text-align: center; padding: 10px;">
 		<?php echo $template['partials']['header']; ?>
 	</div>
 
@@ -90,26 +110,6 @@
 	</div>
 
 </div>
-
-	<!-- JavaScript base  -->
-	<?php 
-    	echo js('jquery-1.6.2.min.js', '_theme_');
-    ?>
-
-    <!-- Customized theme layout by each brand -->
-	<?php echo $template['partials']['theme']; ?>
-
-    <?php if (isset($template['partials']['pre_jquerymobile'])) echo $template['partials']['pre_jquerymobile']; ?>
-    
-    <?php
-        echo js('jquery.mobile.min.js', '_theme_');
-	?>
-
-	<?php if (isset($template['partials']['post_javascript'])) echo $template['partials']['post_javascript']; ?>
-	
-	<?php
-	    echo js('microsite.js', '_theme_');
-    ?>
 
 	<?php if (isset($template['partials']['save_request_info'])) echo $template['partials']['save_request_info']; ?>
 

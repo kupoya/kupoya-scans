@@ -1,7 +1,7 @@
 <?php if (isset($page_title) && !empty($page_title)): ?>
-	<span class="ui-title" ><?= htmlentities($page_title); ?></span>
+	<span><?= htmlentities($page_title); ?></span>
 <?php else: ?>
-	<span class="ui-title" >kupoya</span>
+	<span>kupoya</span>
 <?php endif; ?>
 
 <?php if (isset($header_follow_link) && !empty($header_follow_link)): ?>

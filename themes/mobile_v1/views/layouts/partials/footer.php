@@ -1,5 +1,4 @@
-			
-			<?php //echo image('kupoya.png', '_theme_', array('width'=>'120', 'height'=>'31')); ?>
+
 		<div class="footer">
 			<p class="footer">
 				powered by kupoya &nbsp;&copy;&nbsp; 2012
