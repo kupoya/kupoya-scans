@@ -94,8 +94,8 @@
 			echo $theme_page_bg_color;
 		elseif (isset($theme_page_bg_file))
 			echo $theme_page_bg_file;
-		else
-			echo 'background: url('.theme_image('happy_kupi_head_vsmall.png').';) top right no-repeat;';
+		//else
+		//	echo 'background: url('.theme_image('happy_kupi_head_vsmall.png').';) top right no-repeat;';
 		?>
 		-moz-background-size:cover;
     	background-size:cover;
