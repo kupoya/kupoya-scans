@@ -51,8 +51,8 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 	</div>
 
 
-	<div id="content">
-		
+	<div id="content_2">
+	
 		<div id="center">
 
 			<!--  BLOCK_1 -->
@@ -63,26 +63,6 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 				?>		
 			</div>
 			<!--  /BLOCK_1 -->
-			
-				<?php
-				
-					$content = ''; 
-					
-					if (isset($strategy['type']) && $strategy['type'] === 'coupon') {
-						$content .= $this->lang->line('share_with_friends') . '<br/>';
-					}
-					
-					if (isset($medium['facebook'])) {
-							$content .= $this->lang->line('get_the_deal');
-							$content .= '<br/>';
-							$content .= anchor($facebook['loginUrl'], 
-												$this->lang->line('share_and_get'), 
-												array('data-ajax' => 'false', 'data-role' => 'button')
-											); 
-					}
-					
-					echo $content;
-				?>
 				
 			<!--  BLOCK_2 -->
 			<div id="block">

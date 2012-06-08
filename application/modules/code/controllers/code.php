@@ -227,10 +227,15 @@ class Code extends MY_Controller {
 		$data['medium'] = $medium_info;
 		$data['blocks'] = $blocks;
 
+
+		$footer_content = $this->load->view('partials/footer', $data, TRUE);
+		$this->template->set('footer_content', $footer_content);
+
 		// set partials for generai footer - to display pp/tos
 		$this->template->set_partial('footer', 'layouts/partials/footer', FALSE);
 		// set partials for javascript per this page
 		$this->template->set_partial('post_javascript', 'partials/javascript');
+		
 		
 		$this->template->set('page_title', $brand_info['name']);
 		

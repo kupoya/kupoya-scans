@@ -43,8 +43,8 @@
 
 	<!-- CSS base -->
 	<?php echo css('jquery.mobile.min.css', '_theme_'); ?>
-	<?php echo css('jquery.mobile.structure-1.1.0.min.css', '_theme_'); ?>
-	<?php echo css('jquery.mobile.theme-1.1.0.min.css', '_theme_'); ?>
+	<?php //echo css('jquery.mobile.structure-1.1.0.min.css', '_theme_'); ?>
+	<?php //echo css('jquery.mobile.theme-1.1.0.min.css', '_theme_'); ?>
 	<?php echo $template['partials']['css']; ?>
 
 
@@ -97,7 +97,7 @@
 </div>
 
 <div data-role="page" id="page" style="display: none">
-	<div data-role="header" data-position="fixed" class="ui-header ui-bar-a ui-header-fixed fade ui-fixed-inline" role="banner" style="text-align: center; padding: 10px;">
+	<div data-role="header" data-position="fixed" class="ui-header ui-bar-a ui-header-fixed fade ui-fixed-inline" role="banner" style="text-align: center; padding-top: 15px;">
 		<?php echo $template['partials']['header']; ?>
 	</div>
 
@@ -105,7 +105,7 @@
 		<?php echo $template['body']; ?>
 	</div>
 
-	<div data-role="footer" class="nav-glyphish-example" data-position="fixed">
+	<div data-role="footer" data-position="fixed">
 		<?php echo $template['partials']['footer']; ?>
 	</div>
 
