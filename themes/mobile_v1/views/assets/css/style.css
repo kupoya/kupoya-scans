@@ -242,7 +242,7 @@ div.spinner div.bar12 {-webkit-transform:rotate(330deg) translate(0, -142%); -we
 /* JQM mobile */
 
 /* provides a background box */
-.highlightBar{border:solid 3px #fff;border-radius:6px;-webkit-border-radius:6px;-moz-border-radius:6px;padding:1px;margin:auto auto 5px auto;}
+.highlightBar{border:dashed 3px #fff;border-radius:6px;-webkit-border-radius:6px;-moz-border-radius:6px;padding:1px;margin:auto auto 5px auto;}
 .highlightBar h1{font-size:22px;margin:.1em;text-shadow:none;color:#4d523f;font-weight:bold;padding-left:10px;}
 .highlightBar .content{
 	background:#99ccff;overflow:hidden;border-radius:5px;-webkit-border-radius:5px;-moz-border-radius:5px;padding:1px;
