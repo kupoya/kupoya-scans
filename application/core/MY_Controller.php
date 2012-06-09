@@ -31,7 +31,7 @@ class MY_Controller extends CI_Controller {
 		else
 			$this->template->set_partial('footer', 'layouts/partials/footer', FALSE);
 
-		$this->template->set_partial('theme', 'layouts/partials/theme', FALSe);
+		$this->template->set_partial('theme', 'layouts/partials/theme', FALSE);
 		
 		// do some pre-configuration of jquerymobile  
 		$this->template->set_partial('pre_jquerymobile', 'layouts/partials/pre_jquerymobile', FALSE);
@@ -42,6 +42,7 @@ class MY_Controller extends CI_Controller {
 		//$this->load->helper('microsite');
 		
 		$this->load->model('template_model');
+		$this->load->helper('language');
 		
 		// enable profiler?
 		//$this->output->enable_profiler(TRUE);
@@ -130,8 +131,7 @@ class MY_Controller extends CI_Controller {
 			// (like /code/index/1/1) and then scanned another strategy - so he needs another "new"
 			// session created with a new first_login variable.
 			$this->session->set_userdata(array('first_login' => $strategy['id']));
-		}
-			
+		}			
 		
 	}
 	
