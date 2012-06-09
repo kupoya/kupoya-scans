@@ -46,7 +46,7 @@
 	.highlightBar .coupon{
 		<?php 
 		if (isset($theme_microdeal_coupon_contrainer_bg) && !empty($theme_microdeal_coupon_contrainer_bg))
-			echo 'background:#'.$theme_microdeal_coupon_contrainer_bg.';';
+			echo 'border:solid 3px #'.$theme_microdeal_coupon_contrainer_bg.';';
 
 		if (isset($theme_microdeal_coupon_contrainer_text_color) && !empty($theme_microdeal_coupon_contrainer_text_color))
 			echo 'color:#'.$theme_microdeal_coupon_contrainer_text_color.';';
