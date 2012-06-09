@@ -93,8 +93,6 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 		<div id="center">
 			<?= htmlentities($description, ENT_QUOTES, "UTF-8") ?>
 			<br/>
-			<a href='<?= htmlentities($website, ENT_QUOTES, "UTF-8") ?>'><?= htmlentities($website_text, ENT_QUOTES, "UTF-8") ?></a>
-			<br/>
 
 
 			<br/>
