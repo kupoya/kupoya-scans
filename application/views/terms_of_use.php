@@ -16,7 +16,6 @@
 
 	<div id="content">
 
-		<div class="min-width">
 		<center>
 			
 		<div>
