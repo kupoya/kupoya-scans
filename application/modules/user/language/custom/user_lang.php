@@ -6,3 +6,4 @@
 $lang['test'] = 'test';
 $lang['Active'] = 'Active';
 $lang['History'] = 'History';
+$lang['My_Deals'] = 'My Coupons!';

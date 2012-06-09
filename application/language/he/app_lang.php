@@ -43,3 +43,7 @@ $lang['Accept_TOS'] = "אנא אשר ראשית את תנאי השימוש. תו
 
 $lang['Yes'] = 'כן';
 $lang['No'] = 'לא';
+
+$lang['menu:My_Deals'] = 'הדילים שלי!';
+$lang['menu:Info'] = 'מידע';
+$lang['menu:Follow'] = 'עקוב';

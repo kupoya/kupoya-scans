@@ -4,5 +4,6 @@
  */
 
 $lang['test'] = 'test';
-$lang['Active'] = 'Active';
-$lang['History'] = 'History';
+$lang['Active'] = 'פעיל';
+$lang['History'] = 'היסטוריה';
+$lang['My_Deals'] = 'הדילים שלי!';

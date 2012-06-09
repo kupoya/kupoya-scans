@@ -63,3 +63,7 @@ $lang['Accept_TOS'] = "Please accept the terms of use first";
 
 $lang['Yes'] = 'Yes';
 $lang['No'] = 'No';
+
+$lang['menu:My_Deals'] = 'My Deals!';
+$lang['menu:Info'] = 'Info';
+$lang['menu:Follow'] = 'Follow';
