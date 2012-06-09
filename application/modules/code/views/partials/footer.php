@@ -36,7 +36,9 @@
 	<a href="<?= $facebook['loginUrl']; ?>"
 		data-ajax="false" data-icon="facebook" data-role="button" data-inline="true" data-theme="<?= $jqm_theme; ?>"
 		style="margin-top: 5px; margin-bottom: 15px; width: 80%;">
-		<span class="ui-btn-inner ui-btn-corner-all"><?= $this->lang->line('share_and_get') ?></span>
+		<span class="ui-btn-inner ui-btn-corner-all" style="padding: 20px 0px 20px 0px;">
+			<?= $this->lang->line('share_and_get') ?>
+		</span>
 	</a>
 
 	<?php endif; ?>
