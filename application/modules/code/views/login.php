@@ -40,12 +40,12 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 	<div id="header">
 		
-		<div id="logo">
-			<img src='<?=site_url(htmlentities($picture))?>' alt='logo' />
-		</div>
-
 		<div id="breadcrumb">
 			<h3 class='theme_title_text_color'> <?= htmlentities($description, ENT_QUOTES, "UTF-8") ?> </h3>
+		</div>
+		
+		<div id="logo">
+			<img src='<?=site_url(htmlentities($picture))?>' alt='logo' />
 		</div>
 		
 	</div>
