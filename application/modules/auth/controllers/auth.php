@@ -45,6 +45,11 @@ class Auth extends Connect {
 		// this is done based on session data where these values were saved when the user
 		// attempted accessing the app without authenticating first
 		$nextUrl = site_url("auth/connect_facebook/login?destination=user");
+
+		$destination = $this->input->get('destination');
+		if (isset($destination) && !empty($destination)) {
+			$nextUrl = site_url("auth/connect_facebook/login?destination=/user?destination=".$destination);
+		}	
 		$this->fbconnect->urlNext = $nextUrl;
 		
 		// get the login url with all of facebook url info

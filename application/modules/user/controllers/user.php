@@ -42,12 +42,23 @@ class User extends MY_Controller {
 	
 	public function index($type = 'active')
 	{
+		$destination = $this->input->get('destination');
+		if (isset($destination) && !empty($destination)) {
+			if ($this->_isLoggedIn() === TRUE) {
+				redirect($destination);
+			}
+		}
+
 		$data = array();
 
 		// get user from session
 		$user = $this->session->userdata('user');
-		if (!isset($user['id']) || !$user['id'] || $this->_requireLogin() !== true)
+		if (!isset($user['id']) || !$user['id'] || $this->_requireLogin() !== true) {
+			if (isset($destination) && !empty($destination)) {
+				redirect('auth/login?destination='.$destination);
+			}
 			redirect('auth/login');
+		}
 		
 		$this->load->model('coupon/coupon_model');
 
