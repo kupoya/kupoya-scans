@@ -24,8 +24,12 @@ class User extends MY_Controller {
 			
 		$this->load->helper('array');
 		$this->load->helper('user_experience');
+		$this->load->helper('date');
 
-		$language = $this->getLanguage();
+		//$language = $this->getLanguage();
+		$language = 'en-us';
+		$this->userexp->language_set($language);
+
 		$this->lang->load('coupon/coupon', $language);
 		$this->lang->load('user/user', $language);
 		$this->lang->load('app', $language);
@@ -62,7 +66,7 @@ class User extends MY_Controller {
 		$data['user'] = $user;
 		$data['my_coupons'] = $my_coupons;
 
-		$this->template->set('page_title', 'My Coupons');
+		$this->template->set('page_title', $this->lang->line('My_Deals'));
 		$this->template->set('header_content', $str);
 
 		$this->template->build('user/my_coupons', $data);

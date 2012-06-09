@@ -13,7 +13,9 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 		        <img src='<?=site_url(htmlentities($coupon['strategy_picture']))?>' />
 		       	<h3 class="ui-li-heading"><?=htmlentities($coupon['brand_name'])?></h3>
 				<span class="ui-li-desc"><?=htmlentities($coupon['strategy_name'])?></span>
-		        <span  class=" time"><?=htmlentities($coupon['purchased_time'])?></span>
+		        <!-- <span  class=" time"><?=htmlentities($coupon['purchased_time'])?></span> -->
+		        <span  class=" time"><?=timespan(strtotime($coupon['purchased_time']))?> ago</span>
+		        
 	        </a>
 	    </li>
 	<?php endforeach; ?>
