@@ -12,6 +12,14 @@ class Info extends MY_Controller {
 
 	}
 	
+
+
+	function index() {
+		
+		$data = array();
+		$this->template->set_cache(self::INFO_PAGE_CACHE_TIME);
+		$this->template->build('info', $data);
+	}
 	
 	/**
 	 * Privacy Policy page

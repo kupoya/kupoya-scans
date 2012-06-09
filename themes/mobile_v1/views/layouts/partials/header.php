@@ -1,11 +1,11 @@
 <?php if (isset($page_title) && !empty($page_title)): ?>
-	<span><?= htmlentities($page_title); ?></span>
+	<span style="margin-bottom: 15px; display: block;"><?= htmlentities($page_title); ?></span>
 <?php else: ?>
 	<span>kupoya</span>
 <?php endif; ?>
 
 <?php if (isset($header_follow_link) && !empty($header_follow_link)): ?>
-	<a href="<?= $header_follow_link?>" class="ui-btn-right">Follow</a>
+	<a href="<?= $header_follow_link?>" class="ui-btn-right" style="margin-top: 7px;"><?= $this->lang->line('menu:Follow');?></a>
 <?php endif; ?>
 
 <?php
