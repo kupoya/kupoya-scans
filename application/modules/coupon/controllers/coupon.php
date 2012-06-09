@@ -281,6 +281,22 @@ log_message('debug', ' === STRATEGY ID: '.$strategy['id']);
 		
 		// check if the user already used up a coupon, if so, deliver it to him
 		$coupon = $this->couponvalidate_model->check_coupon_used_by_user($strategy['id'], $user['id']);
+
+		// @TODO this is s patch to allow specific people in specific campaigns to get unlimited coupons!
+		// this should be removed ASAP with a sane solution
+		switch($user['id']) {
+			case '1': //LT
+			case '2': //TF
+			case '3': //RT
+			case '4': //RS
+				$coupon = FALSE;
+				break;
+
+			case '365': //Philippe Partouche
+				if ($strategy['id'] == '22')
+					$coupon = FALSE;
+		}
+		
 		if ($coupon) {
 
 			// create some coupon code
