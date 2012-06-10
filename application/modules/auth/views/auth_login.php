@@ -41,12 +41,9 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 	<div id="header">
 		
-		<div id="logo">
-			<!--
-			<img src='<?=site_url(htmlentities($picture))?>' alt='logo' height='<?=htmlentities($picture_height)?>' />
-			-->
+<!-- 		<div id="logo">
 			<img src='<?=image_url('kupoya.png', '_theme_')?>' alt='logo' />
-		</div>
+		</div> -->
 
 		<div id="breadcrumb">
 		<!--
