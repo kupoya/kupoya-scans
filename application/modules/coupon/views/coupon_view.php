@@ -104,7 +104,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 							<h3><b></b> <?php //$coupon['serial'] ?> </b></h3>
 								<div>
 								<img src='<?= base_url()?>barcode/code128/<?= $coupon['serial'] ?>' width="250" height="71"  />
-								<br/>
+								<br/><br/>
 
 										<?= $date ?>
 									- 
