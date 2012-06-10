@@ -22,6 +22,13 @@ class UserExp {
 		'iw' => 'he',
 		'en' => 'en-us',
 		'us' => 'en-us',
+		'en-us' => 'en-us',
+		'fr-be' => 'fr',
+		'fr-ca' => 'fr',
+		'fr-lu' => 'fr',
+		'fr-mc' => 'fr',
+		'fr-ch' => 'fr',
+		'fr' => 'fr',
 	);
 	
 	public $language = 'en-us';
@@ -99,7 +106,11 @@ class UserExp {
 				if (empty($browser_lang))
 					continue;
 					
-				// perform language mapping
+				
+				if (!isset($this->language_mapping[$browser_lang]))
+					continue;
+				
+				// perform language mapping - map the language the detected to actual languages supported by the app
 				$lang_mapped = $this->language_mapping[$browser_lang];
 				if ($lang_mapped)
 					$browser_lang = $lang_mapped;

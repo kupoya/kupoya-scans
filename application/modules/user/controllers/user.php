@@ -27,8 +27,15 @@ class User extends MY_Controller {
 		$this->load->helper('date');
 
 		//$language = $this->getLanguage();
-		$language = 'en-us';
-		$this->userexp->language_set($language);
+		/*
+		@TODO hard-coding the language to french, lets test with user detection
+			$language = 'fr';
+			$this->userexp->language_set($language);
+		*/
+
+		$language = $this->userexp->language_detect();
+		if ($language)
+			$this->performLanguageOperations($language);
 
 		$this->lang->load('coupon/coupon', $language);
 		$this->lang->load('user/user', $language);
