@@ -317,7 +317,7 @@ span.ui-li-desc {
 .ui-li-heading {
     margin:0 !important;
 }
-.ui-listview img {
+.ui-listview img.border {
     border:4px solid #fff !important;
 }
 .ui-li-thumb {

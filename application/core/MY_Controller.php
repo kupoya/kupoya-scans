@@ -43,6 +43,7 @@ class MY_Controller extends CI_Controller {
 		
 		$this->load->model('template_model');
 		$this->load->helper('language');
+		$this->load->helper('user_experience');
 		
 		// enable profiler?
 		//$this->output->enable_profiler(TRUE);
