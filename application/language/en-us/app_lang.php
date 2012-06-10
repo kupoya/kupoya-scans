@@ -57,6 +57,7 @@ $lang['Get_a_coupon_in_two_simple_steps'] =  'Get a coupon in two simple steps';
 
 
 $lang['tip'] = "Tip";
+$lang['About'] = "About";
 $lang['Privacy_Policy'] = "Privacy Policy";
 $lang['Terms_Of_Use'] = "Terms Of Use";
 $lang['Accept_TOS'] = "Please accept the terms of use first";
