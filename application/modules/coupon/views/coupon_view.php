@@ -101,7 +101,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 						<div class="indent">
 							<div id="center">
 							<h2> <?= $this->lang->line('this_is_your_coupon')?> </h2>
-							<h3><b></b> <?= $coupon['serial'] ?> </b></h3>
+							<h3><b></b> <?php //$coupon['serial'] ?> </b></h3>
 								<div>
 								<img src='<?= base_url()?>barcode/code128/<?= $coupon['serial'] ?>' width="250" height="71"  />
 								<br/>
