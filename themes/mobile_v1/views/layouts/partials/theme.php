@@ -43,7 +43,7 @@
 ?>
 
 <style type="text/css">
-	.highlightBar .coupon{
+	.highlightBar {
 		<?php 
 		if (isset($theme_microdeal_coupon_contrainer_bg) && !empty($theme_microdeal_coupon_contrainer_bg))
 			echo 'border:dashed 3px #'.$theme_microdeal_coupon_contrainer_bg.';';
