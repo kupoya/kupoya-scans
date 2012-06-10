@@ -67,5 +67,4 @@ $lang['No'] = 'No';
 
 $lang['menu:My_Deals'] = 'My Coupons!';
 $lang['menu:Info'] = 'Info';
-
 $lang['menu:Follow'] = 'Follow';
