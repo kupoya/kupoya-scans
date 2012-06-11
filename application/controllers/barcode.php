@@ -7,7 +7,8 @@ class Barcode extends MY_Controller {
 		parent::__construct();
 		
 		// require user to be logged-in
-		$this->_requireLogin();
+		// removed the login requirement so that email notifications can use this too
+		// $this->_requireLogin();
 
 	}
 
