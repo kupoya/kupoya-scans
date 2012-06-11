@@ -28,6 +28,7 @@ class UserExp {
 		'fr-lu' => 'fr',
 		'fr-mc' => 'fr',
 		'fr-ch' => 'fr',
+		'fr-fr' => 'fr',
 		'fr' => 'fr',
 	);
 	
