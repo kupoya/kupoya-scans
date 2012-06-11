@@ -43,10 +43,11 @@ class Code_api extends CI_Controller {
 	
 	/**
 	 * 
-	 * Saving request information in mongodb server
+	 * Saving request information
+	 * (used to be in mongodb, we moved now to mysql to consolidate tech for quicker maintenance and dev)
 	 */
 	protected function _save_request_info() {
-		
+
 		$strategy = $this->session->userdata('strategy');
 			
 		// still can't find strategy in session? go rest in null land
@@ -56,7 +57,7 @@ class Code_api extends CI_Controller {
 		$strategy_id = $strategy['id']; 
 		
 		$this->load->library('user_agent');
-		$this->load->library('mongo_db');
+		// $this->load->library('mongo_db');
 		
 		$req_info = array();
 		
@@ -72,7 +73,8 @@ class Code_api extends CI_Controller {
 		$req_info['version'] = $this->agent->version();
 		$req_info['agent_string'] = $this->agent->agent_string();
 				
-		$this->mongo_db->insert('strategy_requests', $req_info);	
+
+		$this->db->insert('stat_strategy_requests', $req_info);	
 		
 	}
 	
