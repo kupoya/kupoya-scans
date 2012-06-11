@@ -324,6 +324,14 @@ span.ui-li-desc {
 	max-height: 74px !important;
 /*	min-height: 74px;*/
 }
+
+.ui-li-thumb-center {
+	margin-left: 20px;
+	margin-right: 0px;
+	float: right;
+}
+
+
 .ui-btn-text {
     
 }
@@ -341,6 +349,10 @@ footer {
 
 .ui-icon-facebook {
 	background-image: url("../img/icon/facebook.png");
+/*	width: 32px;
+	height: 32px;
+	margin-top: -15px !important;
+*/
 }
 
 
