@@ -15,7 +15,7 @@ $lang['validation'] = 'Validation';
 $lang['validate'] = 'VALIDEZ!';
 $lang['validate_business_id:tooltip'] = '- Espace Business';
 $lang['enter_business_id'] = 'Business ID';
-$lang['enjoy_your_coupon'] = 'BÉNÉFICIEZ ET SAVOUREZ!';
+$lang['enjoy_your_coupon'] = 'BENEFICIEZ DE VOTRE ABONNEMENT';
 $lang['coupon_has_been_validated'] = 'Votre coupon a été validé.';
 $lang['courtesy_of'] = 'Offert avec plaisir par...';
 
