@@ -57,7 +57,7 @@ $lang['Get_a_coupon_in_two_simple_steps'] =  'Get a coupon in two simple steps';
 
 
 $lang['tip'] = "Tip";
-$lang['About'] = "About";
+$lang['About'] = "À propos";
 $lang['Privacy_Policy'] = "Politique de confidentialité";
 $lang['Terms_Of_Use'] = "Conditions d'utilisation";
 $lang['Accept_TOS'] = "Please accept the terms of use first";
@@ -65,6 +65,6 @@ $lang['Accept_TOS'] = "Please accept the terms of use first";
 $lang['Yes'] = 'Yes';
 $lang['No'] = 'No';
 
-$lang['menu:My_Deals'] = 'Mes Offers!';
+$lang['menu:My_Deals'] = 'Mon panier';
 $lang['menu:Info'] = 'Infos';
-$lang['menu:Follow'] = 'Suivre';
+$lang['menu:Follow'] = 'Suivez';
