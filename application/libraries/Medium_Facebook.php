@@ -19,6 +19,8 @@ log_message('debug', ' === i got params, lets try this');
 log_message('debug', ' === trying to post...');
 			$ret = $this->api('me/feed', 'POST', $params);
 		} catch (FacebookApiException $e) {
+			$result = $e->getResult();
+log_message('error', ' === error happened - '.$result['error']['message']);
 log_message('debug', ' === error happened - you need to allow kupoya app permission to post to your wall');
 
 			return false;
