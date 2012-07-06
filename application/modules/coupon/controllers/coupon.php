@@ -149,6 +149,10 @@ log_message('debug', ' === which returned: '.$ret);
 			// initialize localhost server with default connection info
 			$gm_client->addServer();
 			// perform background job
+
+			$this->load->model('notifications_model');
+			$data['tokens'] = $this->notifications_model->get_coupon_tokens($data);
+
 			$gm_client->doBackground('coupon_email_notification', serialize($data));
 		}
 
