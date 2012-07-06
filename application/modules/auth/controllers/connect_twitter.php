@@ -7,7 +7,7 @@ class Connect_Twitter extends Connect {
 		
 		parent::__construct();
 
-		$this->load->model('user_model');
+		$this->load->model('user/user_model');
 		$this->load->library('tweet');
 		
 		//$this->tweet->enable_debug(TRUE);
