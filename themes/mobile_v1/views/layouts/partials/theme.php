@@ -43,7 +43,7 @@
 ?>
 
 <style type="text/css">
-	.highlightBar {
+	.highlightBar .coupon{
 		<?php 
 		if (isset($theme_microdeal_coupon_contrainer_bg) && !empty($theme_microdeal_coupon_contrainer_bg))
 			echo 'border:dashed 3px #'.$theme_microdeal_coupon_contrainer_bg.';';
@@ -53,7 +53,14 @@
 /*		background: #fff000;
 		overflow:hidden;border-radius:5px;-webkit-border-radius:5px;-moz-border-radius:5px;padding:1px;*/
 		?>
-	}	
+
+		background: #fff000;
+		overflow: hidden;
+		border-radius: 5px;
+		-webkit-border-radius: 5px;
+		-moz-border-radius: 5px;
+		padding: 1px;
+	}
 	h3.theme_title_text_color {
 		<?php
     	if (isset($theme_title_text_color) && !empty($theme_title_text_color))
