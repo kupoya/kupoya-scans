@@ -12,7 +12,12 @@ class Notifications_Model extends CI_Model {
 		$this->load->library('user_agent');
 		$this->load->helper('url');
 
-		$this->language = $this->userexp->language_detect();
+
+		$strategy = $this->session->userdata('strategy');
+		if ($strategy && isset($strategy['language']) && !empty($strategy['language']))
+			$this->language = $strategy['language'];
+		else
+			$this->language = $this->userexp->language_detect();
 
 		$this->lang->load('app', $this->language);
 		$this->lang->load('coupon/notification', $this->language);
@@ -22,7 +27,7 @@ class Notifications_Model extends CI_Model {
 
 
 	public function get_coupon_tokens($data) {
-		
+	
 		$values = array(
 			$data['strategy']['name'],
 			$data['strategy']['description'],
