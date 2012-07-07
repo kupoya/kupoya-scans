@@ -10,6 +10,7 @@ class Notifications_Model extends CI_Model {
 		parent::__construct();
 		
 		$this->load->library('user_agent');
+		$this->load->helper('url');
 
 		$this->language = $this->userexp->language_detect();
 
@@ -23,9 +24,9 @@ class Notifications_Model extends CI_Model {
 	public function get_coupon_tokens($data) {
 		
 		$values = array(
-			$name,
+			$data['strategy']['name'],
 			$data['strategy']['description'],
-			$picture,
+			site_url($data['strategy']['picture']),
 			$data['coupon']['serial'],
 			$data['coupon']['purchased_time'],
 			$data['coupon']['id'],
