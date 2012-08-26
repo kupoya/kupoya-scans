@@ -55,7 +55,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 			<img src='<?=site_url(htmlentities($picture))?>' alt='logo' height='100px' />
 		</div>
 
-		<div id="breadcrumb_happy">
+		<div id="breadcrumb">
 			<!-- <h3 class='theme_title_text_color'> <?= $this->lang->line('Congratulations')?> </h3>-->
 			<h3 class='theme_title_text_color'>
 			תודה עך תרומתך לקמפיין ראש השנה של פתחון לב
