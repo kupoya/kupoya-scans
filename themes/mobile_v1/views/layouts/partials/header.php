@@ -1,5 +1,5 @@
 <?php if (isset($page_title) && !empty($page_title)): ?>
-	<span style="margin-bottom: 15px; display: block;"><?= htmlentities($page_title); ?></span>
+	<span style="margin-bottom: 15px; display: block;"><?= htmlentities($page_title, ENT_COMPAT, 'utf-8'); ?></span>
 <?php else: ?>
 	<span style="margin-bottom: 15px; display: block;">kupoya</span>
 <?php endif; ?>
