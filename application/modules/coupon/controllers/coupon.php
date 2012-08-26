@@ -49,7 +49,7 @@ class Coupon extends MY_Controller {
 		$strategy = $this->session->userdata('strategy');
 		$user = $this->session->userdata('user');
 		$coupon_session = $this->session->userdata('coupon');
-		$medium = $this->session->userdata('medium');		
+		$medium = $this->session->userdata('medium');
 		
 		// validate the user is able to use the coupon
 		$this->load->model('couponvalidate_model');
@@ -172,7 +172,60 @@ log_message('debug', ' === which returned: '.$ret);
 	
 	public function index() {
 
+		$strategy = $this->session->userdata('strategy');
+
+		// hack for pithon lev campaign
+		if ($strategy['id'] == 24) {
+			redirect('coupon/message_post');
+		}
+
 		redirect('coupon/retrieve');
+
+	}
+
+	public function message_post() {
+		
+		$strategy = $this->session->userdata('strategy');
+		
+		$this->load->model('strategy_model');
+		$this->load->model('brand_model');
+
+		$brand = $this->brand_model->get_brand_by_strategy($strategy['id']);
+		$strategy = $this->strategy_model->get_strategy_info($strategy['id']);
+
+		$medium = $this->session->userdata('medium');
+
+		// perform medium actions
+		$this->load->model('medium_handler');
+		$ret = $this->medium_handler->perform_action($medium);
+
+		redirect('coupon/message');
+
+	}
+
+
+	public function message() {
+
+		$strategy = $this->session->userdata('strategy');
+		
+		$this->load->model('strategy_model');
+		$this->load->model('brand_model');
+
+		$brand = $this->brand_model->get_brand_by_strategy($strategy['id']);
+		$strategy = $this->strategy_model->get_strategy_info($strategy['id']);
+
+		// create some coupon code
+		$data = array();
+		
+		$data['brand'] = $brand;
+		$data['strategy'] = $strategy;
+
+		$this->template->set_partial('footer', 'partials/footer', FALSE);
+
+		$this->template->set('page_title', $brand['name']);
+		$this->template->set('header_follow_link', $strategy['website']);
+		
+		return $this->template->build('coupon/coupon_message', $data);
 
 	}
 	
