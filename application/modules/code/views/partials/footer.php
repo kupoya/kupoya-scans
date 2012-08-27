@@ -40,7 +40,7 @@
 			<?php
 				// special case for pithon lev strategy
 				if ($strategy['id'] == 24)
-					echo "שתף";
+					echo "שתפ/י";
 				else
 					echo $this->lang->line('share_and_get')
 			?>

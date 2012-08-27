@@ -58,7 +58,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 		<div id="breadcrumb">
 			<!-- <h3 class='theme_title_text_color'> <?= $this->lang->line('Congratulations')?> </h3>-->
 			<h3 class='theme_title_text_color'>
-			תודה עך תרומתך לקמפיין ראש השנה של פתחון לב
+			תודה על תרומתך לקמפיין ראש השנה של פתחון לב
 			</h3>
 		</div>
 		
