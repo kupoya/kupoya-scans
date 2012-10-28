@@ -91,7 +91,8 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 		<!--  /BLOCK_1 -->
 		
 		<div id="center">
-			<?= htmlentities($description, ENT_QUOTES, "UTF-8") ?>
+			<?php //htmlentities($description, ENT_QUOTES, "UTF-8") ?>
+			<?php echo $description ?>
 			<br/>
 
 
