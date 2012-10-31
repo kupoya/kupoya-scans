@@ -7,7 +7,7 @@ $config['protocol'] = 'smtp';
 $config['useragent'] = 'smtp-server';
 $config['smtp_host'] = 'out.bezeqint.net';
 $config['smtp_user'] = 'lirantal1';
-$config['smtp_pass'] = '***REMOVED***';
+$config['smtp_pass'] = '7070dfer';
 $config['smtp_port'] = 25;
 $config['smtp_timeout'] = 5;
 
