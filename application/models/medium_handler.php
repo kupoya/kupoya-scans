@@ -109,7 +109,7 @@ log_message('debug', ' === created params so far');
 log_message('debug', ' === error happened - you need to allow Scanalo APP permission to post to your wall');
 				//return false;
 				// if not permissions forward to apply permissions we need:
-				//$url = "http://www.facebook.com/connect/prompt_permissions.php?api_key=***REMOVED***&v=1.0&ext_perm=publish_stream&next=http://datacenter.enginx.com/scanalo/welcome/coupon/1/1";
+				//$url = "http://www.facebook.com/connect/prompt_permissions.php?api_key=121829357883894&v=1.0&ext_perm=publish_stream&next=http://datacenter.enginx.com/scanalo/welcome/coupon/1/1";
 	
 				// if not permissions forward to apply permissions we need:
 				$next_url = $this->urlNext;
